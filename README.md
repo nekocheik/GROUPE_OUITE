@@ -1,5 +1,11 @@
 # groupe_ouite
 
+- Diarit Salihaj
+- Amandine Donat-Fillod
+- Cloé Coupris 
+- Emilie Tombuyses
+- Cheik Kone 
+
 ## Project setup
 ```
 npm install
