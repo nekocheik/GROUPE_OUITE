@@ -14,9 +14,23 @@ router.get('/', async (req, res)=>{
 
 // Add Facts
 
-
+router.post('/', async (req, res)=>{
+  const facts = await loadFactsCollection();
+  await facts.insertOne({
+    text : req.body.text,
+    createdAt : new Date()
+  });
+  res.status(201).send();
+})
 
 // Delete Facts
+
+router.delete('/:id', async (req, res)=>{
+  const facts = await loadFactsCollection();
+  await facts.deleteOne({_id: new mongodb.ObjectID(req.params.id)});
+  res.status(200).send();
+})
+
 
 
 
