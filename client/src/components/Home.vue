@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h1>How we built the world together</h1>
     <p>For a better experience, take your headphones and use fullscreen</p>
     <ul>
@@ -23,7 +23,7 @@
         </svg>
       </li>
     </ul>
-    <button></button>
+    <router-link class="button" to="/introduction">Start</router-link>
   </div>
 </template>
 
@@ -39,4 +39,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.background {
+  background: black;
+  width: 100%;
+  height: 100vh;
+  color: white;
+}
+
 </style>
