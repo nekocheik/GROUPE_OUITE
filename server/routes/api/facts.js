@@ -12,7 +12,7 @@ router.get('/', async (req, res)=>{
 });
 
 
-// Add Facts
+// Add Factsz
 
 router.post('/', async (req, res)=>{
   const facts = await loadFactsCollection();
