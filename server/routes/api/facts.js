@@ -22,8 +22,14 @@ router.post('/', async (req, res)=>{
   res.status(201).send();
 })
 
-
 // Delete Facts
+
+router.delete('/:id', async (req, res)=>{
+  const facts = await loadFactsCollection();
+  await facts.deleteOne({_id: new mongodb.ObjectID(req.params.id)});
+  res.status(200).send();
+})
+
 
 
 

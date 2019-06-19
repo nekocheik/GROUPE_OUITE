@@ -28,7 +28,7 @@ Lancer le serveur
 */
 mongoConnect()
 .then( db => {
-    app.listen( port, () => console.log({ server: port, db: 'mongodb://127.0.0.1:27017/node-network' }) )
+    app.listen( port, () => console.log({ server: port, db: process.env.MONGO_URL }) )
 })
 .catch( dbError => {
     app.listen( port, () => console.log({ server: port, db: dbError }) )
