@@ -1,34 +1,35 @@
 <template>
   <div id="app">
-    <the-header></the-header>
-    <document v-if="mathematics"></document>
+    <!-- <the-header></the-header>
+    <document v-if="mathematics" :paramter="takeJsonId"></document>
     <div class="big-circle">
       <div class="big-circle__small-circle" @click="mathematics = true"></div>
-    </div>
+    </div> -->
+    
+    <router-link to="/">Home</router-link>
+    <router-link to="document">Document</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import TheHeader from './components/TheHeader.vue'
-import Document from './components/Document.vue'
+// import TheHeader from './components/TheHeader.vue'
+// import Document from './components/Document.vue'
 
 export default {
-  name: 'app',
-  components: {
-    TheHeader,
-    Document
-  },
-  data(){
-    return {
-      mathematics : false,
-      informatic : false,
-      mathematics : false,
-      mathematics : false,
-    }
-  },
-  methods : {
+  // name: 'app',
+  // components: {
+  //   TheHeader,
+  //   Document
+  // },
+  // data(){
+  //   return {
+  //     mathematics : false,
+  //   }
+  // },
+  // methods : {
 
-  }
+  // }
 }
 </script>
 
