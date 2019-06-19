@@ -10,6 +10,9 @@
         <p>{{fact.text}}</p>
       </div>
     </div>
+    <!-- END OF FACTS -->
+    <hr style="height:50px; background-color:black">
+    
   </div>
 </template>
 
