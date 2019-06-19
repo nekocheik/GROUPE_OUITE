@@ -5,6 +5,7 @@
     <hr>
     <p v-if="error">{{error}}</p>
     <div>
+      <!-- for -->
       <div v-for="(fact, index) in facts" :item="fact" :index="index" :key="fact._id">
         {{`${fact.createdAt.getDate()}/`}}
         <p>{{fact.text}}</p>
@@ -24,12 +25,12 @@ export default {
     return {
       facts : [],
       error : '',
-      text : ''
+      // text : ''
     }
   },
   async created() {
     try {
-      this.facts = await factService.getFacts();
+      this.facts = await factService.getFacts(); // getFacts is defined in factService.js
     } catch (err) {
       this.error = err.message;
     }  
