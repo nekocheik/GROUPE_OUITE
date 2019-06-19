@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from './components/Home';
 import Document from './components/Document';
-import TheHeader from './components/TheHeader';
+import Earth from './components/Earth';
 
 Vue.use(VueRouter);
 
@@ -15,12 +15,12 @@ export default new VueRouter({
       component: Home,
     },
     {
-      path : '/document',
+      path : '/document/:id',
       component: Document,
     },
     {
-      path : '/header',
-      component: TheHeader,
+      path : '/earth',
+      component: Earth,
     },
   ]
 })

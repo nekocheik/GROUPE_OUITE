@@ -7,8 +7,8 @@
     </div> -->
     
     <router-link to="/">Home</router-link>
-    <router-link to="document">Document</router-link>
-    <router-link to="header">Header</router-link>
+    <router-link to="document/1">Document</router-link>
+    <router-link to="earth">Earth</router-link>
     <router-view></router-view>
   </div>
 </template>
