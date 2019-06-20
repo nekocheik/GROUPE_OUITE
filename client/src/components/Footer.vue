@@ -1,8 +1,8 @@
-<template>
+  <template>
   <div class="background">
     
     <div class="poster">
-      <video poster="../assets/images/video-background.jpg" autoplay muted="true">
+      <video poster="../assets/images/video-background.jpg" autoplay loop muted="true">
       <source src="../assets/videos/intro.mp4" type="video/mp4" />
       </video>
       <div class="text">
@@ -27,12 +27,6 @@ export default {
     return {
 
     }
-  },
-  mounted() {
-    //automatically go to next path after the video
-    setTimeout(() => {
-      this.$router.push({ path: "/chapters" });
-    }, 5000) 
   }
 }
 </script>
@@ -46,10 +40,6 @@ export default {
   color: white;
 }
 
-h1 {
-  font-size: 50px;
-  margin-bottom: 100px;
-}
 
 .poster {
   position: relative;

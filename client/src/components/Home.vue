@@ -40,11 +40,23 @@ export default {
 
 <style lang="scss" scoped>
 
+h1 {
+  font-size: 50px;
+  margin-bottom: 100px;
+}
+
 .background {
   background: black;
   width: 100%;
   height: 100vh;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+ul {
+  display: flex;
+}
 </style>

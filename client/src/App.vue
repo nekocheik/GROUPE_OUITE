@@ -1,13 +1,5 @@
 <template>
-  <div id="app">
-    <!-- <the-header></the-header>
-    <document v-if="mathematics" :paramter="takeJsonId"></document>
-    <div class="big-circle">
-      <div class="big-circle__small-circle" @click="mathematics = true"></div>
-    </div> -->
-    
-    <router-link to="/">Home</router-link>
-    <router-link to="document">Document</router-link>
+  <div>
     <router-view></router-view>
   </div>
 </template>
