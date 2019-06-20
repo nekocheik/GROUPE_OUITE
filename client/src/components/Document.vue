@@ -1,8 +1,7 @@
 <template>
   <div>
-     <h1>Facts</h1>
+     <!-- <h1>Facts</h1> -->
     <!-- CREATE FACT HERE -->
-    <hr>
     <p v-if="error">{{error}}</p>
     <div>
       <!-- <div v-for="(fact, index) in facts" :item="fact" :index="index" :key="fact._id">
@@ -11,11 +10,13 @@
       </div> -->
       <!--  -->
       <div v-if="facts.length" class="container">
+        <!-- binding the attribute name, to get it on child component header -->
+        <document-header :name="facts[id-1].name"></document-header>
         <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id"></component>
+        <document-footer ></document-footer>
       </div>
     </div>
     <!-- END OF FACTS -->
-    <hr style="height:50px; background-color:black">
   </div>
   
 </template>
@@ -25,12 +26,20 @@ import factService from '../factService';
 import Audio from './DocumentsCards/Audio'; 
 import ImageType from './DocumentsCards/ImageType'; 
 import Video from './DocumentsCards/Video'; 
+import Poster from './DocumentsCards/Poster'; 
+import TextType from './DocumentsCards/TextType'; 
+import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue'; 
+import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
 
 export default {
   components: {
     Audio,
     ImageType,
-    Video
+    Video,
+    Poster,
+    TextType,
+    DocumentHeader,
+    DocumentFooter
   },
   data() {
     return {
@@ -38,6 +47,7 @@ export default {
       error : '',
     }
   },
+  // Call facts in db 
   async created() {
     try {
       this.facts = await factService.getFacts(); // getFacts is defined in factService.js
@@ -46,6 +56,7 @@ export default {
     }
   },
   computed : {
+    // Get the route parameters (in this case, the id)
     id(){
       return this.$route.params.id;
     },
@@ -57,7 +68,7 @@ export default {
   .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 </style>

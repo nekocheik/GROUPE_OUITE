@@ -24,10 +24,8 @@
       </li>
     </ul>
     <router-link class="button" to="/introduction">Start</router-link>
-
-
-    <button></button>
-    <router-link to="/earth">Earth</router-link>
+    <br>
+    <router-link class="button" to="/earth">Earth</router-link>
 
     
   </div>

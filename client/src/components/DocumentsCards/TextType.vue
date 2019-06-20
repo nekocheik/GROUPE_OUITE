@@ -1,6 +1,6 @@
 <template>
-  <div class="video-container">
-     <h2>Ceci est le component Video</h2>
+  <div class="text-container">
+     <h2>Ceci est le component Texte</h2>
   </div>
 </template>
 
@@ -15,13 +15,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-   .video-container {
+   .text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightgreen;
-    width: 100%;
+    background-color: rgb(237, 255, 133);
+    width: 50%;
     height: 400px;
   } 
 </style>
