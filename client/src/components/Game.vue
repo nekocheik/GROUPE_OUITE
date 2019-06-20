@@ -7,13 +7,18 @@
     <div class="web-gl">
     </div>
     <div class="quizz">
-      <p>What was the first objects we used to count in the ancient Sumerian civilization ?</p>
-      <ul>
-        <li class="button">answer</li>
-        <li class="button">answer</li>
-        <li class="button">answer</li>
-        <li class="button">answer</li>
+      <p>{{ question.question }}</p>
+      <ul v-for="answer in findAnswers()" :key="answer">
+        <li class="button" @click="choice(answer)"> {{ answer }}</li>
       </ul>
+    </div>
+    <div class="answer" v-if="showAnswer" >
+      <span v-if="correct == true">Correct</span>
+      <span v-if="correct == false">Incorrect</span>
+      <img :src="image" alt="">
+      <p>{{ question.description }}</p>
+      <p @click="toDocument(question)">Learn more ></p>
+      <button @click="nextQuestion()" class="button">Next question</button>
     </div>
     <router-link  class="game" to="/earth">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,18 +30,71 @@
     </router-link>
     <div class="questions-count">
       <span>Question</span>    
-      <span>{{ currentQuestion }}/{{ numberQuestion }}</span> 
+      <span>{{ level }} / {{ questions.length }}</span> 
     </div>
   </div>
 </template>
 
 <script>
 
+import quizz from '../assets/quizz.json'
+import images from "../assets/images/quizz.js"
+
+let level = 1
+
 export default {
   data() {
     return {
+      level: level,
+      question: this.findQuestion(level),
+      questions: quizz.questions,
+      showAnswer: false,
+      image: this.findImage(level),
+      correct: undefined
+    }
+  },
+  methods: {
+    findQuestion(level) {
+      return quizz.questions.find(
+        question => question.id === parseInt(level)
+      )
+    },
+    findAnswers() {
+      return this.question.answers
+    },
+     findImage(level) {
+      return images[`question${level}`]
+    },
+    choice(answer) {
+      if(!this.correct) {
+        if(answer === this.question.answer) {
+          this.correct = true
+        } else {
+          this.correct = false
+        }
+        this.showAnswer = true
+      }
+    },
+    toDocument(question) {
+      this.$router.push({ path: `/document/${question.doc}` });
+    },
+    nextQuestion() {
+      level++
+      this.showAnswer = false
+      this.level = level
+      this.question = this.findQuestion(level)
+      this.image = this.findImage(level)
+      this.correct = undefined
 
     }
+  },
+  mounted() {
+    level = 1
+    this.level = level
+    this.question = this.findQuestion(level)
+    this.showAnswer = false
+    this.image = this.findImage(level)
+    console.log(level)
   }
 }
 </script>
@@ -105,5 +163,30 @@ li {
   width: 250px;
 }
 
+.answer {
+  position: absolute;
+  right: 0;
+  width: 300px;
+  padding: 35px 30px;
+  background: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;  
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
 
 </style>
+

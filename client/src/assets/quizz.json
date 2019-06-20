@@ -1,0 +1,40 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "type": "simple",
+      "question": "Question 1",
+      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "answer": "answer 2",
+      "description": "Descriptif de la fiche quand on a répfbzfkjbzkfjb kfbkzjebfkjzbfkjazbfazebf kh h k  h k jhrk  jzh   kerj zeondu",
+      "doc": 2
+    },
+    {
+      "id": 2,
+      "type": "map",
+      "question": "Question 2",
+      "answers": ["Egypt", "Europe", "China", "Peru", "Italy"],
+      "answer": "Italy",
+      "description": "Descriptif de la fiche quand on a répondu",
+      "doc": 1
+    },
+    {
+      "id": 3,
+      "type": "simple",
+      "question": "Question 3",
+      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "answer": "answer 2",
+      "description": "Descriptif de la fiche quand on a répondu",
+      "doc": 2
+    },
+    {
+      "id": 4,
+      "type": "simple",
+      "question": "Question 4",
+      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "answer": "answer 3",
+      "description": "Descriptif de la fiche quand on a répondu",
+      "doc": 2
+    }
+  ]
+}
