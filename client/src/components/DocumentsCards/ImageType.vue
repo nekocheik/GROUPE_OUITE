@@ -1,6 +1,6 @@
 <template>
-  <div>
-     <h1>Ceci est le component Image</h1>
+  <div class="image-container">
+     <h2>Ceci est le component Image</h2>
   </div>
 </template>
 
@@ -15,5 +15,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #cecece;
+    width: 50%;
+    height: 400px;
+  }
 </style>

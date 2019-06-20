@@ -10,10 +10,8 @@
         <p>{{fact.text}}</p>
       </div> -->
       <!--  -->
-      <div v-if="facts.length">
-        <div v-for="child in facts[id-1].childComponents" :key="child.id">
-          <component  :is="child.type" ></component>
-        </div>
+      <div v-if="facts.length" class="container">
+        <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id"></component>
       </div>
     </div>
     <!-- END OF FACTS -->
@@ -56,5 +54,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 </style>

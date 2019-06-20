@@ -35,27 +35,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  #app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .big-circle {
-    height: 500px;
-    width: 500px;
-    border-radius: 50%;
-    background-color: red;
-  }
-
-  .big-circle__small-circle {
-    position: relative;
-    border-radius: 50%;
-    background-color: white;
-    width: 10px;
-    height: 10px;
-    left: 300px;
-    top: 100px;
-    cursor: pointer;
-  }
+  // #app {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 </style>
