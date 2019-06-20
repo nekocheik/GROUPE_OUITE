@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 
 
 export default new VueRouter({
+  mode: 'history',
  routes : [
    {
      path : '/',
@@ -32,14 +33,14 @@ export default new VueRouter({
     component: Earth,
   },
   {
+    path : '/document/:id',
+    name : 'document',
+    component: Document,
+  },
+  {
     path : '/game',
     name: 'game',
     component: Game,
-  },
-   {
-    path : '/document',
-    name: '',
-    component: Document,
-  },
+  }
  ]
 })

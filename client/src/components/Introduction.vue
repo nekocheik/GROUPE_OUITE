@@ -2,7 +2,7 @@
   <div class="background">
     
     <div class="poster">
-      <video poster="../assets/images/video-background.jpg" autoplay muted="true">
+      <video  poster="../assets/images/video-background.jpg" autoplay muted="true">
       <source src="../assets/videos/intro.mp4" type="video/mp4" />
       </video>
       <div class="text">
@@ -25,14 +25,23 @@
 export default {
   data() {
     return {
-
     }
   },
   mounted() {
     //automatically go to next path after the video
-    setTimeout(() => {
-      this.$router.push({ path: "/chapters" });
-    }, 5000) 
+
+    let vid = document.querySelector('video')
+
+
+    vid.addEventListener('loadedmetadata', () => {
+      let time = parseInt(vid.duration) + '000'
+
+      setTimeout(() => {
+        if(this.$route.name === "introduction") {
+          this.$router.push({ path: "/chapters" });
+        }
+      }, time) 
+    })   
   }
 }
 </script>

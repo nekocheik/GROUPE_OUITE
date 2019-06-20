@@ -24,6 +24,12 @@
       </li>
     </ul>
     <router-link class="button" to="/introduction">Start</router-link>
+
+
+    <button></button>
+    <router-link to="/earth">Earth</router-link>
+
+    
   </div>
 </template>
 
