@@ -6,6 +6,7 @@ import Chapters from './components/Chapters';
 import Earth from './components/Earth';
 import Game from './components/Game';
 import Document from './components/Document';
+import authentification from './components/authentification.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,9 @@ export default new VueRouter({
      component: Introduction,
    },
    {
+    path : '/authentification',
+    component: authentification,
+  },{
     path : '/chapters',
     name: 'chapters',
     component: Chapters,

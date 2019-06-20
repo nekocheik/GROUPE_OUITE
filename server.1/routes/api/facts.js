@@ -28,10 +28,10 @@ async function loadFactsCollection() {
 router.get('/', async (req, res)=>{
   const posts = await loadFactsCollection();
   res.send(await posts.find({}).toArray());
-  // console.log(await posts.find({}).toArray());
 });
 
 // Add Facts
+
 router.post('/', async (req, res)=>{
   const facts = await loadFactsCollection();
   await facts.insertOne({
