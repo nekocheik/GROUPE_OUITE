@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="background">
     <h1>How we built the world together</h1>
     <p>For a better experience, take your headphones and use fullscreen</p>
     <ul>
@@ -23,7 +23,13 @@
         </svg>
       </li>
     </ul>
+    <router-link class="button" to="/introduction">Start</router-link>
+
+
     <button></button>
+    <router-link to="/earth">Earth</router-link>
+
+    
   </div>
 </template>
 
@@ -39,4 +45,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 100px;
+}
+
+.background {
+  background: black;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+}
 </style>

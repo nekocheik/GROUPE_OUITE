@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from './components/Home';
+import Introduction from './components/Introduction';
+import Chapters from './components/Chapters';
+import Earth from './components/Earth';
+import Game from './components/Game';
 import Document from './components/Document';
 import authentification from './components/authentification.vue';
 
@@ -8,18 +12,39 @@ Vue.use(VueRouter);
 
 
 export default new VueRouter({
+  mode: 'history',
  routes : [
    {
      path : '/',
      component: Home,
    },
    {
-     path : '/document',
-     component: Document,
+     path : '/introduction',
+     name: 'introduction',
+     component: Introduction,
    },
    {
     path : '/authentification',
     component: authentification,
+  },{
+    path : '/chapters',
+    name: 'chapters',
+    component: Chapters,
   },
+  {
+    path : '/earth',
+    name: 'earth',
+    component: Earth,
+  },
+  {
+    path : '/document/:id',
+    name : 'document',
+    component: Document,
+  },
+  {
+    path : '/game',
+    name: 'game',
+    component: Game,
+  }
  ]
 })

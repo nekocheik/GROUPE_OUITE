@@ -31,7 +31,6 @@ router.get('/', async (req, res)=>{
 });
 
 // Add Facts
-
 router.post('/', async (req, res)=>{
   const facts = await loadFactsCollection();
   await facts.insertOne({
