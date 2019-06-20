@@ -1,6 +1,6 @@
 <template>
-  <div class="video-container">
-     <h2>Ceci est le component Video</h2>
+  <div class="footer">
+     <h2>Ceci est le footer</h2>
   </div>
 </template>
 
@@ -15,12 +15,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-   .video-container {
+   .footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightgreen;
+    background-color: black;
+    color: white;
     width: 100%;
     height: 400px;
   } 
