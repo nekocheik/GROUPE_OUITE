@@ -9,6 +9,7 @@ const router = express.Router();
 router.get('/', async (req, res)=>{
   const posts = await loadFactsCollection();
   res.send(await posts.find({}).toArray());
+  // console.log(await posts.find({}).toArray());
 });
 
 
