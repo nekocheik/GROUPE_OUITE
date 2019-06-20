@@ -24,6 +24,7 @@
       </li>
     </ul>
     <button></button>
+    <router-link to="/earth">Earth</router-link>
   </div>
 </template>
 

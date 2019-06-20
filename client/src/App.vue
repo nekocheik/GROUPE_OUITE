@@ -7,8 +7,8 @@
     </div> -->
     
     <router-link to="/">Home</router-link>
-    <router-link to="document">Document</router-link>
-    <router-link to="header">Header</router-link>
+    <router-link to="document/1">Document</router-link>
+    <router-link to="earth">Earth</router-link>
     <router-view></router-view>
   </div>
 </template>
@@ -35,27 +35,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-  #app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .big-circle {
-    height: 500px;
-    width: 500px;
-    border-radius: 50%;
-    background-color: red;
-  }
-
-  .big-circle__small-circle {
-    position: relative;
-    border-radius: 50%;
-    background-color: white;
-    width: 10px;
-    height: 10px;
-    left: 300px;
-    top: 100px;
-    cursor: pointer;
-  }
+  // #app {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
 </style>
