@@ -30,8 +30,8 @@ async function getUser() {
 
 
 router.post('/', async (req, res)=>{
-  const user = await getUser();
-  console.log( await user.find({}).toArray() )
+  const users = await getUser();
+  console.log( req.body )
   res.send('Received a GET HTTP method');
 });
 

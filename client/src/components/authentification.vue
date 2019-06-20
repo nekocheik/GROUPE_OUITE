@@ -38,7 +38,7 @@ export default {
 
     methods: {
     checkForm(e) {
-      fetch( 'http://localhost:5000/api/facts/authentification/okkkkkk' ,{
+      fetch( 'http://localhost:5000/api/authentification' ,{
       method: 'POST',
     headers: {
     'Accept': 'application/json',
@@ -48,8 +48,9 @@ export default {
         mail :"contact@mail.com" 
        ,password :"Kone"
         })
-    }
-      );
+    }).then( (data)=> {
+        console.log(data)
+      });
       e.preventDefault();
     },
     
