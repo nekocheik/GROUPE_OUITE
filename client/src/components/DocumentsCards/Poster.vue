@@ -5,12 +5,15 @@
 </template>
 
 <script>
+import factService from '../../factService'; 
+
 
 export default {
   data() {
     return {
     }
   },
+  props : ['childId', 'parentName']
 }
 </script>
 

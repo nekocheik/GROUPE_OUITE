@@ -10,10 +10,10 @@
       </div> -->
       <!--  -->
       <div v-if="facts.length" class="container">
+        <h1 style="font-size: 30px; font-weight : bold;">{{facts[id-1].name}}</h1>
         <!-- binding the attribute name, to get it on child component header -->
-        <document-header :name="facts[id-1].name"></document-header>
+        <button @click="changeSome(facts[id-1].name)">Envoyer</button>
         <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name"></component>
-        <document-footer ></document-footer>
       </div>
     </div>
     <!-- END OF FACTS -->
@@ -22,14 +22,12 @@
 </template>
 
 <script>
-import factService from '../factService'; 
-import Audio from './DocumentsCards/Audio'; 
-import ImageType from './DocumentsCards/ImageType'; 
-import Video from './DocumentsCards/Video'; 
-import Poster from './DocumentsCards/Poster'; 
-import TextType from './DocumentsCards/TextType'; 
-import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue'; 
-import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
+import factService from '../../factService'; 
+import Audio from './AdminAudio'; 
+import ImageType from './AdminImageType'; 
+import Video from './AdminVideo'; 
+import Poster from './AdminPoster'; 
+import TextType from './AdminTextType'; 
 
 export default {
   components: {
@@ -38,8 +36,6 @@ export default {
     Video,
     Poster,
     TextType,
-    DocumentHeader,
-    DocumentFooter
   },
   data() {
     return {
@@ -55,6 +51,15 @@ export default {
       this.error = err.message;
     }
   },
+  methods : {
+    async changeSome(param) {
+      try {
+        await factService.insertFact( param )
+      } catch (err) {
+        
+      }
+    }
+  },
   computed : {
     // Get the route parameters (in this case, the id)
     id(){
@@ -66,10 +71,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
+
 </style>

@@ -22,10 +22,9 @@ class FactService {
     }
 
    // Create Facts
-    static insertFact(name) {
-      return axios.post(url, {
-        name
-      });
+    static insertFact(name, child) {
+      console.log(name);
+      return axios.post(`${url}/${name}/${child}`);
     }
 
    // Delete Facts
