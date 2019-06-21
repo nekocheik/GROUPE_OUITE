@@ -1,4 +1,5 @@
 @import 'vendors/reset.scss';
-@import 'config/button.scss';
+@import 'config/mixins.scss';
 @import 'config/fonts.scss';
-
+@import 'config/button.scss';
+@import 'blocs/footer.scss';

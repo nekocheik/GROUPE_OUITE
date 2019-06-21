@@ -1,3 +1,14 @@
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-black-webfont.woff2", "../assets/fonts/roboto/roboto-black-webfont.woff", normal, bolder);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-blackitalic-webfont.woff2", "../assets/fonts/roboto/roboto-blackitalic-webfont.woff", italic, bolder);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-bold-webfont.woff2", "../assets/fonts/roboto/roboto-bold-webfont.woff", normal, bold);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-bolditalic-webfont.woff2", "../assets/fonts/roboto/roboto-bolditalic-webfont.woff", italic, bold);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-italic-webfont.woff2", "../assets/fonts/roboto/roboto-italic-webfont.woff", italic, normal);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-light-webfont.woff2", "../assets/fonts/roboto/roboto-light-webfont.woff", normal, lighter);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-lightitalic-webfont.woff2", "../assets/fonts/roboto/roboto-lightitalic-webfont.woff", italic, lighter);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-medium-webfont.woff2", "../assets/fonts/roboto/roboto-medium-webfont.woff", normal, 700);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-mediumitalic-webfont.woff2", "../assets/fonts/roboto/roboto-mediumitalic-webfont.woff", italic, 700);
+@include fontface ("Roboto", "../assets/fonts/roboto/roboto-regular-webfont.woff2", "../assets/fonts/roboto/roboto-regular-webfont.woff", normal, normal);
+
 body {
-  font-family: sans-serif;
+  font-family: "Roboto";
 }
