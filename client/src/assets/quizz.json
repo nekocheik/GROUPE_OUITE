@@ -2,7 +2,7 @@
   "questions": [
     {
       "id": 1,
-      "type": "simple",
+      "type": "list",
       "question": "Question 1",
       "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
       "answer": "answer 2",
@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "type": "map",
+      "type": "list",
       "question": "Question 2",
       "answers": ["Egypt", "Europe", "China", "Peru", "Italy"],
       "answer": "Italy",
@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "type": "simple",
+      "type": "list",
       "question": "Question 3",
       "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
       "answer": "answer 2",
@@ -29,7 +29,7 @@
     },
     {
       "id": 4,
-      "type": "simple",
+      "type": "list",
       "question": "Question 4",
       "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
       "answer": "answer 3",

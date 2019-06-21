@@ -6,8 +6,8 @@
       <source src="../assets/videos/intro.mp4" type="video/mp4" />
       </video>
       <div class="text">
-        <h1>A Web Documentary created by</h1>
-        <ul>
+        <h1 class="title">A Web Documentary created by</h1>
+        <ul class="names">
           <li>Amandine Donat-Filliod</li>
           <li>Cloé Coupris</li>
           <li>Emilie Tombuyses</li>
@@ -25,6 +25,7 @@
 export default {
   data() {
     return {
+      showAuthors: false
     }
   },
   mounted() {
@@ -34,13 +35,18 @@ export default {
 
 
     vid.addEventListener('loadedmetadata', () => {
-      let time = parseInt(vid.duration) + '000'
+      let time = parseInt(vid.duration) + '000'      
 
       setTimeout(() => {
-        if(this.$route.name === "introduction") {
-          this.$router.push({ path: "/chapters" });
-        }
-      }, time) 
+
+        this.showAuthors = true
+
+        setTimeout(() => {
+          if (this.$route.name === "introduction") {
+            this.$router.push({ path: "/chapters" });
+          }
+        }, 3000)
+      }, time)
     })   
   }
 }
@@ -55,14 +61,29 @@ export default {
   color: white;
 }
 
-h1 {
-  font-size: 50px;
-  margin-bottom: 100px;
+.title {
+  width: 80%;
+  font-size: 30px;
+  margin-bottom: 5%;
+
+  @media (min-width: 800px) {
+    width: 60%;
+    font-size: 50px;
+  }
+}
+
+.names {
+  display: flex;
+
+  li {
+    max-width: 150px;
+    word-spacing: 100px;
+  }
 }
 
 .poster {
   position: relative;
-   width: 100%;
+  width: 100%;
   height: 100%;
 }
 
