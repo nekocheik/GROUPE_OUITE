@@ -12,8 +12,7 @@ class FactService {
           const data = res.data;
           resolve(
             data.map(fact =>({
-              ...fact,
-              createdAt: new Date(fact.createdAt)
+              ...fact
             }))
           );
         }catch(err) {
@@ -23,9 +22,9 @@ class FactService {
     }
 
    // Create Facts
-    static insertFact(text) {
+    static insertFact(name) {
       return axios.post(url, {
-        text
+        name
       });
     }
 

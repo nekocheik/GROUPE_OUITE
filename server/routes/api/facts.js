@@ -26,16 +26,15 @@ async function loadFactsCollection() {
 // Get Facts
 
 router.get('/', async (req, res)=>{
-  const posts = await loadFactsCollection();
-  res.send(await posts.find({}).toArray());
+  const facts = await loadFactsCollection();
+  res.send(await facts.find({}).toArray());
 });
 
 // Add Facts
 router.post('/', async (req, res)=>{
   const facts = await loadFactsCollection();
   await facts.insertOne({
-    text : req.body.text,
-    createdAt : new Date()
+    name : req.body.name,
   });
   res.status(201).send();
 })
