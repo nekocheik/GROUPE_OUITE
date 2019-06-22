@@ -3,6 +3,7 @@
      <h2>Ceci est le component Poster</h2>
      <h1>{{child.title}}</h1>
      <p>{{child.text}}</p>
+     <p>{{child.text2}}</p>
   </div>
 </template>
 
