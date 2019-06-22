@@ -12,7 +12,7 @@
       <div v-if="facts.length" class="container">
         <!-- binding the attribute name, to get it on child component header -->
         <document-header :name="facts[id-1].name"></document-header>
-        <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name"></component>
+        <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name" :child="child"></component>
         <document-footer ></document-footer>
       </div>
     </div>
@@ -23,7 +23,6 @@
 
 <script>
 import factService from '../factService'; 
-import Audio from './DocumentsCards/Audio'; 
 import ImageType from './DocumentsCards/ImageType'; 
 import Video from './DocumentsCards/Video'; 
 import Poster from './DocumentsCards/Poster'; 
@@ -33,7 +32,6 @@ import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue';
 
 export default {
   components: {
-    Audio,
     ImageType,
     Video,
     Poster,

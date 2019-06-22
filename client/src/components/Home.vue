@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="background">
     <h1>How we built the world together</h1>
     <p>For a better experience, take your headphones and use fullscreen</p>

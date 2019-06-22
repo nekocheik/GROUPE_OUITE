@@ -1,16 +1,42 @@
 <template>
-  <div class="image-container">
+  <div class="image-container" :style="bgImage()">
      <h2>Ceci est le component Image</h2>
+     <br>
+     <div v-if="child.audio">
+       <audio-type :audioName="audioName()" :child="child"></audio-type>
+     </div>
   </div>
 </template>
 
 <script>
+import AudioType from './AudioType.vue'; 
+
 
 export default {
+  components : {
+    AudioType
+  },
   data() {
     return {
     }
   },
+  props : ['childId', 'parentName', 'child'],
+  methods : {
+    imgUrl() {
+      // return the image path, whith imgName variable defined on the db 
+      if (this.child.imgName) {
+        return require (`../../assets/images/${this.child.imgName}.jpg`)
+      }
+    },
+    bgImage() {
+      return `background-image : url(${this.imgUrl()})`
+    },
+    audioName() {
+      if (this.child.audio) {
+        return this.child.audio
+      }
+    }
+  }
 }
 </script>
 
