@@ -1,6 +1,9 @@
 <template>
   <div class="text-container">
      <h2>Ceci est le component Texte</h2>
+     <h2>{{child.title}}</h2>
+     <p>{{child.text}}</p>
+     <p>{{child.text2}}</p>
   </div>
 </template>
 
@@ -11,6 +14,8 @@ export default {
     return {
     }
   },
+  props : ['childId', 'parentName', 'child'],
+
 }
 </script>
 

@@ -71,5 +71,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 </style>

@@ -6,11 +6,12 @@
      <hr>
      <h3>Modifiez le ici</h3>
      <!-- <button @click="updateCard(parentName, childId)">Uptade</button> -->
-     <form @submit.prevent="" class="form">
+     <form @submit.prevent="sendInDb()" class="form">
        <label>Text</label>
-       <textarea name="" id="" cols="30" rows="10"></textarea>
+       <textarea v-model="form.text" name="" id="" cols="30" rows="10"></textarea>
        <label>Image URL</label>
-       <input type="text">
+       <input v-model="form.imageUrl" type="text">
+       <pre>{{$data.form}}</pre>
      </form>
   </div>
 </template>
@@ -22,6 +23,10 @@ import factService from '../../factService';
 export default {
   data() {
     return {
+      form : {
+        text : '',
+        imageUrl : ''
+      }
     }
   },
   props : ['childId', 'parentName'],
