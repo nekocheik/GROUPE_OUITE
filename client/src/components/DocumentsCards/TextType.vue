@@ -1,9 +1,16 @@
 <template>
   <div class="text-container">
      <h2>Ceci est le component Texte</h2>
+     <br>
      <h2>{{child.title}}</h2>
+     <br>
      <p>{{child.text}}</p>
+     <br>
      <p>{{child.text2}}</p>
+     <br>
+     <p v-if="child.knowledge1">{{child.knowledge1}}</p>
+     <br>
+     <p v-if="child.knowledge1">{{child.knowledge2}}</p>
   </div>
 </template>
 
