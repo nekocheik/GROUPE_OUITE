@@ -35,7 +35,7 @@ export default {
       try {
         await factService.insertFact( parentName, childId )
       } catch (error) {
-        
+        alert('Fail to pull data from db')        
       }
     }
   }

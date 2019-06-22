@@ -56,7 +56,7 @@ export default {
       try {
         await factService.insertFact( param )
       } catch (err) {
-        
+        alert('Fail to pull data from db')
       }
     }
   },
