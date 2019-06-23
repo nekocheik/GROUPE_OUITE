@@ -1,7 +1,7 @@
 <template>
   <div class="background">
     <div class="content">
-      <h1 class="title">How we built the world together</h1>
+      <h1 class="title">How we build the world together</h1>
       <div class="description-area">
         <p class="text">For a better experience, take your headphones and use fullscreen</p>
         <ul class="icons">
