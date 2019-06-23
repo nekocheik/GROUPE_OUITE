@@ -1,7 +1,15 @@
 <template>
   <div class="header">
-     <h1 class="title">{{name}}</h1>
-     <p>☼☼☼ Le header est toujours présent, seul son contenu (comme le titre ci-dessus) est généré dynamiquement via la db ☼☼☼</p>
+     <h1 class="title">{{parent.name}}</h1>
+     <br>
+     <h2>{{parent.slogan}}</h2>
+     <br>
+     <h2>{{parent.sloganAuthor}}</h2> 
+     <br>
+     <p>☼☼☼ Le header est toujours présent, seul son contenu (comme le titre et le slogan ci-dessus) est généré dynamiquement via la db ☼☼☼</p>
+     <br>
+      <p>SCROLL</p>
+      <p>⬇</p>
   </div>
 </template>
 
@@ -13,7 +21,9 @@ export default {
     }
   },
   props : {
-    name : String
+    parent : {
+
+    }
   }
 }
 </script>
@@ -35,6 +45,6 @@ export default {
   background-color: black;
   color: white;
   width: 100%;
-  height: 400px;
+  height: 100vh;
 } 
 </style>

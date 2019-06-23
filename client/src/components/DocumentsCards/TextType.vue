@@ -34,6 +34,6 @@ export default {
     align-items: center;
     background-color: rgb(237, 255, 133);
     width: 50%;
-    height: 400px;
+    height: 100vh;
   } 
 </style>

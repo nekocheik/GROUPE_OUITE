@@ -48,6 +48,6 @@ export default {
     align-items: center;
     background-color: #cecece;
     width: 50%;
-    height: 400px;
+    height: 100vh;
   }
 </style>

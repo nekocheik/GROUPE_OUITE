@@ -39,7 +39,7 @@ export default {
     align-items: center;
     background-color: rgb(195, 158, 236);
     width: 100%;
-    height: 400px;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
   } 

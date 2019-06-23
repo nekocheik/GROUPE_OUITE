@@ -1,7 +1,9 @@
 <template>
   <div class="video-container">
     <video :src="vidUrl"></video>
-     <h2>Ceci est le component Video</h2>
+    <h2>Ceci est le component Video</h2>
+    <h2>{{child.title}}</h2>
+    <p>{{child.text}}</p>
   </div>
 </template>
 
@@ -33,6 +35,6 @@ export default {
     align-items: center;
     background-color: lightgreen;
     width: 100%;
-    height: 400px;
+    height: 100vh;
   } 
 </style>
