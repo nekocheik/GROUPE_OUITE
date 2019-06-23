@@ -11,7 +11,7 @@
       <!--  -->
       <div v-if="facts.length" class="container">
         <!-- binding the attribute name, to get it on child component header -->
-        <document-header :name="facts[id-1].name"></document-header>
+        <document-header :parent="facts[id-1]"></document-header>
         <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name" :child="child"></component>
         <document-footer ></document-footer>
       </div>
@@ -69,5 +69,9 @@ export default {
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
+    * {
+      box-sizing: border-box;
+      border: 1px solid black;
+    }
   }
 </style>

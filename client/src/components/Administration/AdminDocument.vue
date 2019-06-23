@@ -13,7 +13,7 @@
         <h1 style="font-size: 30px; font-weight : bold;">{{facts[id-1].name}}</h1>
         <!-- binding the attribute name, to get it on child component header -->
         <button @click="changeSome(facts[id-1].name)">Envoyer</button>
-        <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name"></component>
+        <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :child="child" :parentName="facts[id-1].name"></component>
       </div>
     </div>
     <!-- END OF FACTS -->
