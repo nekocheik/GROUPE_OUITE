@@ -50,25 +50,34 @@ import screenService from '../src/screenService'
 export default {
   data() {
     return {
-      isFullScreen: false
+      isFullScreen: this.screenState()
     }
   },
   methods: {
+    
     fullScreen() {
-      let screen = document.documentElement
-
-      if(this.isFullScreen) {
+      if (this.isFullScreen) {
         screenService.toWindowedScreen()
       } else {
+        let screen = document.documentElement
         screenService.toFullScreen(screen)
       }
+    },
+    
+    screenState() {
+      let screenState = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen
+      return screenState
+    }
+  },
 
-      if(screenService.fullScreen) {
+  mounted() {
+    document.addEventListener("fullscreenchange", () => {
+      if (document.fullscreenElement) {
         this.isFullScreen = true
       } else {
         this.isFullScreen = false
       }
-    }
+    });
   }
 }
 </script>
