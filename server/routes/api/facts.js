@@ -1,6 +1,4 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////// ---dépendense---  /////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////// --- DEPENDANCES ---  //////////////
 
 require('dotenv').config();
 
@@ -10,18 +8,17 @@ const mongodb = require('mongodb');
 const router = express.Router();
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////// --- call api url / routing ---  ///////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////// --- CALL API URL / ROUTING ---  //////////
 
 
-////////////////////////////////////////////////// --- functions ---  ///////////////////////////////////////////////
+/////////// --- FUNCTIONS ---  //////////////
+
 async function loadFactsCollection() { 
   const client = await mongodb.MongoClient.connect(process.env.MONGO_URL, {useNewUrlParser: true});
   return client.db('vue_express').collection('facts')
 }
 
-////////////////////////////////////////////////// --- call api ---  ///////////////////////////////////////////////
+//////////// --- CALL API ---  //////////////
 
 // Get Facts
 
@@ -39,7 +36,7 @@ router.get('/', async (req, res)=>{
 //   });
 //   res.status(201).send();
 // })
-router.post('/:name/:child', async (req, res)=>{ 
+router.post('/:name/:child/:text/:title', async (req, res)=>{ 
   console.log('test');
   console.log(req.params.name);
   const facts = await loadFactsCollection();
@@ -49,120 +46,105 @@ router.post('/:name/:child', async (req, res)=>{
 
   switch (childIndex) {
     case '1' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.one" : {
-        "id" : 1,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.one.text" : req.params.text,
+          "childComponents.one.title" : req.params.title
+          },
         }
-      });
+      );
       break;
     case '2' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.two" : {
-        "id" : 2,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.two.text" : req.params.text,
+          "childComponents.two.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '3' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.three" : {
-        "id" : 3,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '3' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.three.text" : req.params.text,
+          "childComponents.three.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '4' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.four" : {
-        "id" : 4,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '4' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.four.text" : req.params.text,
+          "childComponents.four.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '5' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.five" : {
-        "id" : 5,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '5' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.five.text" : req.params.text,
+          "childComponents.five.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '6' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.six" : {
-        "id" : 6,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '6' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.six.text" : req.params.text,
+          "childComponents.six.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '7' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.seven" : {
-        "id" : 7,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '7' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.seven.text" : req.params.text,
+          "childComponents.seven.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '8' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.height" : {
-        "id" : 8,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '8' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.height.text" : req.params.text,
+          "childComponents.height.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '9' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.nine" : {
-        "id" : 9,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '9' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.nine.text" : req.params.text,
+          "childComponents.nine.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '10' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.ten" : {
-        "id" : 10,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '10' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.ten.text" : req.params.text,
+          "childComponents.ten.title" : req.params.title
+          },
         }
-      });
+      );
       break;
-    case '11' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.eleven" : {
-        "id" : 11,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
+      case '11' : 
+      await facts.updateOne({"name" : req.params.name}, 
+        {$set: {
+          "childComponents.eleven.text" : req.params.text,
+          "childComponents.eleven.title" : req.params.title
+          },
         }
-      });
-      break;
-    case '12' : 
-      await facts.updateOne({"name" : req.params.name}, {$set:{ "childComponents.twelve" : {
-        "id" : 12,
-        "type" : "Video",
-        "content" : "Ceci est le content de Video testooooo"
-          }
-        }
-      });
+      );
       break;
   }
-
-  
-
-
-
-
 
 
   res.status(201).send();
@@ -177,10 +159,4 @@ router.delete('/:id', async (req, res)=>{
 })
 
 
-
 module.exports = router;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

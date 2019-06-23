@@ -2,16 +2,18 @@
   <div class="poster-container">
      <h2>Ceci est le component Poster</h2>
      <hr>
-     <h3>C'est le child n°{{childId}} de {{parentName}}</h3>
+     <h3>C'est le child n°{{child.id}} de {{parentName}}</h3>
      <hr>
-     <h3>Modifiez le ici</h3>
+     <h3>Modifiez le titre et le texte ici</h3>
+     <hr>
      <!-- <button @click="updateCard(parentName, childId)">Uptade</button> -->
-     <form @submit.prevent="sendInDb()" class="form">
+     <form @submit.prevent="updateCard(parentName, child.id, form.text, form.title)" class="form">
+       <label>Title</label>
+       <input v-model="form.title" type="text" placeholder="Title">
        <label>Text</label>
        <textarea v-model="form.text" name="" id="" cols="30" rows="10"></textarea>
-       <label>Image URL</label>
-       <input v-model="form.imageUrl" type="text">
-       <pre>{{$data.form}}</pre>
+       <button type="submit">SUBMIT</button>
+       <p :class="textstyle">Le texte à été modifié avec succes</p>
      </form>
   </div>
 </template>
@@ -23,20 +25,25 @@ import factService from '../../factService';
 export default {
   data() {
     return {
+      textstyle : 'd-none',
       form : {
-        text : '',
-        imageUrl : ''
+        text : this.child.text,
+        title : this.child.title
       }
     }
   },
-  props : ['childId', 'parentName'],
+  props : ['child', 'parentName'],
   methods : {
-    async updateCard(parentName, childId) {
+    async updateCard(parentName, childId, text, title) {
       try {
-        await factService.insertFact( parentName, childId )
+        await factService.insertFact(parentName, childId, text, title)
       } catch (error) {
         alert('Fail to pull data from db')        
       }
+      this.textstyle = "d-block";
+      setTimeout(() => {
+        this.textstyle = "d-none";
+        }, 4000);
     }
   }
 }
@@ -55,5 +62,13 @@ export default {
   .form {
     display: flex;
     flex-direction: column;
+  }
+
+  .d-none {
+    display: none;
+  }
+
+  .d-block {
+    display: block;
   }
 </style>

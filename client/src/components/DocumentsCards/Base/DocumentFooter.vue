@@ -23,6 +23,6 @@ export default {
     background-color: black;
     color: white;
     width: 100%;
-    height: 400px;
+    height: 100vh;
   } 
 </style>
