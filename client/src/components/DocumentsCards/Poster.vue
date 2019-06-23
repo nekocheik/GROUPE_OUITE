@@ -1,21 +1,17 @@
 <template>
-  <div class="image-container" :style="bgImage()">
-     <h2>Ceci est le component Image</h2>
-     <br>
-     <div v-if="child.audio">
-       <audio-type :audioName="audioName()" :child="child"></audio-type>
-     </div>
+  <div class="poster-container" :style="bgImage()">
+     <h2>Ceci est le component Poster</h2>
+     <h1>{{child.title}}</h1>
+     <p>{{child.text}}</p>
+     <p>{{child.text2}}</p>
   </div>
 </template>
 
 <script>
-import AudioType from './AudioType.vue'; 
+// import factService from '../../factService'; 
 
 
 export default {
-  components : {
-    AudioType
-  },
   data() {
     return {
     }
@@ -30,24 +26,21 @@ export default {
     },
     bgImage() {
       return `background-image : url(${this.imgUrl()})`
-    },
-    audioName() {
-      if (this.child.audio) {
-        return this.child.audio
-      }
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .image-container {
+   .poster-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #cecece;
-    width: 50%;
+    background-color: rgb(195, 158, 236);
+    width: 100%;
     height: 400px;
-  }
+    background-repeat: no-repeat;
+    background-size: cover;
+  } 
 </style>

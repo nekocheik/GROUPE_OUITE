@@ -14,8 +14,8 @@
     </div>
     <div class="earth">
        <router-link class="point" to="document/1"></router-link>
-       <hr>
        <router-link class="point" to="document/2"></router-link>
+       <router-link class="point" to="document/3"></router-link>
      </div>
     <div class="icons">
       <svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg">

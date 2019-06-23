@@ -132,7 +132,7 @@ export default {
     this.question = this.findQuestion(level)
     this.showAnswer = false
     this.image = this.findImage(level)
-    console.log(level)
+    // console.log(level)
   }
 }
 </script>

@@ -1,26 +1,29 @@
 <template>
   <div class="video-container">
-    <video :src="vidUrl"></video>
      <h2>Ceci est le component Video</h2>
+     <h3>{{childId}}</h3>
+     <button @click="updateCard(parentName, childId)">Uptade</button>
   </div>
 </template>
 
 <script>
+import factService from '../../factService'; 
+
 
 export default {
   data() {
     return {
-      vidUrl : this.videoUrl()
     }
   },
-  props : ['childId', 'parentName', 'child'],
+  props : ['childId', 'parentName'],
   methods : {
-    videoUrl() {
-      // return the video path, whith videoName variable defined on the db 
-      if (this.child.videoName) {
-        return require (`../../assets/videos/${this.child.videoName}.mp4`);
+    async updateCard(parentName, childId) {
+      try {
+        await factService.insertFact( parentName, childId )
+      } catch (error) {
+        
       }
-    },
+    }
   }
 }
 </script>

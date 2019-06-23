@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="background">
     <div class="content">
       <h1 class="title">How we build the world together</h1>
