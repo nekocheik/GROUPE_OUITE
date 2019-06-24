@@ -4,10 +4,10 @@
       <video controls>
         <source :src="vidUrl" type="video/mp4">
       </video>
-    <h2>{{child.title}}</h2>
-    <p>{{child.text}}</p>
-  </div>
+      <h2>{{child.title}}</h2>
+      <p>{{child.text}}</p>
     </div>
+  </div>
 </template>
 
 <script>
@@ -55,6 +55,8 @@ h2{
   text-align: center;
   transform: translateY(80vh)
 }
+
+
    .video-container {
     position: relative;
     width: 100%;
@@ -62,16 +64,17 @@ h2{
     display: flex;
     align-items: center;
     background-color: black;
-    video {
-      width: 100vw;
-      min-height: 50vh;
-      max-height: 100vh;
-      background : black;
-      margin: auto;
-      display: block;
+
+    .parentVideo {
+      width: 100%;
+      video {
+        width: 100%;
+        min-height: 50vh;
+        max-height: 100vh;
+        background : black;
+        margin: auto;
+        display: block;
+      }
     }
-
-
-
   } 
 </style>
