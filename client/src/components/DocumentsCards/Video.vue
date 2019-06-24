@@ -53,9 +53,9 @@ h2{
   bottom: 0px;
   height: 0px;
   text-align: center;
-  transform: translateY(30vh)
+  transform: translateY(30vh);
 }
-   .video-container {
+.video-container {
     position: relative;
     width: 100%;
     height: 100vh;

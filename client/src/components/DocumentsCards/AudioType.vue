@@ -44,5 +44,9 @@ export default {
 <style lang="scss" scoped>
   .audio-container {
     display: flex;
+    color: white;
   } 
+  h2{
+    color: white;
+  }
 </style>

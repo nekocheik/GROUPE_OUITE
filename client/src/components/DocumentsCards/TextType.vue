@@ -35,5 +35,7 @@ export default {
     background-color: rgb(237, 255, 133);
     width: 50%;
     height: 100vh;
+    background-color: #000112;;
+    color: white;
   } 
 </style>
