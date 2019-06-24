@@ -13,7 +13,7 @@
           </svg>
         </li>
         <li>      
-          <!-- <div @click="mute($refs.audio, soundIcon)" :class="soundIcon"></div> -->
+          <div @click="mute($refs.audio, soundIcon)" :class="soundIcon"></div>
         </li>
         <li @click="fullScreen()" v-if="isFullScreen">
           <svg width="20" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,13 +47,12 @@
 
 import screenService from './screenService'
 import soundService from './soundService'
-import sounds from './assets/audio/sounds'
 
 export default {
   data() {
     return {
       isFullScreen: this.screenState(),
-      sound: sounds.wind,
+      sound: require('./assets/audio/vent.mp3'),
       soundIcon: "sound-icon"
     }
   },
