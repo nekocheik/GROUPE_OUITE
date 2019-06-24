@@ -1,14 +1,17 @@
 <template>
   <div class="video-container" :poster="vidPoster">
-    <video controls>
-      <source :src="vidUrl" type="video/mp4">
-    </video>
+    <div class="parentVideo">
+      <video controls>
+        <source :src="vidUrl" type="video/mp4">
+      </video>
     <h2>{{child.title}}</h2>
     <p>{{child.text}}</p>
   </div>
+    </div>
 </template>
 
 <script>
+
 
 export default {
   data() {
@@ -43,9 +46,12 @@ export default {
     height: 100vh;
 
     video {
-      height: 100%;
       width: 100%;
-      background: black;
+      height: 100%;
+      background : black;
     }
+
+
+
   } 
 </style>
