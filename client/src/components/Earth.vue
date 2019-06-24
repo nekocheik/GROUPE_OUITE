@@ -1,5 +1,7 @@
 <template>
   <div class="background">
+    <div class="scene3D" id="scene3D" ref="scene3D"></div>
+
     <div class="point" @click="callPopup(1), display=true"></div>
     <div class="point" @click="callPopup(2), display=true"></div>
     <div class="point" @click="callPopup(3), display=true"></div>
@@ -11,6 +13,7 @@
         <rect x="1.52148" y="1.54834" width="30.4346" height="7.38462" rx="0.1" stroke="white"/>
       </svg>
     </router-link>
+
     <div class="title">
       <h1>How we build the world together</h1>
       <h2>Computing</h2>
@@ -29,7 +32,7 @@
        <router-link class="point" to="document/3"></router-link> -->
      </div>
      <transition>
-       <popup :index="index" v-if="display"></popup>
+       <popup class="popup" :index="index" v-if="display"></popup>
      </transition>
     <div v-if="showInts" class="icons">
       <svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,6 +59,20 @@
 <script>
 import Popup from './Popup';
 
+//IMPORTS
+const THREE = require('three');
+
+const gsap = require('gsap');
+const TweenMax = gsap.TweenMax;
+
+const EffectComposer = require('../libs/three_composer');
+const RenderPass = require('../libs/three_renderpass');
+const ShaderPass = require('../libs/three_shaderpass');
+const UnrealBloomPass = require('../libs/three_unrealbloompass');
+
+const LuminosityHighPassShader = require('../libs/three_luminosityHighPassShader');
+const CopyShader = require('../libs/three_copyshader');
+
 export default {
   components : {
     Popup
@@ -70,39 +87,292 @@ export default {
   methods : {
     callPopup(index) {
       this.index = index;
+      this.display = true;
     }
   },
   mounted() {
 
-    const earth = document.querySelector('.earth')
-    earth.addEventListener("drag", () => {
-      this.showInts = false;
-    })
+    
+    //WEBGL SCENE
+    //Latitude Longitude calcul
+    function calcPosFromLatLonRad(lat,lon,radius){
+      
+      var phi   = (90-lat)*(Math.PI/180);
+      var theta = (lon+180)*(Math.PI/180);
 
-    earth.addEventListener("click", () => {
-      this.showInts = false;
+      var x = -((radius) * Math.sin(phi)*Math.cos(theta));
+      var z = ((radius) * Math.sin(phi)*Math.sin(theta));
+      var y = ((radius) * Math.cos(phi));
+
+      return [x,y,z];
+    }
+       
+    //CONST imports
+    const container = this.$refs.scene3D;
+    const backgroundImg = require( "../assets/images/earth/background.png" );
+    const earthImg = require( "../assets/images/earth/earthsubstract.png" );
+    const lightsImg = require( "../assets/images/earth/lights.png" );
+
+      
+    //Texture loader
+    var textureLoader = new THREE.TextureLoader();
+
+    //SCENE
+    var scene = new THREE.Scene();
+    var backgroundTexture = textureLoader.load( backgroundImg );
+    scene.background = backgroundTexture;
+
+    //CAMERA
+    var camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 0.1, 1000 );
+    camera.position.z = 9;
+    camera.position.y = 1.8;
+    camera.rotation.x = Math.PI/180 * -10; 
+    scene.add(camera);
+
+    //RENDERER
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    container.appendChild(renderer.domElement);
+
+    //COMPOSER (Post Processing)
+    var composer = new THREE.EffectComposer( renderer );
+    composer.setSize( window.innerWidth, window.innerHeight );
+    let renderPass = new THREE.RenderPass(scene,camera);
+    composer.addPass(renderPass);
+    //Parameters
+    var params = {
+        exposure: 1,
+        bloomStrength: 1,
+        bloomThreshold: 0.4,
+        bloomRadius: 0.5
+    };
+
+    var bloomPass = new THREE.UnrealBloomPass( new THREE.Vector2( window.innerWidth, window.innerHeight ), 1.5, 0.4, 0.85 );
+    bloomPass.exposure = params.exposure;
+    bloomPass.threshold = params.bloomThreshold;
+    bloomPass.strength = params.bloomStrength;
+    bloomPass.radius = params.bloomRadius;
+
+    composer.addPass( bloomPass );
+
+    //Important
+    var copyPass = new THREE.ShaderPass(THREE.CopyShader);
+    copyPass.renderToScreen = true;
+    composer.addPass(copyPass);
+
+    //RESPONSIVE
+    window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize( window.innerWidth, window.innerHeight );
+    });
+
+    //LIGHTS
+    //Simple
+    var pointLight = new THREE.PointLight(0xffffff, 1, 10);
+    pointLight.position.set( 2, 2, 5 );
+    scene.add( pointLight );
+    //Blue arc
+    var nblights = 7;
+    var arcAngle = 120;
+    for(let i= 0; i<nblights;i++){
+        var angle  = Math.PI/180 * (arcAngle/(nblights-1)) * i;
+        var x = Math.cos(angle) * 15; 
+        var y = Math.sin(angle) * 15; 
+
+        var directionalLight = new THREE.DirectionalLight( 0x56bbff , 0.6 );
+        directionalLight.position.set( x, y, -22 );
+        directionalLight.target.position.set( 0,0,0 );
+        scene.add( directionalLight );
+    }
+    //Ambient
+    var ambientLight = new THREE.AmbientLight( 0xd8d8d8 );
+    scene.add( ambientLight );
+
+    //EARTH
+    //Textures
+    var earthTexture = textureLoader.load( earthImg );
+    var lightsTexture = textureLoader.load( lightsImg );
+    //Object
+    var earthGeometry = new THREE.SphereGeometry( 2.8, 50, 50 );
+    var earthMaterial = new THREE.MeshStandardMaterial({
+        //color : 0x001B5A,
+        map : earthTexture,
+        
+        emissiveMap: lightsTexture,
+        emissive: 0xffefd3,
+        emissiveIntensity : 0.7,
+
+        roughness : 0.7,
+        metalness : 0.4
     })
-  }
+    var earth = new THREE.Mesh( earthGeometry, earthMaterial);
+    scene.add( earth );
+    earth.material.needsUpdate = true;
+
+    //POINTS
+    var placePoint = function(name, lat, long, callback ) {
+        var pointGeometry = new THREE.SphereGeometry( 0.13, 32, 32 );
+        var pointMaterial = new THREE.MeshBasicMaterial({
+            color : 0xff9a0c
+        });
+
+        var point = new THREE.Mesh( pointGeometry, pointMaterial );
+        earth.add( point );
+
+        var coord = calcPosFromLatLonRad( lat, long, 2.7);
+        point.position.set( coord[0], coord[1], coord[2] );
+        point._name = name;
+        point._callback = callback;
+
+        return point;
+    }
+    //Creating the points + Action on click (APPEL VUE.JS)
+    var egyptPoint = placePoint( 'egyptPoint', 30.044420, 31.235712 , () => {
+        this.callPopup(1);
+    });
+    var chinaPoint = placePoint( 'chinaPoint', 35.861660, 104.195397 , () =>{
+        console.log("On click 2");
+    });
+    var englandPoint = placePoint( 'englandPoint', 51.5073509, -0.1277583 , ()=>{
+        console.log("On click 3");
+    });
+    var americaPoint = placePoint( 'americaPoint', 37.090240, -95.712891 , ()=>{
+        console.log("On click 4");
+    });
+
+    //RAYCASTER + DRAG MOUSEMOVE
+    //Table for raycasting the points
+    var points = [egyptPoint, chinaPoint, englandPoint, americaPoint, earth];
+    var pickedObject;
+    var raycast = new THREE.Raycaster();
+    //Init Drag mousemove
+    var normalizedPosition = { x : 0, y : 0 };
+    var mousehold = false;
+    var startMouseX = 0;
+    var mouseDelta = 0;
+    var earthRotY = 0;
+    
+    //Drag Listeners
+    this.$refs.scene3D.addEventListener("mousedown",function(event){
+        if ( pickedObject ) {
+            pickedObject._callback();
+            //Move the earth
+            TweenMax.to(camera.position,2,{x: -2, z: 6 , ease: Power4.easeInOut});
+        } else {
+            mousehold = true;
+            startMouseX = event.clientX;
+            earthRotY = earth.rotation.y;
+        }
+    });
+
+    this.$refs.scene3D.addEventListener("mouseup",function(){
+        mousehold = false;
+    });
+
+    this.$refs.scene3D.addEventListener("mousemove",function(event){
+        if ( mousehold ) {
+            mouseDelta = (event.clientX - startMouseX) / window.innerWidth;
+            earth.rotation.y = earthRotY + mouseDelta * Math.PI * 1; //rotation speed
+        }
+
+        normalizedPosition.x = (event.clientX / container.clientWidth ) *  2 - 1;
+        normalizedPosition.y = (event.clientY / container.clientHeight) * -2 + 1;  //flip Y because of canvas coord
+    });
+
+    //BackBtn animation
+    /*
+    document.getElementById("backBtn").addEventListener("click",function(){
+        TweenMax.to(camera.position,2,{x: 0, z: 9 ,ease: Power4.easeInOut});
+    });
+    */    
+
+    //CLOCK
+    var clock = new THREE.Clock();
+
+    //RENDER
+    var render = function() {
+        var delta = clock.getDelta();
+      
+        //Points color init
+        for(let i = 0; i < points.length; i++){
+            if ( points[i] != earth ){
+                points[i].material.color.setHex(0xff9a20);
+            }
+        }
+
+        //Raycasting
+        raycast.setFromCamera(normalizedPosition, camera);
+        //get the list of objects the ray intersected
+        const intersectedObjects = raycast.intersectObjects( points );
+        if (intersectedObjects.length) {
+            //pick the first object. It's the closest one
+            var intersectObj = intersectedObjects[0].object;
+            //check it's not the earth
+            pickedObject = intersectObj == earth ? null : intersectObj;
+            //Change color on hover
+            if( pickedObject ){
+                console.log( pickedObject._name );
+                pickedObject.material.color.setHex(0xffc57f);
+            }
+        }
+
+        //Earth rotation animation
+        if(!mousehold && pickedObject == null){
+            earth.rotation.y += (Math.PI / 180) * 5 * delta;
+        }
+
+        //Grabbing cursor
+        if ( mousehold && pickedObject == null ) {
+            container.classList.add("grabbing");
+        } else {
+            container.classList.remove("grabbing");
+        }
+
+        //Select cursor
+        if ( pickedObject ) {
+            container.classList.add("selected");
+        } else {
+            container.classList.remove("selected");
+        }
+
+        //Rendering
+        composer.render();
+        requestAnimationFrame( render );
+    }
+
+    render();
+
+  },
 }
+
+
+
+
 </script>
 
 <style lang="scss" scoped>
+
+.popup {
+  position: absolute;
+  z-index: 20;
+}
+
+.scene3D {
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+}
 
 .v-enter {
   opacity: 0;
   transform: translateY(50px);
 }
 
-.v-enter-to {
-
-}
-
 .v-enter-active {
   transition: all 1s ease-in-out;
-}
-
-.v-leave {
-
 }
 
 .v-leave-to {
@@ -115,9 +385,11 @@ export default {
 }
 
 .background {
+  /*
   background: url('../assets/images/space.jpg');
   background-size: cover;
   background-position: center;
+  */
   width: 100%;
   height: 100vh;
   color: white;
@@ -130,6 +402,7 @@ export default {
   position: absolute;
   top: 30px;
   left: 50px;
+  z-index: 10;
 }
 
 .icons {
@@ -137,7 +410,8 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 130px;
-  text-align: center;  
+  text-align: center;
+  z-index: 10;
 
   p {
     line-height: 120%;
@@ -149,6 +423,7 @@ export default {
   position: absolute;
   top: 30px;
   text-align: center;
+  z-index: 10;
 }
 
 h1 {
@@ -166,6 +441,7 @@ h2 {
 
 .game {
   position: absolute;
+  z-index: 10;
   display: flex;
   align-items: center;
   bottom: 30px;
@@ -179,17 +455,6 @@ h2 {
   }
 }
 
-.earth {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
-  height: 500px;
-  background-color: black;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 .point {
   width: 20px;
   height: 20px;
@@ -200,6 +465,7 @@ h2 {
 
 .pop-up {
   position: absolute;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-content: center;
