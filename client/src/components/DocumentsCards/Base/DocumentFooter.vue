@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-     <to-visit v-for="child in parent" :key="child._id" :parent="parent" :child="child"></to-visit>
+     <to-visit v-for="child in parent" :key="child._id" :parent="parent" :child="child" :childIndex="parent.indexOf(child)"></to-visit>
   </div>
 </template>
 
