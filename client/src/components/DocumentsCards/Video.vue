@@ -4,7 +4,7 @@
       <video controls>
         <source :src="vidUrl" type="video/mp4">
       </video>
-      <h2>{{child.title}}</h2>
+      <!-- <h2>{{child.title}}</h2> -->
       <p>{{child.text}}</p>
     </div>
   </div>
