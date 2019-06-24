@@ -41,14 +41,34 @@ export default {
 
 <style lang="scss" scoped>
 
+h2{
+  font-size: 50px;
+  color: white;
+
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  text-align: center;
+  transform: translateY(80vh)
+}
    .video-container {
+    position: relative;
     width: 100%;
     height: 100vh;
-
+    display: flex;
+    align-items: center;
+    background-color: black;
     video {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      min-height: 50vh;
+      max-height: 100vh;
       background : black;
+      margin: auto;
+      display: block;
     }
 
 

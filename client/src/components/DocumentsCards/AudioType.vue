@@ -44,6 +44,5 @@ export default {
 <style lang="scss" scoped>
   .audio-container {
     display: flex;
-    flex-direction: f
   } 
 </style>
