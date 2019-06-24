@@ -2,16 +2,16 @@
   "questions": [
     {
       "id": 1,
-      "type": "simple",
-      "question": "Question 1",
+      "type": "list",
+      "question": "What was the first objects we used to count in the ancient Sumerian civilization ?",
       "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
       "answer": "answer 2",
-      "description": "Descriptif de la fiche quand on a répfbzfkjbzkfjb kfbkzjebfkjzbfkjazbfazebf kh h k  h k jhrk  jzh   kerj zeondu",
+      "description": "Before the modern age and the worldwide spread of knowledge, written examples of new mathematical developments have come to light only in a few locales.",
       "doc": 2
     },
     {
       "id": 2,
-      "type": "map",
+      "type": "list",
       "question": "Question 2",
       "answers": ["Egypt", "Europe", "China", "Peru", "Italy"],
       "answer": "Italy",
@@ -20,7 +20,7 @@
     },
     {
       "id": 3,
-      "type": "simple",
+      "type": "list",
       "question": "Question 3",
       "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
       "answer": "answer 2",
@@ -29,7 +29,7 @@
     },
     {
       "id": 4,
-      "type": "simple",
+      "type": "list",
       "question": "Question 4",
       "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
       "answer": "answer 3",

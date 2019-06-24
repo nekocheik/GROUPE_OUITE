@@ -23,8 +23,9 @@ async function loadFactsCollection() {
 // Get Facts
 
 router.get('/', async (req, res)=>{
-  const facts = await loadFactsCollection();
-  res.send(await facts.find({}).toArray());
+  const posts = await loadFactsCollection();
+  res.send(await posts.find({}).toArray());
+  // console.log(await posts.find({}).toArray());
 });
 
 // Add Facts

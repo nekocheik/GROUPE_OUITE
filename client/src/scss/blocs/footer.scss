@@ -1,0 +1,15 @@
+footer {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  color: white;
+}
+
+.links {
+  display: flex;
+  cursor: pointer;
+
+  li:not(:last-child) {
+    margin-right: 40px;
+  }
+}

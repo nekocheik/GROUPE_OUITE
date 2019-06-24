@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import factService from '../../factService'; 
+// import factService from '../../factService'; 
 
 
 export default {

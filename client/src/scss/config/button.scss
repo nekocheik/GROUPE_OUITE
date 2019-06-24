@@ -1,6 +1,19 @@
 .button {
-  background: black;
-  border: solid 2px white;
-  padding: 10px;
+  z-index: 1;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 40px;
+  padding: 10px 50px;
   color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
+
+
+  &:hover {
+    color: black;
+    background: white;
+  }
 }

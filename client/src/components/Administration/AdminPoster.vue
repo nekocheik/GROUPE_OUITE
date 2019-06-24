@@ -38,7 +38,7 @@ export default {
       try {
         await factService.insertFact(parentName, childId, text, title)
       } catch (error) {
-        
+        alert('Fail to pull data from db')        
       }
       this.textstyle = "d-block";
       setTimeout(() => {
