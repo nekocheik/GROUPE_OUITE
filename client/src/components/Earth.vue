@@ -354,6 +354,12 @@ export default {
 
 <style lang="scss" scoped>
 
+<<<<<<< HEAD
+=======
+* {
+  overflow: hidden;
+}
+>>>>>>> 6004db895459d5d4f01911f0794ba0e96fd2dc27
 
 .popup {
   position: absolute;
