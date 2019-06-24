@@ -10,10 +10,10 @@
       </div> -->
       <!--  -->
 
-  <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78">
+    <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78">
       <g id="Groupe_4" data-name="Groupe 4" transform="translate(-1057 -287)">
         <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1057 287)" fill="none" stroke="#ffbf67" stroke-width="5">
-          <circle cx="39" cy="39" r="39" stroke="none"  fill="#fff"/>
+          <!-- <circle cx="39" cy="39" r="39" stroke="none"  fill="none"/> -->
           <circle class="exterieur" cx="39" cy="39" r="36.5" fill="none"/>
         </g>
       </g>
@@ -23,7 +23,7 @@
         <!-- binding the attribute name, to get it on child component header -->
         <document-header :parent="facts[id-1]"></document-header>
         <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name" :child="child"></component>
-        <document-footer ></document-footer>
+        <document-footer :parent="facts"></document-footer>
       </div>
     </div>
     <!-- END OF FACTS -->

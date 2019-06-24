@@ -90,6 +90,9 @@ export default {
       this.display = true;
     }
   },
+  destroyed(){
+    console.log('destroyed');
+  },
   mounted() {
 
     

@@ -1,14 +1,20 @@
 <template>
   <div class="footer">
-     <h2>Ceci est le footer</h2>
+     <to-visit v-for="child in parent" :key="child._id" :parent="parent" :child="child"></to-visit>
   </div>
 </template>
 
 <script>
+import ToVisit from '../ToVisit'
 
 export default {
+  components : {
+    ToVisit
+  },
+  props : ['parent'],
   data() {
     return {
+
     }
   },
 }
@@ -18,8 +24,8 @@ export default {
 <style lang="scss" scoped>
    .footer {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
     background-color: black;
     color: white;
