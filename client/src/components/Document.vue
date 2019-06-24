@@ -42,7 +42,8 @@ import TextType from './DocumentsCards/TextType';
 import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue'; 
 import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
 import { draw } from '../svgDrawing';
-
+const wavesurfer = require('../libs/wavesurfer')
+console.log( wavesurfer )
 export default {
   components: {
     ImageType,
