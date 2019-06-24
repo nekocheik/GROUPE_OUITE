@@ -1,7 +1,6 @@
 <template>
-  <div class="image-container" :style="bgImage()">
-     <h2>Ceci est le component Image</h2>
-     <br>
+  <div class="image-container">
+    <img :src="Image()" :alt="getAlt()">
      <div v-if="child.audio">
        <audio-type :audioName="audioName()" :child="child"></audio-type>
      </div>
@@ -16,24 +15,29 @@ export default {
   components : {
     AudioType
   },
+  props : ['childId', 'parentName', 'child'],
   data() {
     return {
+      imagee : require (`../../assets/images/${this.child.image}.jpg`)
     }
   },
-  props : ['childId', 'parentName', 'child'],
   methods : {
     imgUrl() {
-      // return the image path, whith imgName variable defined on the db 
-      if (this.child.imgName) {
-        return require (`../../assets/images/${this.child.imgName}.jpg`)
+      if (this.child.image) {
+        return require (`../../assets/images/${this.child.image}.jpg`)
       }
     },
-    bgImage() {
-      return `background-image : url(${this.imgUrl()})`
+    Image() {
+      return this.imgUrl()
     },
     audioName() {
       if (this.child.audio) {
         return this.child.audio
+      }
+    },
+    getAlt() {
+      if (this.child.alt) {
+        return this.child.alt
       }
     }
   }
@@ -46,8 +50,14 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #cecece;
+    background: black;
     width: 50%;
     height: 100vh;
+    padding: 30px 50px;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 10px;
   }
 </style>

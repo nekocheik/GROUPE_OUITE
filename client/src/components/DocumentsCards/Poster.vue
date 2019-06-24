@@ -1,9 +1,8 @@
 <template>
   <div :class="cardPosition()" :style="bgImage()">
     <div class="card">
-      <h1 class="title">{{child.title}}</h1>
-      <p class="content">{{child.text}}</p>
-      <p class="content">{{child.text2}}</p>
+      <h2 class="title">{{child.title}}</h2>
+      <p v-for="text in child.texts" :key="text" class="content">{{text}}</p>
     </div>
   </div>
 </template>
@@ -73,6 +72,11 @@ export default {
 .content {
   font-size: 20px;
   line-height: 150%;
+
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 

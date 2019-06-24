@@ -354,6 +354,10 @@ export default {
 
 <style lang="scss" scoped>
 
+* {
+  overflow: hidden;
+}
+
 .popup {
   position: absolute;
   z-index: 20;
