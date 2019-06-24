@@ -1,18 +1,18 @@
 <template>
   <div class="background">
-    <h1>How we built the world together</h1>
-    <ul>
-      <li @click="toEarth()">
-        <p>Episode 1</p>
-        <h2>Computing</h2>
+    <h1 class="title">How we build the world together</h1>
+    <ul class="chapters">
+      <li class="available" @click="toEarth()">
+        <p class="episode">Episode 1</p>
+        <h2 class="chapter">Computing</h2>
       </li>
       <li>
-        <p>Episode 2</p>
-        <h2>Medecine</h2>
+        <p class="episode">Episode 2</p>
+        <h2 class="chapter">Medecine</h2>
       </li>
       <li>
-        <p>Episode 3</p>
-        <h2>Transport</h2>
+        <p class="episode">Episode 3</p>
+        <h2 class="chapter">Transport</h2>
       </li>
     </ul>
   </div>
@@ -37,7 +37,9 @@ export default {
 <style lang="scss" scoped>
 
 .background {
-  background: black;
+  background: url('../assets/images/space.jpg');
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -47,19 +49,49 @@ export default {
   color: white;
 }
 
-h1 {
+.title {
   font-size: 50px;
+  text-transform: uppercase;
   margin-bottom: 100px;
+  letter-spacing: calc(50px * 10 / 100);
+  text-align: center;
 }
 
-ul {
+.chapters {
   display: flex;
+
+  li {
+    border : 2px solid rgba(255, 255, 255, 0.466);    
+    display: inline-block;
+    padding: 30px 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.466);
+  }
+
+  .available {
+    border : 2px solid white;
+    color: white;
+    cursor: pointer;
+  }
+
+  li:not(:last-child) {
+    margin-right: 60px;
+  }
 }
 
-li {
-  border : 2px solid white;
-  display: inline-block;
-  padding: 30px;
+.episode {
+  font-size: 14px;
+  font-style: italic;
 }
+
+
+.chapter {
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+
 
 </style>
