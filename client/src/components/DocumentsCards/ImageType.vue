@@ -50,15 +50,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
-    background-color: #000112;
-    width: 50%;
-    height: 100vh;
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: white;
-=======
     background: black;
     width: 50%;
     height: 100vh;
@@ -68,6 +59,5 @@ export default {
   img {
     width: 100%;
     border-radius: 10px;
->>>>>>> 6004db895459d5d4f01911f0794ba0e96fd2dc27
   }
 </style>

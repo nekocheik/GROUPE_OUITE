@@ -44,10 +44,6 @@ export default {
     color: white;
     width: 50%;
     height: 100vh;
-<<<<<<< HEAD
-    background-color: #000112;;
-    color: white;
-=======
     padding: 30px 50px;
 
     &.right {
@@ -55,7 +51,6 @@ export default {
       justify-content: flex-start;
       text-align: right;
     }
->>>>>>> 6004db895459d5d4f01911f0794ba0e96fd2dc27
   } 
 
   .title {
