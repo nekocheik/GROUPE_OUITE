@@ -1,6 +1,6 @@
 <template>
-  <div class="audio-container">
-     <h2>Ceci est le component Audio</h2>
+  <div class="footer">
+     <h2>Ceci est le footer</h2>
   </div>
 </template>
 
@@ -15,13 +15,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .audio-container {
+   .footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: grey;
-    width: 50%;
-    height: 400px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100vh;
   } 
 </style>

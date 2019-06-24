@@ -50,6 +50,7 @@ export default {
         })
     }).then( (data)=> {
         console.log(data)
+
       });
       e.preventDefault();
     },

@@ -7,6 +7,7 @@ import Earth from './components/Earth';
 import Game from './components/Game';
 import Document from './components/Document';
 import authentification from './components/authentification.vue';
+import AdminDocument from './components/Administration/AdminDocument.vue';
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ export default new VueRouter({
     path : '/document/:id',
     name : 'document',
     component: Document,
+  },
+  {
+    path : '/admindocument/:id',
+    name : 'admindocument',
+    component: AdminDocument,
   },
   {
     path : '/game',
