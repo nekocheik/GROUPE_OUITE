@@ -68,9 +68,10 @@ export default {
   },
 
   mounted(){
-        setTimeout( ()=>{
-                  draw( document.querySelector('body') );
-        } , 1000 )
+
+    window.onload = function() {
+           draw( document.querySelector('body') );
+    } 
 
   },
   computed : {
