@@ -2,9 +2,6 @@
   <div class="background">
     <div class="scene3D" id="scene3D" ref="scene3D"></div>
 
-    <div class="point" @click="callPopup(1), display=true"></div>
-    <div class="point" @click="callPopup(2), display=true"></div>
-    <div class="point" @click="callPopup(3), display=true"></div>
     <router-link class="menu" to="/chapters">
       <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="12.7344" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
@@ -27,9 +24,6 @@
       <p>Drag to move around</p>
     </div>
     <div class="earth">
-       <!-- <router-link class="point" to="document/1"></router-link>
-       <router-link class="point" to="document/2"></router-link>
-       <router-link class="point" to="document/3"></router-link> -->
      </div>
      <transition>
        <popup class="popup" :index="index" v-if="display"></popup>

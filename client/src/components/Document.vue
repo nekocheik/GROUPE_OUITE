@@ -102,7 +102,7 @@ export default {
     flex-wrap: wrap;
     * {
       box-sizing: border-box;
-      border: 1px solid black;
+      // border: 1px solid black;
     }
   }
 
