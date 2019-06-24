@@ -63,7 +63,7 @@ h2{
     align-items: center;
     background-color: black;
     video {
-      width: 100vw;
+      width: 100%;
       min-height: 50vh;
       max-height: 100vh;
       background : black;

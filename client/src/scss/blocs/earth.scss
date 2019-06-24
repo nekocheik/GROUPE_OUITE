@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .scene3D {
+    /*
+    width: 100%;
+    height: 100%;
+    display: block;
+    
+    
+    background: url('background.png');
+    background-position: center;
+    background-size: cover;
+    */
+    cursor: grab;
+  }
+
+  .scene3D.grabbing{
+    cursor: grabbing;
+}
+  
+  .scene3D.selected{
+      cursor: pointer;
+  }
+
+  /*
+.back {
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+    background: coral;
+    border-radius: 50%;s
+}
+
+.back:hover {
+    cursor: pointer;
+}
+*/
