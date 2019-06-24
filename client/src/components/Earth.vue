@@ -371,16 +371,8 @@ export default {
   transform: translateY(50px);
 }
 
-.v-enter-to {
-
-}
-
 .v-enter-active {
   transition: all 1s ease-in-out;
-}
-
-.v-leave {
-
 }
 
 .v-leave-to {
