@@ -46,8 +46,11 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #cecece;
+    background-color: black;
     width: 50%;
     height: 100vh;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 </style>
