@@ -27,7 +27,7 @@ export default {
     bgImage() {
       return `background-image : url(${this.imgUrl()})`
     }
-  }
+  },
 }
 </script>
 

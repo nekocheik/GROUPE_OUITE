@@ -43,8 +43,9 @@ export default {
     height: 100vh;
 
     video {
+      height: 100%;
       width: 100%;
-      height: auto;
+      background: black;
     }
   } 
 </style>
