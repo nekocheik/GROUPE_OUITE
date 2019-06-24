@@ -1,15 +1,23 @@
 <template>
   <div class="background">
+     <router-link class="menu" to="/chapters">
+      <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12.7344" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
+        <rect x="23.9473" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
+        <rect x="1.52148" y="13.3638" width="8.00911" height="7.38462" rx="0.1" stroke="white"/>
+        <rect x="1.52148" y="1.54834" width="30.4346" height="7.38462" rx="0.1" stroke="white"/>
+      </svg>
+    </router-link>
     <div class="title">
-      <h1>How we built the world together</h1>
+      <h1>How we build the world together</h1>
       <h2>Computing - Test your knowledge</h2>
     </div>
     <div class="web-gl">
     </div>
     <div class="quizz" v-if="findType() === 'list'">
       <p>{{ question.question }}</p>
-      <ul v-for="answer in findAnswers()" :key="answer">
-        <li class="button" @click="choice(answer)"> {{ answer }}</li>
+      <ul>
+        <li v-for="answer in findAnswers()" :key="answer" :class="choicecss" @click="choice(answer)"> {{ answer }}</li>
       </ul>
     </div>
     <div class="quizz" v-if="findType() === 'map'">
@@ -24,7 +32,6 @@
     <div class="answer" v-if="showAnswer" >
       <span v-if="correct == true">Correct</span>
       <span v-if="correct == false">Incorrect</span>
-      <img :src="image" alt="">
       <p>{{ question.description }}</p>
       <p @click="toDocument(question)">Learn more ></p>
       <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
@@ -61,7 +68,8 @@ export default {
       questions: quizz.questions,
       showAnswer: false,
       image: this.findImage(level),
-      correct: undefined
+      correct: undefined,
+      choicecss: "button"
     }
   },
   methods: {
@@ -140,13 +148,21 @@ export default {
 <style lang="scss" scoped>
 
 .background {
-  background: black;
+  background: url('../assets/images/space.jpg');
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100vh;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.menu {
+  position: absolute;
+  top: 30px;
+  left: 50px;
 }
 
 .web-gl {
@@ -170,60 +186,116 @@ export default {
 
 h1 {
   font-size: 16px;
+  font-style: italic;
+  font-weight: lighter;
+  text-transform: uppercase;
 }
 
 h2 {
   font-size: 30px;
   text-transform: uppercase;
+  line-height: 150%;
 }
 
 .game {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  display: flex;
+  align-items: center;
+  bottom: 30px;
+  left: 50px;
+  text-decoration: none;
+  color: white;
+
+  p {
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
 }
 
 .questions-count {
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   text-align: center;
 }
 
 .quizz {
   position: absolute;
-  left: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 31px 10px;
+  left: 3vw;
   width: 300px;
-}
+  height: 475px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
 
-li {
-  width: 250px;
+  p {
+    line-height: 150%;
+    font-size: 20px;
+  }
+
+  li {
+    width: 250px;
+  }
+
+  li:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .selected {
+    background: white;
+  }
 }
 
 .answer {
   position: absolute;
-  right: 0;
+  right: 3vw;
   width: 300px;
+  height: 400px;
   padding: 35px 30px;
   background: red;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+
 
   span {
     display: inline-block;
-    margin-bottom: 10px;
     font-size: 30px;
+    font-weight: bold;
     text-transform: uppercase;
-    text-align: center;  
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 130%;
   }
 
   img {
     width: 100%;
   }
 }
+
+button.button {
+  background: transparent;
+  font-size: 17px;
+
+  &:hover {
+    background: white;
+  }
+}
+
+
 
 
 </style>
