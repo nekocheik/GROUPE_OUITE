@@ -9,6 +9,16 @@
         <p>{{fact.text}}</p>
       </div> -->
       <!--  -->
+
+  <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78">
+      <g id="Groupe_4" data-name="Groupe 4" transform="translate(-1057 -287)">
+        <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1057 287)" fill="none" stroke="#ffbf67" stroke-width="5">
+          <circle cx="39" cy="39" r="39" stroke="none"  fill="#fff"/>
+          <circle class="exterieur" cx="39" cy="39" r="36.5" fill="none"/>
+        </g>
+      </g>
+    </svg>
+
       <div v-if="facts.length" class="container">
         <!-- binding the attribute name, to get it on child component header -->
         <document-header :parent="facts[id-1]"></document-header>
@@ -22,6 +32,8 @@
 </template>
 
 <script>
+
+
 import factService from '../factService'; 
 import ImageType from './DocumentsCards/ImageType'; 
 import Video from './DocumentsCards/Video'; 
@@ -29,6 +41,7 @@ import Poster from './DocumentsCards/Poster';
 import TextType from './DocumentsCards/TextType'; 
 import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue'; 
 import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
+import { draw } from '../svgDrawing';
 
 export default {
   components: {
@@ -53,6 +66,14 @@ export default {
       this.error = err.message;
     }
   },
+
+  mounted(){
+
+    window.onload = function() {
+           draw( document.querySelector('body') );
+    } 
+
+  },
   computed : {
     // Get the route parameters (in this case, the id)
     id(){
@@ -61,9 +82,18 @@ export default {
   }
 }
 
+
+
+
+
 </script>
 
 <style lang="scss" scoped>
+.circle{
+  position: fixed;
+  top: 10px;
+  right: 50px;
+}
   .container {
     display: flex;
     flex-direction: row;
@@ -74,4 +104,6 @@ export default {
       border: 1px solid black;
     }
   }
+
+  
 </style>

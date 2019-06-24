@@ -2,6 +2,9 @@
   <div class="background">
     <div class="scene3D" id="scene3D" ref="scene3D"></div>
 
+    <div class="point" @click="callPopup(1), display=true"></div>
+    <div class="point" @click="callPopup(2), display=true"></div>
+    <div class="point" @click="callPopup(3), display=true"></div>
     <router-link class="menu" to="/chapters">
       <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="12.7344" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
@@ -23,7 +26,14 @@
       </svg>
       <p>Drag to move around</p>
     </div>
-
+    <div class="earth">
+       <!-- <router-link class="point" to="document/1"></router-link>
+       <router-link class="point" to="document/2"></router-link>
+       <router-link class="point" to="document/3"></router-link> -->
+     </div>
+     <transition>
+       <popup class="popup" :index="index" v-if="display"></popup>
+     </transition>
     <div v-if="showInts" class="icons">
       <svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.3873 10.4003H19.3415C18.7157 10.3964 18.1116 10.6276 17.6483 11.0483C17.2788 10.0065 16.3256 9.25477 15.2085 9.25477C14.5231 9.25477 13.8675 9.53462 13.3933 10.0293C12.9619 9.14293 12.087 8.52731 11.0805 8.52731H11.0319C10.4832 8.52626 9.95063 8.71466 9.52471 9.06062V2.74628C9.52471 1.23177 8.34834 0 6.91484 0C5.48264 0 4.31149 1.23073 4.31045 2.74419L4.30209 11.0609L1.01361 14.1531C0.0603818 15.0449 -0.25527 16.4262 0.215595 17.6436L3.64909 26.5798C3.65615 26.5986 3.66451 26.601 3.67366 26.619C4.76433 28.7144 6.83958 30 9.08991 30H15.7925C19.2033 30 21.9809 27.0609 21.9843 23.4283C21.9859 21.8093 21.9875 20.6091 21.9888 19.6284C21.9922 16.9903 21.9935 16.0235 21.9867 13.1192C21.983 11.6088 20.8171 10.4003 19.3873 10.4003ZM20.9182 19.635C20.9172 20.6159 20.9154 21.8079 20.9141 23.4272C20.9112 26.4703 18.6136 28.9297 15.7925 28.9297H9.08991C7.24956 28.9297 5.54614 27.8759 4.63681 26.151L1.21403 17.2516C0.899943 16.4416 1.11029 15.5218 1.74551 14.9287L4.29869 12.5291L4.29555 16.7523C4.29529 17.0483 4.53438 17.289 4.83044 17.2903C5.12701 17.29 5.36793 17.0504 5.36976 16.7541L5.37734 11.2947V11.2906L5.37943 2.74497C5.38021 1.82179 6.07423 1.07029 6.91719 1.07029C7.76015 1.07029 8.45442 1.82205 8.45442 2.74628V11.1921C8.45442 11.2213 8.45312 11.2508 8.45312 11.2806C8.45312 11.2934 8.45442 11.306 8.45442 11.3188V14.93C8.45442 15.2255 8.69404 15.4651 8.98957 15.4651C9.2851 15.4651 9.52471 15.2255 9.52471 14.93V11.2101C9.52471 10.319 10.2104 9.59812 11.0319 9.59812H11.0805C11.9232 9.59812 12.6018 10.3575 12.6018 11.2817V14.5858C12.6018 14.8814 12.8414 15.121 13.1369 15.121C13.4325 15.121 13.6721 14.8814 13.6721 14.5858V11.9929C13.6721 11.0687 14.3651 10.317 15.213 10.317C16.0559 10.317 16.7492 11.0687 16.7492 11.9929V14.4387C16.7492 14.7343 16.9888 14.9739 17.2843 14.9739C17.5798 14.9739 17.8195 14.7343 17.8195 14.4387V13.1142C17.8195 12.1902 18.4983 11.4706 19.3415 11.4706H19.3873C20.2281 11.4706 20.9141 12.2041 20.9161 13.1257C20.9232 16.028 20.9216 16.9984 20.9182 19.635Z" fill="white"/>
@@ -42,15 +52,12 @@
       </svg>
       <p>Test your knowledge</p>
     </router-link>
-    <div class="pop-up">
-      <h3>Title</h3>
-      <p>desfiption zifjaofhoaihfuiafiugfuig ediu geziugezfiuzg efiauzgefiuaz gefiuzagef iaeu f</p>
-      <router-link class="button" to="/document/2">lien</router-link>
-    </div>
+
   </div> 
 </template>
 
 <script>
+import Popup from './Popup';
 
 //IMPORTS
 const THREE = require('three');
@@ -67,17 +74,25 @@ const LuminosityHighPassShader = require('../libs/three_luminosityHighPassShader
 const CopyShader = require('../libs/three_copyshader');
 
 export default {
+  components : {
+    Popup
+  },
   data() {
     return {
       showInts: true,
-      
+      index : 0,
+      display : false,
     }
   },
-  methods: {
-    
+  methods : {
+    callPopup(index) {
+      this.index = index;
+      this.display = true;
+    }
   },
   mounted() {
 
+    
     //WEBGL SCENE
     //Latitude Longitude calcul
     function calcPosFromLatLonRad(lat,lon,radius){
@@ -214,16 +229,16 @@ export default {
         return point;
     }
     //Creating the points + Action on click (APPEL VUE.JS)
-    var egyptPoint = placePoint( 'egyptPoint', 30.044420, 31.235712 , function(){
-        console.log("On click 1");
+    var egyptPoint = placePoint( 'egyptPoint', 30.044420, 31.235712 , () => {
+        this.callPopup(1);
     });
-    var chinaPoint = placePoint( 'chinaPoint', 35.861660, 104.195397 , function(){
+    var chinaPoint = placePoint( 'chinaPoint', 35.861660, 104.195397 , () =>{
         console.log("On click 2");
     });
-    var englandPoint = placePoint( 'englandPoint', 51.5073509, -0.1277583 , function(){
+    var englandPoint = placePoint( 'englandPoint', 51.5073509, -0.1277583 , ()=>{
         console.log("On click 3");
     });
-    var americaPoint = placePoint( 'americaPoint', 37.090240, -95.712891 , function(){
+    var americaPoint = placePoint( 'americaPoint', 37.090240, -95.712891 , ()=>{
         console.log("On click 4");
     });
 
@@ -339,11 +354,42 @@ export default {
 
 <style lang="scss" scoped>
 
+.popup {
+  position: absolute;
+  z-index: 20;
+}
+
 .scene3D {
   position: absolute;
   z-index: 1;
   height: 100vh;
   width: 100vw;
+}
+
+.v-enter {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.v-enter-to {
+
+}
+
+.v-enter-active {
+  transition: all 1s ease-in-out;
+}
+
+.v-leave {
+
+}
+
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.v-leave.active {
+  transition: all 1s ease-in-out;
 }
 
 .background {
@@ -422,6 +468,7 @@ h2 {
   height: 20px;
   background-color: #fff;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .pop-up {

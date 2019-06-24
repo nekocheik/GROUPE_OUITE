@@ -44,12 +44,5 @@ export default {
 <style lang="scss" scoped>
   .audio-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    background-color: grey;
-    width: 100%;
-    height: 50px;
-    font-size: 12px;
   } 
 </style>

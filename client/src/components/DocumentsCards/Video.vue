@@ -1,18 +1,23 @@
 <template>
-  <div class="video-container">
-    <video :src="vidUrl"></video>
-    <h2>Ceci est le component Video</h2>
+  <div class="video-container" :poster="vidPoster">
+    <div class="parentVideo">
+      <video controls>
+        <source :src="vidUrl" type="video/mp4">
+      </video>
     <h2>{{child.title}}</h2>
     <p>{{child.text}}</p>
   </div>
+    </div>
 </template>
 
 <script>
 
+
 export default {
   data() {
     return {
-      vidUrl : this.videoUrl()
+      vidUrl : this.videoUrl(),
+      vidPoster: this.videoPoster()
     }
   },
   props : ['childId', 'parentName', 'child'],
@@ -23,18 +28,50 @@ export default {
         return require (`../../assets/videos/${this.child.videoName}.mp4`);
       }
     },
+
+    videoPoster() {
+      // return the video path, whith videoName variable defined on the db 
+      if (this.child.videoPoster) {
+        return require (`../../assets/images/${this.child.videoPoster}.jpg`);
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+h2{
+  font-size: 50px;
+  color: white;
+
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+
+  text-align: center;
+  transform: translateY(80vh)
+}
    .video-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: lightgreen;
+    position: relative;
     width: 100%;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    video {
+      width: 100vw;
+      min-height: 50vh;
+      max-height: 100vh;
+      background : black;
+      margin: auto;
+      display: block;
+    }
+
+
+
   } 
 </style>
