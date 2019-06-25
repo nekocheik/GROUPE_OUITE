@@ -61,12 +61,12 @@ export default {
   }
 
   p {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 150%;
   }
 
   p:not(:last-child) {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .hints-available {
