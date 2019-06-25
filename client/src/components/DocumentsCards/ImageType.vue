@@ -1,5 +1,6 @@
 <template>
-  <div class="image-container">
+  <div class="image-container" data-aos="fade-up"
+     data-aos-anchor-placement="bottom-center" >
     <img :src="Image()" :alt="getAlt()">
      <div v-if="child.audio">
        <audio-type :audioName="audioName()" :child="child"></audio-type>
@@ -9,6 +10,9 @@
 
 <script>
 import AudioType from './AudioType.vue'; 
+import AOS from 'aos';
+
+require( "../../libs/wavesurfer" );
 
 
 export default {
@@ -20,6 +24,10 @@ export default {
     return {
       imagee : require (`../../assets/images/${this.child.image}.jpg`)
     }
+  },
+
+  mounted(){
+         AOS.init();
   },
   methods : {
     imgUrl() {
