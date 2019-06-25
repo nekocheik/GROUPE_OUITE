@@ -72,12 +72,12 @@ export default {
   },
 
   mounted(){
-
     window.onload = function() {
-           draw( document.querySelector('body') );
-           new scrollControlled( 1.2 , window.innerHeight , 1000 )
+          draw( document.querySelector('body') );
+          new scrollControlled( 1.2 , window.innerHeight , 1000 )
     } 
-
+    console.log('mounted');
+    
   },
   computed : {
     // Get the route parameters (in this case, the id)
@@ -108,7 +108,6 @@ export default {
     flex-wrap: wrap;
     * {
       box-sizing: border-box;
-      // border: 1px solid black;
     }
   }
 

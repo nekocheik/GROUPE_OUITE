@@ -22,12 +22,6 @@ export default {
       return require (`../../assets/images/${this.child.toVisitImg}.png`)
     }
   },
-  mounted() {
-    window.scrollTo(0,0);
-    console.log('mounted');
-    
-  }
-
 }
 </script>
 
