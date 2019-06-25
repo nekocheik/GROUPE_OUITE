@@ -24,7 +24,11 @@ export default {
   methods : {
     imgUrl() {
       if (this.child.image) {
-        return require (`../../assets/images/${this.child.image}.jpg`)
+        if(this.child.png) {
+          return require (`../../assets/images/${this.child.image}.png`)
+        } else {
+          return require (`../../assets/images/${this.child.image}.jpg`)
+        }
       }
     },
     Image() {
@@ -58,7 +62,7 @@ export default {
   }
 
   img {
-    width: 100%;
+    max-width: 100%;
     border-radius: 10px;
   }
 </style>
