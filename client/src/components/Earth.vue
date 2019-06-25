@@ -91,6 +91,7 @@ export default {
   },
   mounted() {
 
+    var earthVue = this;
     
     //WEBGL SCENE
     //Latitude Longitude calcul
@@ -108,9 +109,9 @@ export default {
        
     //CONST imports
     const container = this.$refs.scene3D;
-    const backgroundImg = require( "../assets/images/earth/background.png" );
-    const earthImg = require( "../assets/images/earth/earthsubstract.png" );
-    const lightsImg = require( "../assets/images/earth/lights.png" );
+    const backgroundImg = require( "../assets/images/earth/background.jpg" );
+    const earthImg = require( "../assets/images/earth/earthsubstract.jpg" );
+    const lightsImg = require( "../assets/images/earth/lights.jpg" );
 
       
     //Texture loader
@@ -257,7 +258,7 @@ export default {
     var earthRotY = 0;
     
     //Drag Listeners
-    this.$refs.scene3D.addEventListener("mousedown",function(event){
+    this.$refs.scene3D.addEventListener("mousedown", function(event) {
         if ( pickedObject ) {
             pickedObject._callback();
             //Move the earth
@@ -265,15 +266,17 @@ export default {
         } else {
             mousehold = true;
             startMouseX = event.clientX;
-            earthRotY = earth.rotation.y;
+            earthRotY = earth.rotation.y; 
         }
+
+        earthVue.showInts = false;
     });
 
     this.$refs.scene3D.addEventListener("mouseup",function(){
         mousehold = false;
     });
 
-    this.$refs.scene3D.addEventListener("mousemove",function(event){
+    this.$refs.scene3D.addEventListener("mousemove", function(event) {
         if ( mousehold ) {
             mouseDelta = (event.clientX - startMouseX) / window.innerWidth;
             earth.rotation.y = earthRotY + mouseDelta * Math.PI * 1; //rotation speed
@@ -368,8 +371,9 @@ export default {
 .scene3D {
   position: absolute;
   z-index: 1;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .v-enter {
@@ -413,15 +417,24 @@ export default {
 
 .icons {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  width: 80vw;
+  pointer-events: none;
+}
+
+.icon {
+  display: flex;
   flex-direction: column;
   align-items: center;
   width: 130px;
   text-align: center;
-  z-index: 10;
 
   p {
     line-height: 120%;
     margin-top: 10px;
+    pointer-events: none;
   }
 }
 
@@ -430,13 +443,15 @@ export default {
   top: 30px;
   text-align: center;
   z-index: 10;
+  pointer-events: none;
 }
 
 h1 {
   font-size: 16px;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: 300;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 h2 {
@@ -457,6 +472,7 @@ h2 {
 
   p {
     text-transform: uppercase;
+    font-size: 17px;
     margin-left: 10px;
   }
 }

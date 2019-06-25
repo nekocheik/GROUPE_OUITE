@@ -1,5 +1,5 @@
 <template>
-  <div class="video-container" :poster="vidPoster">
+  <div :class="videoSize()" :poster="vidPoster">
     <div class="parentVideo">
       <video controls>
         <source :src="vidUrl" type="video/mp4">
@@ -34,6 +34,13 @@ export default {
       if (this.child.videoPoster) {
         return require (`../../assets/images/${this.child.videoPoster}.jpg`);
       }
+    },
+    videoSize() {
+      if (this.child.size) {
+        return "video-container small"
+      } else {
+        return "video-container" 
+      }
     }
   }
 }
@@ -41,10 +48,9 @@ export default {
 
 <style lang="scss" scoped>
 
-h2{
+h2 {
   font-size: 50px;
   color: white;
-
   position: absolute;
   margin: auto;
   left: 0px;
@@ -71,18 +77,18 @@ h2{
       display: block;
     }
 
+}
 
-
-    .parentVideo {
-      width: 100%;
-      video {
-        width: 100%;
-        min-height: 50vh;
-        max-height: 100vh;
-        background : black;
-        margin: auto;
-        display: block;
-      }
-    }
-  } 
+.parentVideo {
+  width: 100%;
+  
+  video {
+    width: 100%;
+    min-height: 50vh;
+    max-height: 100vh;
+    background : black;
+    margin: auto;
+    display: block;
+  }
+}
 </style>
