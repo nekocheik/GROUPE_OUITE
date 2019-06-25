@@ -420,6 +420,7 @@ export default {
   justify-content: space-between;
   z-index: 10;
   width: 80vw;
+  pointer-events: none;
 }
 
 .icon {

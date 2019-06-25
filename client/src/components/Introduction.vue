@@ -15,7 +15,7 @@
           <li>Cheik Kone</li>
         </ul>
       </div>
-      <p class="disclaimer">Ce site à été réalisé à des fins pédagogiques dans le cadre du cursus Bachelor de l’école HETIC. Les contenus présentés ne sont en aucun cas exploités à des fins commerciales et ne seront pas publiés.</p>
+      <p class="disclaimer">This site was created for educational purposes as part of the Bachelor program at HETIC. The contents presented are in no way used for commercial purposes and will not be published.</p>
 
       <router-link class="button above" to="/chapters">Skip</router-link>
     </div>
