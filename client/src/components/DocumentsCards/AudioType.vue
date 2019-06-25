@@ -4,8 +4,8 @@
      <div data-aos="fade-up"
      data-aos-anchor-placement="bottom-center" id="waveform"></div>
      <section class="buttons">
-     <div class="button" @click="playAudio">PLAY AUDIO</div>
-     <div class="button" @click="stopAudio">STOP AUDIO</div>
+     <img v-if="!onplay" @click="playAudio" src="../../assets/images/button pause.svg"  >
+     <img v-if="onplay" @click="stopAudio" src="../../assets/images/button play.svg"  >
      </section>
      <!-- <audio :src="audioUrl()"></audio> -->
 
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       wavesurfer : null,
+      onplay : false,
     }
   },
   props : ['child','audioName'],
@@ -37,9 +38,11 @@ export default {
 
     playAudio() {
       this.wavesurfer.play();
+      this.onplay =   this.onplay  ? false : true ;
     },
     stopAudio() {
       this.wavesurfer.pause();
+      this.onplay = this.onplay  ? false : true  
     }
 
   },
@@ -77,14 +80,15 @@ export default {
     bottom: 0px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     flex-direction: column;
+    padding-bottom: 100px;
   } 
 
   #waveform{
     z-index: 100;
     width: 42vw;
-    height: 200px;
+    height: 143px;
     overflow-x:hidden
     *{
      overflow-x:hidden;
@@ -98,6 +102,9 @@ export default {
   .buttons{
     display: flex;
     flex-direction: row;
+    img{
+      height: 48px;;
+    }
   }
 
 </style>
