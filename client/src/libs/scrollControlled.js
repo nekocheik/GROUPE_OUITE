@@ -21,14 +21,18 @@ class scrollControlled {
     let app = document.querySelector('#app');
     app.addEventListener('mousewheel' , (e)=>{
       e.preventDefault();
-      this.scroll( Math.sign(e.deltaY) )
+      if( this.canWheel ){
+        this.canWheel = false;
+        this.scroll( Math.sign(e.deltaY) );
+        setTimeout(()=>{ this.canWheel = true } , this.delay  );
+      }
     });
    }
     
   
   scroll( direction ){
+    if( ( ( this.index <= 1 ) && !direction ) ){ return };
 
-    if( !this.canWheel || ( ( this.index <= 1 ) && !direction ) ){ return };
     if ( direction > 0 ) {
       this.index++;
       this.newPosition += this.pageLength  ;
@@ -36,9 +40,6 @@ class scrollControlled {
       this.index--;
       this.newPosition -= this.pageLength ; 
     }
-
-    this.canWheel = false;
-    setTimeout(()=>{ this.canWheel = true }, this.delay  );
     TweenMax.to( window , this.scrollSpeed ,{ scrollTo: this.newPosition , ease: Power3.easeOut});
   }
   
