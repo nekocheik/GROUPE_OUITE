@@ -33,7 +33,7 @@
       "question": "Where was the philosphy that inspired the invetion of Binary from ?",
       "answers": ["Egypt", "Italy", "China", "Greece"],
       "answer": "China",
-      "description": "Based on the taoist traditionnal philosophy, the Chinese conception of the universe that it is based on Yin and Yang ("something" and "the gap") traveled around the world and led the German mathematician Gottfried Wilhelm Leibniz to use it as a new counting system : the binary.",
+      "description": "Based on the taoist traditionnal philosophy, the Chinese conception of the universe that it is based on Yin and Yang (something and the gap) traveled around the world and led the German mathematician Gottfried Wilhelm Leibniz to use it as a new counting system : the binary.",
       "doc": 2
     }
   ]
