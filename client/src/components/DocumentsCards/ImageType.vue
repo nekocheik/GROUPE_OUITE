@@ -34,7 +34,6 @@ export default {
       elementDetected.detectViewport( ( callback , element )=>{
         if (callback) {
           element.classList.add('active');
-          console.log(element)
         }else{
           element.classList.remove('active');
         }
@@ -93,6 +92,6 @@ export default {
     transform: translateY(0px) scale( 1.0 );
     opacity: 1;
     }
-    
+
   }
 </style>

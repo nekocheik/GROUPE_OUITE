@@ -58,7 +58,6 @@ class ViewPort {
         }
       }
     })
-    console.log(this)
   }
   
   topNegatif(){

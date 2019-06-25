@@ -11,6 +11,8 @@
 
 <script>
 
+
+
 export default {
   data() {
     return {
@@ -18,6 +20,8 @@ export default {
     }
   },
   props : ['childId', 'parentName', 'child'],
+
+
   methods: {
     textAlign() {
       if(this.child.position === "right") {
@@ -26,6 +30,7 @@ export default {
         return "text-container"
       }
     },
+
     showHints() {
       this.hints = "hints"
     }
