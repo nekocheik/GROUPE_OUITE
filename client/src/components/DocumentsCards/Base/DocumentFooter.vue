@@ -14,7 +14,7 @@ export default {
   props : ['parent'],
   data() {
     return {
-
+      toVisit : [1,2,3,4,5]
     }
   },
 }

@@ -75,10 +75,13 @@ export default {
     window.onload = function() {
           draw( document.querySelector('body') );
           new scrollControlled( 1.2 , window.innerHeight , 1000 )
-    } 
-    console.log('mounted');
-    
+    }
   },
+
+  updated() {
+    window.scrollTo(0,0)
+  },
+
   computed : {
     // Get the route parameters (in this case, the id)
     id(){
