@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       isFullScreen: this.screenState(),
-      sound: require('./assets/audio/vent.mp3'),
+      sound: require('./assets/audio/ambient.mp3'),
       soundIcon: "sound-icon"
     }
   },
