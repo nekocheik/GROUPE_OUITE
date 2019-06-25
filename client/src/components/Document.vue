@@ -41,7 +41,13 @@ import Poster from './DocumentsCards/Poster';
 import TextType from './DocumentsCards/TextType'; 
 import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue'; 
 import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
-import { draw } from '../svgDrawing';
+import { draw } from '../libs/svgDrawing';
+import { scrollControlled } from '../libs/scrollControlled';
+import {eventBus} from '../main';
+
+
+const gsap = require('gsap');
+const TweenMax = gsap.TweenMax;
 
 export default {
   components: {
@@ -68,12 +74,21 @@ export default {
   },
 
   mounted(){
-
     window.onload = function() {
            draw( document.querySelector('body') );
+           new scrollControlled( 1.2 , window.innerHeight , 1500 )
     } 
-
   },
+
+
+  updated() {
+    window.scrollTo(0,0);
+
+      eventBus.visited.push(this.id);
+      console.log(eventBus.visited);
+      // eventBus.toVisit.
+  },
+
   computed : {
     // Get the route parameters (in this case, the id)
     id(){
@@ -92,7 +107,9 @@ export default {
 .circle{
   position: fixed;
   top: 10px;
-  right: 50px;
+  right: 10px;
+  height: 40px;
+  z-index: 30;
 }
   .container {
     display: flex;
@@ -101,7 +118,6 @@ export default {
     flex-wrap: wrap;
     * {
       box-sizing: border-box;
-      border: 1px solid black;
     }
   }
 

@@ -1,6 +1,8 @@
 <template>
   <div class="visit-container">
-    <h2>{{child.name}}</h2>
+    <h2>{{child.name.toUpperCase()}}</h2>
+    <router-link class="button" :to="goToDocument()">READ</router-link>
+    <img class="visit__img" :src="earthImgSrc()">
   </div>
 </template>
 
@@ -11,22 +13,41 @@ export default {
     return {
     }
   },
-  props : ['parent', 'child'],
-  mounted() {
-  }
-
+  props : ['parent', 'child', 'childIndex'],
+  methods : {
+    goToDocument(){
+      return `/document/${this.childIndex+1}`
+    },
+    earthImgSrc(){
+      return require (`../../assets/images/toVisit/${this.child.toVisitImg}.png`)
+    }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
    .visit-container {
-    background-color: rgb(237, 255, 133);
+    border: solid 1px white;
     width: 15vw;
     height: 50%;
     border-radius: 10px;
-    color: black;
+    color: white;
     display: flex;
     flex-direction: column;
-    
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+
+    h2 {
+      margin-top: 20px;
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    .visit__img {
+      width: 100%;
+      align-self: flex-end;
+      // transform: translateY(400px);
+    }
   } 
 </style>

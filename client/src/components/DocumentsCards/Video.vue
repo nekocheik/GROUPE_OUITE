@@ -38,7 +38,7 @@ export default {
       if (this.child.size) {
         return "video-container small"
       } else {
-        return "video-container"
+        return "video-container" 
       }
     }
   }
@@ -50,32 +50,33 @@ export default {
 h2 {
   font-size: 50px;
   color: white;
-
   position: absolute;
   margin: auto;
   left: 0px;
   right: 0px;
   top: 0px;
   bottom: 0px;
-
+  height: 0px;
   text-align: center;
-  transform: translateY(80vh)
+  transform: translateY(30vh);
 }
-
 .video-container {
-position: relative;
-width: 100%;
-height: 100vh;
-display: flex;
-align-items: center;
-background-color: black;
-
-  &.small {
-      width: 50%;
-      justify-content: center;
-  } 
-
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    video {
+      width: 100%;
+      min-height: 50vh;
+      max-height: 100vh;
+      background : black;
+      margin: auto;
+      display: block;
+    }
 }
+
 
 .parentVideo {
   width: 100%;
