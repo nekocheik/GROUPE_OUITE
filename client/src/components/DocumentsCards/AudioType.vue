@@ -1,11 +1,12 @@
 <template>
-  <div class="audio-container">
+  <div data-animate="true" class="audio-container">
     <!-- <h2>Ceci est le component Audio</h2> -->
      <div data-aos="fade-up"
      data-aos-anchor-placement="bottom-center" id="waveform"></div>
      <section class="buttons">
      <img v-if="!onplay" @click="playAudio" src="../../assets/images/button pause.svg"  >
      <img v-if="onplay" @click="stopAudio" src="../../assets/images/button play.svg"  >
+     <img  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back.svg"  >
      </section>
      <!-- <audio :src="audioUrl()"></audio> -->
 
@@ -16,7 +17,7 @@
 
 <script>
 
-import AOS from 'aos';
+import { ViewPort } from '../../libs/viewPort' ;
 
 require( "../../libs/wavesurfer" );
 const gsap = require('gsap');
@@ -35,7 +36,6 @@ export default {
       // return the image path, whith imgName variable defined on the db 
         return require (`../../assets/audio/${this.audioName}.mp3`)
     },
-
     playAudio() {
       this.wavesurfer.play();
       this.onplay =   this.onplay  ? false : true ;
@@ -53,25 +53,35 @@ export default {
     scrollParent: true,
     waveColor: 'white',
     backend: "MediaElement",
-      barWidth: 1,
+    barWidth: 1,
     });
     TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' })
     this.wavesurfer.load('https://dev1.duckdiverllc.com/html/blues.mp3');
 
-    if (!window.Cypress) AOS.init();
+
+    let elementDetected =  new ViewPort( this.$el.querySelector('#waveform') );
+      elementDetected.detectViewport( ( callback , element )=>{
+        if (callback) {
+          element.classList.add('active');
+        }else{
+          element.classList.remove('active');
+        }
+     });
   },
+
   computed : {
     audioTag() { 
       const x = document.querySelector('audio');
       return x;
     }
   }
+
 }
+
 </script>
 
 <style lang="scss" scoped>
   .audio-container {
-    // background-color: gray;
     position: absolute;
     margin: auto;
     left: 0px;
@@ -89,7 +99,15 @@ export default {
     z-index: 100;
     width: 42vw;
     height: 143px;
-    overflow-x:hidden
+    overflow-x:hidden;
+    transform: translateY(100px) scale( 0.8 ) ;
+    opacity: 0;
+    transition-duration: 1s;
+    &.active{
+    transform: translateY(0px) scale( 1.0 );
+    opacity: 1;
+    }
+
     *{
      overflow-x:hidden;
     }

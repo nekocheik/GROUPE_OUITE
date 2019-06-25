@@ -9,8 +9,9 @@
 </template>
 
 <script>
+
 import AudioType from './AudioType.vue'; 
-import viewPort from '../../libs/viewPort';
+import { ViewPort } from '../../libs/viewPort' ;
 
 require( "../../libs/wavesurfer" );
 
@@ -27,7 +28,19 @@ export default {
   },
 
   mounted(){
-         AOS.init();
+
+
+      let elementDetected =  new ViewPort( this.$el.querySelector('img') );
+      elementDetected.detectViewport( ( callback , element )=>{
+        if (callback) {
+          element.classList.add('active');
+          console.log(element)
+        }else{
+          element.classList.remove('active');
+        }
+     });
+
+
   },
   methods : {
     imgUrl() {
@@ -72,5 +85,14 @@ export default {
   img {
     max-width: 100%;
     border-radius: 10px;
+    
+    transform: translateY(100px) scale( 0.8 ) ;
+    opacity: 0;
+    transition-duration: 1s;
+    &.active{
+    transform: translateY(0px) scale( 1.0 );
+    opacity: 1;
+    }
+    
   }
 </style>

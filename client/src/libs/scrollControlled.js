@@ -18,19 +18,21 @@ class scrollControlled {
   }
   
   view(){
-    let app = document.querySelector('#app');
-    app.addEventListener('mousewheel' , (e)=>{
+    document.querySelector('#app').addEventListener('wheel' , (e)=>{
       e.preventDefault();
       if( this.canWheel ){
         this.canWheel = false;
+        setTimeout( () =>{ this.canWheel = true } , this.delay  );
         this.scroll( Math.sign(e.deltaY) );
-        setTimeout(()=>{ this.canWheel = true } , this.delay  );
+      }else{
+        return
       }
     });
    }
     
   
   scroll( direction ){
+    
     if( ( ( this.index <= 1 ) && !direction ) ){ return };
 
     if ( direction > 0 ) {
@@ -40,7 +42,8 @@ class scrollControlled {
       this.index--;
       this.newPosition -= this.pageLength ; 
     }
-    TweenMax.to( window , this.scrollSpeed ,{ scrollTo: this.newPosition , ease: Power3.easeOut});
+
+    TweenMax.to( window , this.scrollSpeed ,{ scrollTo : this.newPosition , ease: Power3.easeOut });
   }
   
 }

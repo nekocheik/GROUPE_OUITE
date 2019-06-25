@@ -1,6 +1,7 @@
 class ViewPort {
   constructor( element , elementPartTouch = 'top' , bodyPartTouch  = 'bottom' , add = 0 ){
     this.element = element ;
+
     this.body = {
       bottom: element.getBoundingClientRect().bottom + add,
       left: element.getBoundingClientRect().left + add,
@@ -18,7 +19,7 @@ class ViewPort {
     this.screenPartTouch = bodyPartTouch ;
     
     this.topNegatif()
-    
+
   }
   
   detectViewport( callback ){
@@ -29,34 +30,35 @@ class ViewPort {
       if ( this.elementPartTouch  === 'top') {
         if (this.screenPartTouch  === 'bottom') {
           if ( this.body.top <= this.screen.positionScreenBottom ) {
-            return callback(true)
+            return callback(true , this.element  )
           }else{
-            return callback(false)
+            return callback(false , this.element  )
           }
         }else{
           if ( this.body.top <= 0 ) {
-            return callback(true)
+            return callback(true , this.element  )
           }else{
-            return callback(false)
+            return callback(false , this.element  )
           }
         }
       }else{
         if ( this.screenPartTouch  === 'bottom') {
           // console.log( this.body.bottom , this.screen.positionScreenBottom )
           if ( this.body.bottom <= this.screen.positionScreenBottom ) {
-            return callback(true)
+            return callback(true , this.element  )
           }else{
-            return callback(false)
+            return callback(false , this.element )
           }
         }else{
           if ( this.body.bottom <= this.screen.positionScreenTop ) {
-            return callback(true)
+            return callback(true , this.element )
           }else{
-            return callback(false)
+            return callback(false , this.element  )
           }
         }
       }
     })
+    console.log(this)
   }
   
   topNegatif(){
@@ -70,4 +72,4 @@ class ViewPort {
 }
 
 
-export{ViewPort}
+export {ViewPort}
