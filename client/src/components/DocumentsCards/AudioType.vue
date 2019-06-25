@@ -1,7 +1,8 @@
 <template>
   <div class="audio-container">
     <!-- <h2>Ceci est le component Audio</h2> -->
-     <div id="waveform"></div>
+     <div data-aos="fade-up"
+     data-aos-anchor-placement="bottom-center" id="waveform"></div>
      <section class="buttons">
      <div class="button" @click="playAudio">PLAY AUDIO</div>
      <div class="button" @click="stopAudio">STOP AUDIO</div>
@@ -11,7 +12,11 @@
   </div>
 </template>
 
+
+
 <script>
+
+import AOS from 'aos';
 
 require( "../../libs/wavesurfer" );
 const gsap = require('gsap');
@@ -40,6 +45,7 @@ export default {
     //   }
     // }
 
+
     playAudio() {
       this.wavesurfer.play();
     },
@@ -50,19 +56,17 @@ export default {
   },
 
   mounted(){
-    console.log('start ///////////////////////////////////////////////////')
-    console.log(document.querySelector('#waveform'))
-
     this.wavesurfer = WaveSurfer.create({
     container: '#waveform',
     scrollParent: true,
     waveColor: 'white',
     backend: "MediaElement",
-      barWidth: 12,
+      barWidth: 1,
     });
-        TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' })
+    TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' })
     this.wavesurfer.load('https://dev1.duckdiverllc.com/html/blues.mp3');
-    
+
+    if (!window.Cypress) AOS.init();
   },
   computed : {
     audioTag() { 
@@ -90,7 +94,7 @@ export default {
 
   #waveform{
     z-index: 100;
-    width: 65px;
+    width: 42vw;
     height: 200px;
     overflow-x:hidden
     *{
