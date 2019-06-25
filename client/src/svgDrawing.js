@@ -1,7 +1,5 @@
 function draw  ( body ) {
   
-const gsap = require('gsap');
-const TweenMax = gsap.TweenMax;
 
 class DrawScroll {
   constructor( svglength , svg , body ){

@@ -90,6 +90,9 @@ export default {
       this.display = true;
     }
   },
+  destroyed(){
+    console.log('destroyed');
+  },
   mounted() {
 
     
@@ -233,13 +236,13 @@ export default {
         this.callPopup(1);
     });
     var chinaPoint = placePoint( 'chinaPoint', 35.861660, 104.195397 , () =>{
-        console.log("On click 2");
+        this.callPopup(2);
     });
     var englandPoint = placePoint( 'englandPoint', 51.5073509, -0.1277583 , ()=>{
-        console.log("On click 3");
+        this.callPopup(3);
     });
     var americaPoint = placePoint( 'americaPoint', 37.090240, -95.712891 , ()=>{
-        console.log("On click 4");
+        this.callPopup(4);
     });
 
     //RAYCASTER + DRAG MOUSEMOVE
@@ -354,9 +357,6 @@ export default {
 
 <style lang="scss" scoped>
 
-* {
-  overflow: hidden;
-}
 
 .popup {
   position: absolute;
