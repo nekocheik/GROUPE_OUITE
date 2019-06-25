@@ -84,8 +84,8 @@ export default {
   updated() {
     window.scrollTo(0,0);
 
-      eventBus.visited.push(this.id);
-      console.log(eventBus.visited);
+      // eventBus.visited.push(this.id);
+      // console.log(eventBus.visited);
       // eventBus.toVisit.
   },
 
