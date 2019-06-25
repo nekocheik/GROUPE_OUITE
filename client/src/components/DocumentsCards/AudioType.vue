@@ -1,8 +1,12 @@
 <template>
   <div data-animate="true" class="audio-container">
     <!-- <h2>Ceci est le component Audio</h2> -->
+     <img  v-if="hasVolume" @click="wavesurfer.toggleMute(),  hasVolume = false " class="mute" src="../../assets/images/sound-on.svg"  >
+     <img  v-if="!hasVolume" @click="wavesurfer.toggleMute(),  hasVolume = true " class="mute" src="../../assets/images/sound-off.svg"  >
+
      <div data-aos="fade-up"
      data-aos-anchor-placement="bottom-center" id="waveform"></div>
+
      <section class="buttons">
      <img v-if="!onplay" @click="playAudio" src="../../assets/images/button pause.svg"  >
      <img v-if="onplay" @click="stopAudio" src="../../assets/images/button play.svg"  >
@@ -28,6 +32,7 @@ export default {
     return {
       wavesurfer : null,
       onplay : false,
+      hasVolume : true,
     }
   },
   props : ['child','audioName'],
@@ -56,6 +61,10 @@ export default {
     barWidth: 1,
     });
     TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' })
+
+    // this.pathAudio = require( `../../assets/audio/${this.audioName}.mp3` )
+    // this.wavesurfer.load(     this.pathAudio  );
+
     this.wavesurfer.load('https://dev1.duckdiverllc.com/html/blues.mp3');
 
 
@@ -120,9 +129,18 @@ export default {
   .buttons{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
     img{
       height: 48px;;
     }
   }
+
+  .mute{
+      position: absolute;
+      height: 48px;
+      top: 10%;
+      right: 10%;
+   }
 
 </style>
