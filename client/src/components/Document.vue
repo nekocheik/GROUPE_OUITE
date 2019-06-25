@@ -75,7 +75,7 @@ export default {
 
     window.onload = function() {
            draw( document.querySelector('body') );
-           new scrollControlled( 1.2 , window.innerHeight , 1000 )
+           new scrollControlled( 1.2 , window.innerHeight , 1500 )
     } 
 
   },
