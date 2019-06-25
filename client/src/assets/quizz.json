@@ -6,34 +6,34 @@
       "question": "What was the first objects we used to count in the ancient Sumerian civilization ?",
       "answers": ["Engraved Bones", "Cone-shaped Token", "Colored Pebbles", "Seashells"],
       "answer": "Cone-shaped Token",
-      "description": "Before the modern age and the worldwide spread of knowledge, written examples of new mathematical developments have come to light only in a few locales.",
-      "doc": 2
+      "description": "Before the modern age and the worldwide spread of knowledge, 6 000 years ago, people of Sumer, the first world’s civilization, turned 1 into a cone-shaped token, and by the same way started counting.",
+      "doc": 1
     },
     {
       "id": 2,
       "type": "list",
       "question": "Where did we invented mathematics ?",
-      "answers": ["Egypt", "Europe", "China", "Peru", "Italy"],
-      "answer": "Italy",
-      "description": "Descriptif de la fiche quand on a répondu",
+      "answers": ["China", "Europe", "Egypt", "South Africa"],
+      "answer": "Egypt",
+      "description": "As one of the greatest empire the world has never met, Ancient Egypt, confronted to different problems such as measuring and calculating areas of lands, gave birth to the earliest mathematical inovators.",
       "doc": 1
     },
     {
       "id": 3,
       "type": "list",
-      "question": "Question 3",
-      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
+      "question": "Which numeral system is used by computers ?",
+      "answers": ["Decimal", "Hexagram", "Hexadecimal", "Binary"],
       "answer": "answer 2",
-      "description": "Descriptif de la fiche quand on a répondu",
+      "description": "Everything that a computer does comes down to what’s known as MicroTransistors, tiny switches that can either be on, or off. Thus, we represent “on” by 1, and “off” by 0.",
       "doc": 2
     },
     {
       "id": 4,
       "type": "list",
-      "question": "Question 4",
-      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "answer": "answer 3",
-      "description": "Descriptif de la fiche quand on a répondu",
+      "question": "Where was the philosphy that inspired the invetion of Binary from ?",
+      "answers": ["Egypt", "Italy", "China", "Greece"],
+      "answer": "China",
+      "description": "Based on the taoist traditionnal philosophy, the Chinese conception of the universe that it is based on Yin and Yang ("something" and "the gap") traveled around the world and led the German mathematician Gottfried Wilhelm Leibniz to use it as a new counting system : the binary.",
       "doc": 2
     }
   ]
