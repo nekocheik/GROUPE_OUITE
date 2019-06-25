@@ -2,8 +2,10 @@
   <div class="audio-container">
     <!-- <h2>Ceci est le component Audio</h2> -->
      <div id="waveform"></div>
+     <section class="buttons">
      <div class="button" @click="playAudio">PLAY AUDIO</div>
      <div class="button" @click="stopAudio">STOP AUDIO</div>
+     </section>
      <!-- <audio :src="audioUrl()"></audio> -->
 
   </div>
@@ -82,9 +84,10 @@ export default {
     bottom: 0px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: column;
   } 
+
   #waveform{
     z-index: 100;
     width: 65px;
@@ -94,7 +97,13 @@ export default {
      overflow-x:hidden;
     }
   }
+
   h2{
     color: white;
   }
+
+  .buttons{
+    display: flex;
+  }
+  
 </style>

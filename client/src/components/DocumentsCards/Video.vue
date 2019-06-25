@@ -76,8 +76,8 @@ h2 {
       margin: auto;
       display: block;
     }
-
 }
+
 
 .parentVideo {
   width: 100%;
