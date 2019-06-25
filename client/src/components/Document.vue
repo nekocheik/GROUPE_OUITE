@@ -72,13 +72,21 @@ export default {
   },
 
   mounted(){
-
     window.onload = function() {
            draw( document.querySelector('body') );
            new scrollControlled( 0.2 , window.innerHeight , 700 );
     } 
-
   },
+
+
+  updated() {
+    window.scrollTo(0,0);
+
+      eventBus.visited.push(this.id);
+      console.log(eventBus.visited);
+      // eventBus.toVisit.
+  },
+
   computed : {
     // Get the route parameters (in this case, the id)
     id(){
@@ -108,7 +116,6 @@ export default {
     flex-wrap: wrap;
     * {
       box-sizing: border-box;
-      // border: 1px solid black;
     }
   }
 

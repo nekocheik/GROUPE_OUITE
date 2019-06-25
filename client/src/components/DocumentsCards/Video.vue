@@ -38,7 +38,7 @@ export default {
       if (this.child.size) {
         return "video-container small"
       } else {
-        return "video-container"
+        return "video-container" 
       }
     }
   }
@@ -50,7 +50,6 @@ export default {
 h2 {
   font-size: 50px;
   color: white;
-
   position: absolute;
   margin: auto;
   left: 0px;
@@ -76,8 +75,7 @@ h2 {
       margin: auto;
       display: block;
     }
-  }
-
+}
 
 
 .parentVideo {

@@ -19,15 +19,9 @@ export default {
       return `/document/${this.childIndex+1}`
     },
     earthImgSrc(){
-      return require (`../../assets/images/${this.child.toVisitImg}.png`)
+      return require (`../../assets/images/toVisit/${this.child.toVisitImg}.png`)
     }
   },
-  mounted() {
-    window.scrollTo(0,0);
-    console.log('mounted');
-    
-  }
-
 }
 </script>
 

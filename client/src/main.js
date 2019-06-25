@@ -3,7 +3,14 @@ import router from './router';
 import App from './App.vue';
 import './scss/styles.scss';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+
+export const eventBus = new Vue({
+  data : {
+    toVisit : [],
+    visited : []
+  }
+});
 
 new Vue({
   router: router,

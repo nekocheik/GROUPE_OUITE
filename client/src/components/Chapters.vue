@@ -51,9 +51,10 @@ export default {
 
 .title {
   font-size: 50px;
+  font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 100px;
-  letter-spacing: calc(50px * 10 / 100);
+  margin: 100px;
+  letter-spacing: 0.1em;
   text-align: center;
 }
 
@@ -63,7 +64,7 @@ export default {
   li {
     border : 2px solid rgba(255, 255, 255, 0.466);    
     display: inline-block;
-    padding: 30px 58px;
+    padding: 20px 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,6 +85,7 @@ export default {
 .episode {
   font-size: 14px;
   font-style: italic;
+  margin-bottom: 1em;
 }
 
 

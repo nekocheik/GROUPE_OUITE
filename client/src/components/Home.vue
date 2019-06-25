@@ -1,9 +1,9 @@
   <template>
   <div class="background">
     <div class="content">
-      <h1 class="title">How we build the world together</h1>
+      <h1 class="title">How we build the world <br> together</h1>
       <div class="description-area">
-        <p class="text">For a better experience, take your headphones and use fullscreen</p>
+        <p class="text">For a better experience, take your headphones and <br> use fullscreen</p>
         <ul class="icons">
           <li>
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,10 @@ export default {
 
 .title {
   width: 80%;
-  font-size: 30px;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 69px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 
   @media (min-width: 800px) {
@@ -67,14 +70,14 @@ export default {
 
 .content {
   height: 85%;
-  padding-top: 30vh;
+  padding-top: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
   @media (min-width: 800px) {
-    padding-top: 40vh;
+    padding-top: 30vh;
   }
 }
 
@@ -93,7 +96,8 @@ export default {
 
 .text {
   font-size: 17px;
-  margin-bottom: 15px;
+  line-height: 20px;
+  margin-bottom: 10%;
 }
 
 .icons {

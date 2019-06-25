@@ -10,7 +10,7 @@
 
 <script>
 import AudioType from './AudioType.vue'; 
-import AOS from 'aos';
+import viewPort from '../../libs/viewPort';
 
 require( "../../libs/wavesurfer" );
 

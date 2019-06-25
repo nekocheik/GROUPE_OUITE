@@ -34,23 +34,12 @@ export default {
       // return the image path, whith imgName variable defined on the db 
         return require (`../../assets/audio/${this.audioName}.mp3`)
     },
-    // playAudio() {
-    //   if (this.audioTag) {
-    //     this.audioTag.play();
-    //   }
-    // },
-    // stopAudio() {
-    //   if (this.audioTag) {
-    //     this.audioTag.pause();
-    //   }
-    // }
-
 
     playAudio() {
       this.wavesurfer.play();
     },
     stopAudio() {
-      this.wavesurfer.stop();
+      this.wavesurfer.pause();
     }
 
   },
