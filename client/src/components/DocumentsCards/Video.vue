@@ -1,11 +1,10 @@
 <template>
-  <div :class="videoSize()" :poster="vidPoster">
+  <div :class="videoSize()">
+    <!-- <h2>{{ child.title }}</h2> -->
     <div class="parentVideo">
-      <video controls>
+      <video controls :poster="vidPoster">
         <source :src="vidUrl" type="video/mp4">
       </video>
-      <!-- <h2>{{child.title}}</h2> -->
-      <p>{{child.text}}</p>
     </div>
   </div>
 </template>
@@ -31,8 +30,8 @@ export default {
 
     videoPoster() {
       // return the video path, whith videoName variable defined on the db 
-      if (this.child.videoPoster) {
-        return require (`../../assets/images/${this.child.videoPoster}.jpg`);
+      if (this.child.poster) {
+        return require (`../../assets/images/${this.child.poster}.jpg`);
       }
     },
     videoSize() {

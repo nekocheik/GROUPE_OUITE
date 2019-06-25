@@ -38,6 +38,8 @@ export default {
     vid.addEventListener('loadedmetadata', () => {
       let time = parseInt(vid.duration) + '000'      
 
+      console.log(time)
+
       setTimeout(() => {
 
         this.showVideo = false
