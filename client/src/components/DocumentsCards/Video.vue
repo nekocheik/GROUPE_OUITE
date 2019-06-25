@@ -1,5 +1,5 @@
 <template>
-  <div class="video-container" :poster="vidPoster">
+  <div :class="videoSize()" :poster="vidPoster">
     <div class="parentVideo">
       <video controls>
         <source :src="vidUrl" type="video/mp4">
@@ -34,6 +34,13 @@ export default {
       if (this.child.videoPoster) {
         return require (`../../assets/images/${this.child.videoPoster}.jpg`);
       }
+    },
+    videoSize() {
+      if (this.child.size) {
+        return "video-container small"
+      } else {
+        return "video-container"
+      }
     }
   }
 }
@@ -62,6 +69,7 @@ h2{
     display: flex;
     align-items: center;
     background-color: black;
+
     video {
       width: 100%;
       min-height: 50vh;
@@ -71,7 +79,9 @@ h2{
       display: block;
     }
 
-
-
+    &.small {
+      width: 50%;
+      justify-content: center;
+    }
   } 
 </style>
