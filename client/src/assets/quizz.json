@@ -3,41 +3,14 @@
     {
       "id": 1,
       "type": "list",
-      "question": "What was the first objects we used to count in the ancient Sumerian civilization ?",
-      "answers": ["Engraved Bones", "Cone-shaped Token", "Colored Pebbles", "Seashells"],
-      "answer": "Cone-shaped Token",
-      "description": "Before the modern age and the worldwide spread of knowledge, 6 000 years ago, people of Sumer, the first world’s civilization, turned 1 into a cone-shaped token, and by the same way started counting.",
-      "doc": 1
+      "question": "Where was the first programmer from ?",
+      "answers": ["China", "Germany", "USA", "United Kingdom"],
+      "answer": "United Kingdom",
+      "description": "Augusta Ada King, Countess of Lovelace (Born Byron, 1815 – 1852) was an English mathematician and writer, often considered to be the first computer programmer.",
+      "doc": 4
     },
     {
       "id": 2,
-      "type": "list",
-      "question": "Where did we invented mathematics ?",
-      "answers": ["China", "Europe", "Egypt", "South Africa"],
-      "answer": "Egypt",
-      "description": "As one of the greatest empire the world has never met, Ancient Egypt, confronted to different problems such as measuring and calculating areas of lands, gave birth to the earliest mathematical inovators.",
-      "doc": 1
-    },
-    {
-      "id": 3,
-      "type": "list",
-      "question": "Which numeral system is used by computers ?",
-      "answers": ["Decimal", "Hexagram", "Hexadecimal", "Binary"],
-      "answer": "answer 2",
-      "description": "Everything that a computer does comes down to what’s known as MicroTransistors, tiny switches that can either be on, or off. Thus, we represent “on” by 1, and “off” by 0.",
-      "doc": 2
-    },
-    {
-      "id": 4,
-      "type": "list",
-      "question": "Where was the philosphy that inspired the invetion of Binary from ?",
-      "answers": ["Egypt", "Italy", "China", "Greece"],
-      "answer": "China",
-      "description": "Based on the taoist traditionnal philosophy, the Chinese conception of the universe that it is based on Yin and Yang (something and the gap) traveled around the world and led the German mathematician Gottfried Wilhelm Leibniz to use it as a new counting system : the binary.",
-      "doc": 2
-    },
-    {
-      "id": 5,
       "type": "list",
       "question": "Who created the first automated computers ?",
       "answers": ["Charles Babbage", "Robert Caillau", "Tim Berners-Lee", "Steve Jobs"],
@@ -46,7 +19,61 @@
       "doc": 3
     },
     {
+      "id": 3,
+      "type": "list",
+      "question": "Where did we invented mathematics ?",
+      "answers": ["China", "Europe", "Egypt", "South Africa"],
+      "answer": "Egypt",
+      "description": "As one of the greatest empire the world has never met, Ancient Egypt, confronted to different problems such as measuring and calculating areas of lands, gave birth to the earliest mathematical inovators.",
+      "doc": 1
+    },
+    {
+      "id": 4,
+      "type": "list",
+      "question": "What was the first objects we used to count in the ancient Sumerian civilization ?",
+      "answers": ["Engraved Bones", "Cone-shaped Token", "Colored Pebbles", "Seashells"],
+      "answer": "Cone-shaped Token",
+      "description": "Before the modern age and the worldwide spread of knowledge, 6 000 years ago, people of Sumer, the first world’s civilization, turned 1 into a cone-shaped token, and by the same way started counting.",
+      "doc": 1
+    },
+    {
+      "id": 5,
+      "type": "list",
+      "question": "Where was the philosphy that inspired the invetion of Binary from ?",
+      "answers": ["Egypt", "Italy", "China", "Greece"],
+      "answer": "China",
+      "description": "Based on the taoist traditionnal philosophy, the Chinese conception of the universe that it is based on Yin and Yang (\"something\" and \"the gap\") traveled around the world and led the German mathematician Gottfried Wilhelm Leibniz to use it as a new counting system : the binary.",
+      "doc": 2
+    },
+    {
       "id": 6,
+      "type": "list",
+      "question": "Who was considered as one of the \"fathers of the Internet\" ?",
+      "answers": ["Alan Turing", "Vint Cerf", "Paul E. Ceruzzi", "Joseph Clement"],
+      "answer": "Vint Cerf",
+      "description": "Vint Cerf (1943) is an American engineer and co-inventor of TCP/IP protocole with Bob Kahn. He is recognized as one of the \"fathers of the Internet\".",
+      "doc": 5
+    },
+    {
+      "id": 7,
+      "type": "list",
+      "question": "Where did we created Arpanet, the ancestor of the Internet ?",
+      "answers": ["USA", "South Africa", "Russia", "France"],
+      "answer": "USA",
+      "description": "The Advanced Research Projects Agency Network (ARPANET) was an early packet-switching network and the first network to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was initially founded by the Advanced Research Projects Agency (ARPA) of the United States Department of Defense.",
+      "doc": 5
+    },
+    {
+      "id": 8,
+      "type": "list",
+      "question": "Which numeral system is used by computers ?",
+      "answers": ["Decimal", "Hexagram", "Hexadecimal", "Binary"],
+      "answer": "answer 2",
+      "description": "Everything that a computer does comes down to what’s known as MicroTransistors, tiny switches that can either be on, or off. Thus, we represent “on” by 1, and “off” by 0.",
+      "doc": 2
+    },
+    {
+      "id": 9,
       "type": "list",
       "question": "In which country the government released funds to allow us invent the first computer ?",
       "answers": ["United Kingdom", "France", "USA", "Japan"],
@@ -55,40 +82,13 @@
       "doc": 3
     },
     {
-      "id": 7,
+      "id": 10,
       "type": "list",
       "question": "Who worked with Charles Babbage on the Analytical Engine ?",
       "answers": ["Doron Swade", "Federico Luigi", "Tim Berners-Lee", "Ada Lovelace"],
       "answer": "Ada Lovelace",
       "description": "When Augusta Ada King Kin was a teenager, her mathematical talents led her to a long working relationship and friendship with the fellow British mathematician Charles Babbage.",
       "doc": 4
-    },
-    {
-      "id": 8,
-      "type": "list",
-      "question": "Where was the first programmer from ?",
-      "answers": ["China", "Germany", "USA", "United Kingdom"],
-      "answer": "United Kingdom",
-      "description": "Augusta Ada King, Countess of Lovelace (Born Byron, 1815 – 1852) was an English mathematician and writer, often considered to be the first computer programmer.",
-      "doc": 4
-    },
-    {
-      "id": 9,
-      "type": "list",
-      "question": "Who was considered as one of the \"fathers of the Internet\" ?",
-      "answers": ["Charles Lovelace", "Vint Cerf", "Paul E. Ceruzzi", "Joseph Clement"],
-      "answer": "Vint Cerf",
-      "description": "Vint Cerf (1943) is an American engineer and co-inventor of TCP/IP protocole with Bob Kahn. He is recognized as one of the \"fathers of the Internet\".",
-      "doc": 5
-    },
-    {
-      "id": 10,
-      "type": "list",
-      "question": "Where did we created Arpanet, the ancestor of the Internet ?",
-      "answers": ["USA", "South Africa", "Russia", "France"],
-      "answer": "USA",
-      "description": "The Advanced Research Projects Agency Network (ARPANET) was an early packet-switching network and the first network to implement the TCP/IP protocol suite. Both technologies became the technical foundation of the Internet. The ARPANET was initially founded by the Advanced Research Projects Agency (ARPA) of the United States Department of Defense.",
-      "doc": 5
     }
   ]
 }

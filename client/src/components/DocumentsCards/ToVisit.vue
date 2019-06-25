@@ -1,8 +1,9 @@
 <template>
-  <div class="visit-container">
+  <div class="visit-container" :class="{shadow : isInStorage()}" :style="current()">
     <h2>{{child.name.toUpperCase()}}</h2>
     <router-link class="button" :to="goToDocument()">READ</router-link>
     <img class="visit__img" :src="earthImgSrc()">
+    <pre>{{storageTable}}</pre>
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 export default {
   data() {
     return {
+      storageTable : JSON.parse(window.localStorage.getItem('readed')),
     }
   },
   props : ['parent', 'child', 'childIndex'],
@@ -20,6 +22,22 @@ export default {
     },
     earthImgSrc(){
       return require (`../../assets/images/toVisit/${this.child.toVisitImg}.png`)
+    },
+    isInStorage(){
+        this.storageTable = JSON.parse(window.localStorage.getItem('readed'))
+          if (this.storageTable !== null && this.storageTable.includes(this.childIndex+1)) {
+            console.log('lalalal');
+            return true;
+          }
+          return false;
+    },
+    current(){
+      console.log(parseInt(this.$route.params.id));
+      console.log(this.childIndex+1);
+
+      if (parseInt(this.$route.params.id) == this.childIndex+1) {
+        return 'filter : grayscale(0); border-color: yellow';
+      }
     }
   },
 }
@@ -50,4 +68,10 @@ export default {
       // transform: translateY(400px);
     }
   } 
+
+  .shadow {
+    filter: grayscale(1);
+  }
+
+
 </style>
