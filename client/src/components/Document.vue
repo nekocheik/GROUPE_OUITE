@@ -43,6 +43,11 @@ import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue';
 import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
 import { draw } from '../libs/svgDrawing';
 import { scrollControlled } from '../libs/scrollControlled';
+<<<<<<< HEAD
+=======
+import {eventBus} from '../main';
+
+>>>>>>> 6b785db4d3c2b7f80efc6e389a99eb62aa56046f
 
 const gsap = require('gsap');
 const TweenMax = gsap.TweenMax;
