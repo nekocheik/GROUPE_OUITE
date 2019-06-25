@@ -104,6 +104,7 @@ export default {
 
   .buttons{
     display: flex;
+    flex-direction: row;
   }
-  
+
 </style>

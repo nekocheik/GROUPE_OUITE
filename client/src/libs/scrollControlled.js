@@ -18,7 +18,8 @@ class scrollControlled {
   }
   
   view(){
-    window.addEventListener('mousewheel' , (e)=>{
+    let app = document.querySelector('#app');
+    app.addEventListener('mousewheel' , (e)=>{
       e.preventDefault();
       this.scroll( Math.sign(e.deltaY) )
     });
