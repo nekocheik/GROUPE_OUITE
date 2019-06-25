@@ -4,15 +4,15 @@
       "id": 1,
       "type": "list",
       "question": "What was the first objects we used to count in the ancient Sumerian civilization ?",
-      "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
-      "answer": "answer 2",
+      "answers": ["Engraved Bones", "Cone-shaped Token", "Colored Pebbles", "Seashells"],
+      "answer": "Cone-shaped Token",
       "description": "Before the modern age and the worldwide spread of knowledge, written examples of new mathematical developments have come to light only in a few locales.",
       "doc": 2
     },
     {
       "id": 2,
       "type": "list",
-      "question": "Question 2",
+      "question": "Where did we invented mathematics ?",
       "answers": ["Egypt", "Europe", "China", "Peru", "Italy"],
       "answer": "Italy",
       "description": "Descriptif de la fiche quand on a répondu",
