@@ -62,6 +62,8 @@ export default {
     return {
       facts : [],
       error : '',
+      getStorage : [],
+      readed : [1,2,4],
     }
   },
   // Call facts in db 
@@ -84,9 +86,18 @@ export default {
   updated() {
     window.scrollTo(0,0);
 
-      eventBus.visited.push(this.id);
-      console.log(eventBus.visited);
+      // eventBus.visited.push(this.id);
+      // console.log(eventBus.visited);
       // eventBus.toVisit.
+      console.log(this.$route);
+      // if (window.localStorage.getItem('readed') !== null) {
+      //   this.getStorage = JSON.parse(window.localStorage.getItem('readed'));
+      //   this.readed = this.getStorage;
+      // }
+      // if (!this.readed.includes(this.$route.params.id)) {
+      //   this.readed.push(parseInt(this.id))
+      // }
+      window.localStorage.setItem('readed', JSON.stringify(this.readed));
   },
 
   computed : {
