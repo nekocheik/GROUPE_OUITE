@@ -54,6 +54,7 @@ export default {
     width: 50%;
     height: 100vh;
     padding: 30px 50px;
+    position: relative;
   }
 
   img {

@@ -42,8 +42,11 @@ import TextType from './DocumentsCards/TextType';
 import DocumentHeader from './DocumentsCards/Base/DocumentHeader.vue'; 
 import DocumentFooter from './DocumentsCards/Base/DocumentFooter.vue'; 
 import { draw } from '../libs/svgDrawing';
-const wavesurfer = require('../libs/wavesurfer')
-console.log( wavesurfer )
+import { scrollControlled } from '../libs/scrollControlled'
+
+const gsap = require('gsap');
+const TweenMax = gsap.TweenMax;
+
 export default {
   components: {
     ImageType,
@@ -72,6 +75,7 @@ export default {
 
     window.onload = function() {
            draw( document.querySelector('body') );
+           new scrollControlled( 1.2 , window.innerHeight , 1000 )
     } 
 
   },
@@ -93,7 +97,9 @@ export default {
 .circle{
   position: fixed;
   top: 10px;
-  right: 50px;
+  right: 10px;
+  height: 40px;
+  z-index: 30;
 }
   .container {
     display: flex;
