@@ -76,7 +76,7 @@ export default {
   mounted(){
     window.onload = function() {
            draw( document.querySelector('body') );
-           new scrollControlled( 1.2 , window.innerHeight , 1500 )
+           new scrollControlled( 0.2 , window.innerHeight , 700 );
     } 
   },
 

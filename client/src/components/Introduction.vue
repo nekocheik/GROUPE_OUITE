@@ -2,20 +2,9 @@
   <div class="background">
     
     <div class="poster">
-      <video  v-if="showVideo" poster="../assets/images/background-intro.jpg" autoplay muted="true">
-      <source src="../assets/videos/intro.mp4" type="video/mp4" />
+      <video poster="../assets/images/background-intro.jpg" autoplay>
+        <source src="../assets/videos/intro.mp4" type="video/mp4" />
       </video>
-      <div v-if="showAuthors" class="text">
-        <h1 class="title">A Web Documentary created by</h1>
-        <ul class="names">
-          <li>Amandine Donat-Filliod</li>
-          <li>Cloé Coupris</li>
-          <li>Emilie Tombuyses</li>
-          <li>Diarit Salihaj</li>
-          <li>Cheik Kone</li>
-        </ul>
-      </div>
-      <p class="disclaimer">This site was created for educational purposes as part of the Bachelor program at HETIC. The contents presented are in no way used for commercial purposes and will not be published.</p>
 
       <router-link class="button above" to="/chapters">Skip</router-link>
     </div>
@@ -27,29 +16,23 @@
 export default {
   data() {
     return {
-      showAuthors: false,
-      showVideo: true
     }
   },
   mounted() {
     //automatically go to next path after the video
-    let vid = document.querySelector('video')
+    let vid = document.querySelector('video');
 
     vid.addEventListener('loadedmetadata', () => {
-      let time = parseInt(vid.duration) + '000'      
-
-      setTimeout(() => {
-
-        this.showVideo = false
-        this.showAuthors = true
 
         setTimeout(() => {
           if (this.$route.name === "introduction") {
             this.$router.push({ path: "/chapters" });
           }
-        }, 5000)
-      }, time)
+        }, parseInt(vid.duration) + '000');
+
     })   
+
+    
   }
 }
 </script>
@@ -95,7 +78,7 @@ export default {
 
 video {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .text {
