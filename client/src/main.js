@@ -7,8 +7,7 @@ Vue.config.productionTip = false;
 
 export const eventBus = new Vue({
   data : {
-    toSetStorage : [],
-    toGetStorage : []
+    allBusCards : [],
   }
 });
 

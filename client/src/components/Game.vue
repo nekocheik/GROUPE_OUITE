@@ -2,14 +2,7 @@
   <div class="background">
     <div class="scene3D" id="scene3D" ref="scene3D"></div>
 
-     <router-link class="menu" to="/chapters">
-      <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="12.7344" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
-        <rect x="23.9473" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
-        <rect x="1.52148" y="13.3638" width="8.00911" height="7.38462" rx="0.1" stroke="white"/>
-        <rect x="1.52148" y="1.54834" width="30.4346" height="7.38462" rx="0.1" stroke="white"/>
-      </svg>
-    </router-link>
+     <router-link class="menu button--small" to="/chapters">Back to menu</router-link>
     <div class="title">
       <h1>How we build the world together</h1>
       <h2>Computing - Test your knowledge</h2>
@@ -34,8 +27,8 @@
 
     <div class="quizz" v-if="showScore">
       <h3>Your score</h3>
-      <span>{{ score }}</span>
-      <p> {{ endMessage() }}</p>
+      <span class="score">{{ score }} / 10</span>
+      <p class="endMessage"> {{ endMessage() }}</p>
       <router-link class="button" to="/earth">Back to earth</router-link>
     </div>
 
@@ -45,7 +38,7 @@
       <span v-if="correct == true">Correct</span>
       <span v-if="correct == false">Incorrect</span>
       <p>{{ question.description }}</p>
-      <p @click="toDocument(question)" class="clickable">Learn more ></p>
+      <p @click="toDocument(question)" class="moreBtn clickable">Learn more ></p>
       <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
       <button v-if="level >= questions.length" @click="displayScore()" class="button">See your score</button>
     </div>
@@ -427,10 +420,6 @@ export default {
 
 <style lang="scss" scoped>
 
-* {
-  overflow: hidden;
-}
-
 .scene3D {
   position: absolute;
   z-index: 1;
@@ -451,8 +440,8 @@ export default {
 .menu {
   position: absolute;
   z-index: 10;
-  top: 30px;
-  left: 50px;
+  top: 20px;
+  left: 25px;
 }
 
 .title {
@@ -496,8 +485,12 @@ h2 {
   flex-direction: column;
   position: absolute;
   z-index: 10;
-  bottom: 20px;
+  bottom: 25px;
   text-align: center;
+
+  span:nth-child(1) {
+    margin-bottom: 5px;
+  }
 }
 
 .quizz {
@@ -507,29 +500,39 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 31px 10px;
+  padding: 30px 20px;
   left: 3vw;
-  width: 300px;
-  height: 475px;
+  width: 350px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
 
   p {
-    line-height: 150%;
     font-size: 20px;
-  }
-
-  li {
-    width: 250px;
+    margin-bottom: 40px;
+    line-height: 25px;
   }
 
   li:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .selected {
     background: white;
+  }
+
+  h3, .score {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .score {
+    margin-bottom: 20px;
+  }
+
+  .endMessage {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 20px;
   }
 }
 
@@ -537,14 +540,11 @@ h2 {
   position: absolute;
   z-index: 10;
   right: 3vw;
-  width: 300px;
-  height: 400px;
-  padding: 35px 30px;
-  background: red;
+  width: 350px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
 
@@ -559,8 +559,9 @@ h2 {
   }
 
   p {
-    font-size: 14px;
-    line-height: 130%;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 20px;
   }
 
   img {
@@ -571,18 +572,19 @@ h2 {
 button.button {
   background: transparent;
   font-size: 17px;
-
-  &:hover {
-    background: white;
-  }
 }
 
 .clickable {
   cursor: pointer;
 }
 
+.moreBtn {
+  text-decoration: none;
+  transition: all 0.8s;
 
-
-
+  &:hover {
+    text-decoration: underline;
+  }
+}
 </style>
 
