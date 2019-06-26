@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
      <to-visit v-for="child in parent" :key="child._id" :parent="parent" :child="child" :childIndex="parent.indexOf(child)"></to-visit>
-     
-     <!-- <to-visit v-for="child in toVisit" :key="child" :parent="parent" :child="parent[child-1]" :childIndex="child"></to-visit> -->
+<!--      
+     <to-visit v-for="child in toVisit" :key="child" :parent="parent" :child="parent[child-1]" :childIndex="child"></to-visit> -->
   </div>  
 </template>
 
