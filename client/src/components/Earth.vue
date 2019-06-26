@@ -31,8 +31,8 @@
         <p>Click on the points to discover</p>
       </div>
     </div>
-     <transition>
-       <popup class="popup" :index="index" v-if="display"></popup>
+     <transition name="popanim">
+       <popup @return-to-earth="closePopup()" class="popup" :index="index" v-if="display"></popup>
      </transition>
     <router-link  class="game" to="/game">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +82,11 @@ export default {
     callPopup(index) {
       this.index = index;
       this.display = true;
+    },
+    closePopup() {
+      this.display = false;
+      console.log(this);
+      this.earthBack();
     }
   },
   destroyed(){
@@ -289,7 +294,16 @@ export default {
     document.getElementById("backBtn").addEventListener("click",function(){
         TweenMax.to(camera.position,2,{x: 0, z: 9 ,ease: Power4.easeInOut});
     });
-    */    
+    */ 
+    this.earthBack = () => {
+      TweenMax.to(camera.position,2,{x: 0, z: 9 ,ease: Power4.easeInOut});
+    }
+  
+
+
+    // console.log(this.$refs);
+    
+    
 
     //CLOCK
     var clock = new THREE.Clock();
@@ -374,22 +388,26 @@ export default {
   overflow: hidden;
 }
 
-.v-enter {
+.popanim-enter {
   opacity: 0;
   transform: translateY(50px);
 }
 
-.v-enter-active {
+.popanim-enter-active {
   transition: all 1s ease-in-out;
 }
 
-.v-leave-to {
+.popanim-leave {
+
+}
+
+.popanim-leave-to {
   opacity: 0;
   transform: translateY(50px);
 }
 
-.v-leave.active {
-  transition: all 1s ease-in-out;
+.popanim-leave-active {
+  transition : all 0.5s ease-in-out;
 }
 
 .background {
@@ -496,6 +514,7 @@ h2 {
   height: 280px;
   border: 2px solid white;
   background: rgba(0, 0, 0, 0.788);
+  
 
   h3 {
     text-transform: uppercase;
