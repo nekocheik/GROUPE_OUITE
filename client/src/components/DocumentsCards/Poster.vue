@@ -58,14 +58,15 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: black;
+  background-color: #000112;
   color: white;
   display: flex;
   align-items: center;
-  padding: 50px;
+  padding: 0px 50px;
 
   &.right {
     justify-content: flex-end;
+    text-align: right;
   }
 } 
 
@@ -79,11 +80,12 @@ export default {
 .card {
   background: rgba(255, 255, 255, 0.10);
   border-radius: 10px;
-  padding: 46px 20px;
-  width: 502px;
+  padding: 30px 30px;
+  width: 500px;
   transform: translateY(100px) scale( 0.8 ) ;
   opacity: 0;
-  transition-duration: 1s;
+  transition-duration: 0.8s;
+
   &.active{
   transform: translateY(0px) scale( 1.0 );
   opacity: 1;

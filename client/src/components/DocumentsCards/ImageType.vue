@@ -74,24 +74,24 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: black;
+    background: #000112;
     width: 50%;
     height: 100vh;
-    padding: 30px 50px;
     position: relative;
   }
 
   img {
     max-width: 100%;
+    max-height: 95%;
     border-radius: 10px;
     
     transform: translateY(100px) scale( 0.8 ) ;
     opacity: 0;
-    transition-duration: 1s;
+    transition-duration: 0.8s;
+
     &.active{
     transform: translateY(0px) scale( 1.0 );
     opacity: 1;
     }
-
   }
 </style>

@@ -1,8 +1,10 @@
 <template>
   <div :class="textAlign()">
-     <h2 class="title">{{child.title}}</h2>
-     <p v-for="text in child.texts" :key="text" >{{text}}</p>
-     <span v-if="child.hints" class="hints-available" @click="showHints()">Hints available</span>
+    <div class="animation">
+      <h2 class="title">{{child.title}}</h2>
+      <p v-for="text in child.texts" :key="text" >{{text}}</p>
+    </div>
+    <span v-if="child.hints" class="hints-available" @click="showHints()">Reveal the answer</span>
      <ul v-if="child.hints" :class="hints">
        <li v-for="hint in child.hints" :key="hint">{{hint}}</li>
      </ul>
@@ -11,7 +13,7 @@
 
 <script>
 
-
+import { ViewPort } from '../../libs/viewPort' ;
 
 export default {
   data() {
@@ -34,42 +36,64 @@ export default {
     showHints() {
       this.hints =  this.hints === "hints hidden" ? "hints" : "hints hidden"
     }
-  }
+  },
+  mounted(){
+
+    setTimeout( () => {
+        let elementDetected =  new ViewPort( this.$el.querySelector('.animation') );
+        elementDetected.detectViewport( ( callback , element )=>{
+          if (callback) {
+            element.classList.add('active');
+          }else{
+            element.classList.remove('active');
+          }
+      });
+    }, 1000);
+
+  },
 
 }
 </script>
 
 <style lang="scss" scoped>
+
+.animation {
+  transform: translateY(100px) scale( 0.8 ) ;
+  opacity: 0;
+  transition-duration: 0.8s;
+
+  &.active{
+  transform: translateY(0px) scale( 1.0 );
+  opacity: 1;
+  }
+}
+
    .text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: black;
+    background-color: #000112;
     color: white;
     width: 50%;
     height: 100vh;
-    padding: 30px 50px;
+    padding: 0px 50px;
 
     &.right {
-      align-items: flex-end;
       text-align: right;
     }
   } 
 
   .title {
     font-size: 50px;
-    letter-spacing: calc(50px * 10 / 100);
     text-transform: uppercase;
-    margin-bottom: 30px;
-  }
-
-  p {
-    font-size: 18px;
+    letter-spacing: calc(50px * 10 / 100);
+    margin-bottom: 50px;
     line-height: 150%;
   }
 
-  p:not(:last-child) {
+  p {
+    font-size: 20px;
+    line-height: 150%;
     margin-bottom: 30px;
   }
 
@@ -83,7 +107,7 @@ export default {
     cursor: pointer;
 
     &::after {
-      content: url('../../assets/images/hint.svg');
+      content: url('../../assets/images/idea.svg');
       position: absolute;
       right: -70px;
       top: 50%;
