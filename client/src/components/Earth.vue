@@ -410,10 +410,6 @@ export default {
   transition-delay: 0.5s;
 }
 
-.popanim-leave {
-
-}
-
 .popanim-leave-to {
   opacity: 0;
   transform: translateY(50px);
