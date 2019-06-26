@@ -58,7 +58,7 @@ export default {
 
     TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' , 'height' : '50px' } )
     // ${this.audioName}.mp3
-    this.pathAudio = require( `../../assets/audio/Tally marks.mp3` )
+    this.pathAudio = require( `../../assets/audio/${this.audioName}.mp3` )
     this.wavesurfer.load(  this.pathAudio  );
 
 
