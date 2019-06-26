@@ -1,6 +1,5 @@
 <template>
   <div :class="videoSize()">
-    <!-- <h2>{{ child.title }}</h2> -->
     <div class="parentVideo">
       <video controls :poster="vidPoster">
         <source :src="vidUrl" type="video/mp4">
@@ -74,6 +73,13 @@ h2 {
       background : black;
       margin: auto;
       display: block;
+    }
+
+
+    &.small {
+      width: 50%;
+      justify-content: center;
+      align-items: center;
     }
 }
 

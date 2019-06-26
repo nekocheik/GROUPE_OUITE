@@ -347,6 +347,7 @@ export default {
     }
 
     render();
+    TweenMax.from(camera.position,2.5,{y:10, delay:1, ease: Power4.easeOut});
 
   },
 }

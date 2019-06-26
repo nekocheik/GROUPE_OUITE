@@ -70,6 +70,12 @@ class scrollControlled {
      let body = document.querySelector('body')
      return body.getBoundingClientRect().height 
    }
+
+   scrollBacck(){
+    this.index--;
+    this.newPosition -= this.pageLength ; 
+    TweenMax.to( window , this.scrollSpeed ,{ scrollTo : this.newPosition , ease: Power3.easeOut });
+   }
     
 }
 

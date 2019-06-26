@@ -1,9 +1,9 @@
   <template>
   <div class="background">
     <div class="content">
-      <h1 class="title">How we build the world <br> together</h1>
-      <div class="description-area">
-        <p class="text">For a better experience, take your headphones and <br> use fullscreen</p>
+      <h1 class="title" id="title">How we build the world together</h1>
+      <div class="description-area" id="description-area">
+        <p class="text">For a better experience, take your headphones and <br> use fullscreen mode.</p>
         <ul class="icons">
           <li>
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@
           </li>
         </ul>
       </div>
-        <router-link class="button" to="/introduction">Start</router-link>
+        <router-link class="button" to="/introduction" id="start">Start</router-link>
       </div>
     </div>
 </template>
@@ -38,7 +38,20 @@ export default {
     return {
 
     }
-  }
+  },
+  mounted() {
+
+    setTimeout( () => {
+      document.querySelector('#title').classList.add('appeared');
+      document.querySelector('#description-area').classList.add('appeared');
+
+      setTimeout( () => {
+        document.querySelector('#start').classList.add('appeared');
+      }, 1000);
+
+    }, 1000);
+    
+  },
 }
 </script>
 
@@ -61,6 +74,14 @@ export default {
   line-height: 69px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  transition: all 0.8s;
+
+  &.appeared {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
 
   @media (min-width: 800px) {
     width: 60%;
@@ -88,6 +109,13 @@ export default {
   justify-content: space-between;
   line-height: 150%;
   width: 80%;
+  opacity: 0;
+  transition: all 0.8s;
+  transition-delay: 0.8s;
+
+  &.appeared {
+    opacity: 1;
+  }
 
   @media (min-width: 800px) {
     width: 30%;
@@ -110,5 +138,11 @@ export default {
 
 .button {
   font-size: 22px;
+  opacity: 0;
+  transition: opacity 0.8s, color 0.3s, box-shadow 0.5s;
+
+  &.appeared {
+    opacity: 1;
+  }
 }
 </style>
