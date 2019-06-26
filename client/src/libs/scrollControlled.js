@@ -17,7 +17,6 @@ class scrollControlled {
       this.newPosition  = page.innerHeight ;
       this.maxPageLength = this.getMaxLength();
       TweenMax.set( window ,{scrollTo: 0});
-      this.memo = 0;
       // this.newPosition = null;
       this.delay = delay;
       this.view();
@@ -37,10 +36,10 @@ class scrollControlled {
 
     document.querySelector('#app').addEventListener('wheel' , (e)=>{
       e.preventDefault();
-      this.memo +=  Math.sign(e.deltaY) ;
-      if( this.memo < 30 || this.memo < -30 ){
+      if( this.canWheel ){
+        this.canWheel = false;
         this.scroll( Math.sign(e.deltaY) );
-
+        setTimeout( () =>{ this.canWheel = true } , this.delay  );
       }else{
         return
       }
