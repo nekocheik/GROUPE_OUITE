@@ -34,8 +34,8 @@ class scrollControlled {
       e.preventDefault();
       if( this.canWheel ){
         this.canWheel = false;
-        setTimeout( () =>{ this.canWheel = true } , this.delay  );
         this.scroll( Math.sign(e.deltaY) );
+        setTimeout( () =>{ this.canWheel = true } , this.delay  );
       }else{
         return
       }
@@ -68,7 +68,7 @@ class scrollControlled {
 
    getMaxLength(){
      let body = document.querySelector('body')
-     return body.getBoundingClientRect().height   ; 
+     return body.getBoundingClientRect().height 
    }
     
 }
