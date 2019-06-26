@@ -1,6 +1,6 @@
 <template>
   <div class="image-container">
-     <h2>Ceci est le component Image</h2>
+     <h2>component image</h2>
      <h3>{{childId}}</h3>
      <button @click="updateCard(parentName, childId)">Uptade</button>
   </div>
@@ -34,8 +34,15 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #cecece;
-    width: 50%;
-    height: 400px;
+    width: 90%;
+    height: 90vh;
+    color: black;
+    margin: auto;
+    border: black solid 10px ;
+    border-radius: 20px;
+  }
+  button{
+    background-color: gray;
+    border: gray solid 1px ;
   }
 </style>
