@@ -54,7 +54,7 @@ export default {
    .visit-container {
     border: solid 1px white;
     width: 15vw;
-    height: 50%;
+    height: 70%;
     border-radius: 10px;
     color: white;
     display: flex;

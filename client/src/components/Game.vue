@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <div class="scene3D" id="scene3D" ref="scene3D"></div>
+    <div v-if="isEarthRoute()" class="scene3D" id="scene3D" ref="scene3D"></div>
 
      <router-link class="menu button--small" to="/chapters">Back to menu</router-link>
     <div class="title">
@@ -9,10 +9,14 @@
     </div>
 
     <div class="quizz" v-if="findType() === 'list' && showScore === false">
-      <p>{{ question.question }}</p>
-      <ul>
-        <li v-for="answer in findAnswers()" :key="answer" :class="choicecss" @click="choice(answer)"> {{ answer }}</li>
-      </ul>
+      <!-- MERCI DE GARDER LES LIGNES COMMENTÉES  -->
+      <!-- <transition-group name="answers" @before-enter="beforeEnter"> -->
+
+        <p :key="animKey">{{ question.question }}</p>
+        <ul :key="animKey+1">
+          <li v-for="answer in findAnswers()" :key="answer" :class="choicecss" @click="choice(answer)"> {{ answer }}</li>
+        </ul>
+      <!-- </transition-group> -->
     </div>
 
     <div class="quizz" v-if="findType() === 'map' && showScore === false">
@@ -33,15 +37,16 @@
     </div>
 
 
-
-    <div class="answer" v-if="showAnswer" >
-      <span v-if="correct == true">Correct</span>
-      <span v-if="correct == false">Incorrect</span>
-      <p>{{ question.description }}</p>
-      <p @click="toDocument(question)" class="moreBtn clickable">Learn more ></p>
-      <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
-      <button v-if="level >= questions.length" @click="displayScore()" class="button">See your score</button>
-    </div>
+    <transition>
+      <div class="answer" v-if="showAnswer" >
+        <span v-if="correct == true">Correct</span>
+        <span v-if="correct == false">Incorrect</span>
+        <p>{{ question.description }}</p>
+        <p @click="toDocument(question)" class="moreBtn clickable">Learn more ></p>
+        <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
+        <button v-if="level >= questions.length" @click="displayScore()" class="button">See your score</button>
+      </div>
+    </transition>
     <router-link  class="game" to="/earth">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="15" cy="15" r="14.25" stroke="white" stroke-width="1.5"/>
@@ -89,7 +94,8 @@ export default {
       image: this.findImage(level),
       correct: undefined,
       choicecss: "button",
-      showScore : false
+      showScore : false,
+      animKey : 1,
     }
   },
   methods: {
@@ -130,6 +136,7 @@ export default {
       this.question = this.findQuestion(level)
       this.image = this.findImage(level)
       this.correct = undefined
+      this.animKey++
 
     },
     displayScore() {
@@ -147,6 +154,19 @@ export default {
       } else {
         return 'You are still getting familiar with computing history. If you want to gain more knowledge about computing history and discover surprising facts, make sure to read our documents.'
       }
+    },
+    isEarthRoute(){
+      if (this.$route.name == "earth" || this.$route.name == "game") {
+        console.log('is earth');
+        return true;
+      }
+    },
+    beforeEnter(el) {
+      // el.style.display = 'none';
+      // el.style.display = 'initial';
+      // setTimeout(() => {
+      //   el.style.display = 'block';
+      // }, 4000);
     }
   },
   mounted() {
@@ -505,6 +525,7 @@ h2 {
   width: 350px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
+  transition : all 0.5 s ease-in-out;
 
   p {
     font-size: 20px;
@@ -586,5 +607,45 @@ button.button {
     text-decoration: underline;
   }
 }
+
+.v-enter {
+  opacity: 0;
+  transform : translateY(20px);
+}
+
+
+.v-enter-active {
+  transition: all 0.5s ease-in-out;
+}
+
+
+.v-leave-to {
+  opacity: 0;
+  transform : translateX(20px);
+}
+
+.v-leave-active {
+  transition : all 0.5s ease-in-out;
+}
+
+// .answers-leave-to {
+//   opacity : 0;
+//   transform: translateX(-20px);
+// }
+// .answers-leave-active {
+//   transition : all 0.5s ease-in-out;
+// }
+
+// .answers-enter {
+//   position: absolute;
+//   transition-delay: 0.5s;
+//   opacity : 0;
+//   transform: translateX(-20px);
+// }
+
+// .answers-enter-active {
+//   transition: all 0.5s ease-in-out 0.4s;
+// }
+
 </style>
 
