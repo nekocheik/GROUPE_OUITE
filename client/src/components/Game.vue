@@ -158,7 +158,6 @@ export default {
     // console.log(level)
 
     //WEBGL SCENE
-    var gameVue = this;
     
     //Latitude Longitude calcul
     function calcPosFromLatLonRad(lat,lon,radius){
@@ -297,19 +296,19 @@ export default {
     }
     //Creating the points + Action on click (APPEL VUE.JS)
     var mathematicsEgyptPoint = placePoint( 'mathematicsEgyptPoint', 30.044420, 31.235712 , () => {
-        console.log("1");
+        //action click point 1
     });
     var binaryChinaPoint = placePoint( 'binaryChinaPoint', 35.861660, 104.195397 , () =>{
-        console.log("2");
+        //action click point 2
     });
     var computersEnglandPoint = placePoint( 'computersEnglandPoint', 51.5073509, -0.1277583 , ()=>{
-        console.log("3");
+        //action click point 3
     });
     var programmingItalyPoint = placePoint( 'programmingItalyPoint', 41.86009225771948, 12.508575535957334 , ()=>{
-        console.log("4");
+        //action click point 4
     });
     var internetAmericaPoint = placePoint( 'internetAmericaPoint', 37.090240, -95.712891 , ()=>{
-        console.log("5");
+        //action click point 5
     });
 
     //RAYCASTER + DRAG MOUSEMOVE
@@ -384,7 +383,7 @@ export default {
             pickedObject = intersectObj == earth ? null : intersectObj;
             //Change color on hover
             if( pickedObject ){
-                console.log( pickedObject._name );
+              
                 pickedObject.material.color.setHex(0xffc57f);
             }
         }

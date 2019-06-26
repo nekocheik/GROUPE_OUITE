@@ -90,12 +90,12 @@ export default {
     },
     closePopup() {
       this.display = false;
-      console.log(this);
+      
       this.earthBack();
     }
   },
   destroyed(){
-    console.log('destroyed');
+    
   },
   mounted() {
 
@@ -345,7 +345,7 @@ export default {
             pickedObject = intersectObj == earth ? null : intersectObj;
             //Change color on hover
             if( pickedObject ){
-                console.log( pickedObject._name );
+              
                 pickedObject.material.color.setHex(0xffc57f);
             }
         }

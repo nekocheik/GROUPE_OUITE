@@ -93,23 +93,21 @@ export default {
 
   updated() {
     window.scrollTo(0,0);
-        console.log(  this.scrollControlled )
 
-    console.log('update');
     if (localStorage.getItem('readed')) {
-      console.log('existe')
+      
       var readed = JSON.parse(localStorage.getItem('readed'));
-      console.log(readed)
+      
       if (!readed.includes(parseInt(this.id))) {
         readed.push(parseInt(this.id));
       }
       localStorage.setItem('readed', JSON.stringify(readed));
-      console.log(readed)
+      
     }else {
       var readed = [];
       readed.push(parseInt(this.id));
       localStorage.setItem('readed', JSON.stringify(readed))
-      console.log(readed);
+      
     }
 
     this.allCards = [];
@@ -120,15 +118,15 @@ export default {
     let currentIndex = this.allCards.indexOf(parseInt(this.id));
     this.allCards.splice(currentIndex, 1);
     this.allCards.push(parseInt(this.id));
-    console.log(this.allCards);
+    
     for (let i = 1; i <= this.facts.length; i++) {
-      console.log(i);
+      
       if (!this.allCards.includes(i)) {
         this.allCards.push(i);
-        console.log('cest push' + i);
+        
       } 
     }
-    console.log(this.allCards);
+    
 
     localStorage.setItem('cardOrder', JSON.stringify(this.allCards));
   },
@@ -140,7 +138,7 @@ export default {
   },
 
   beforeDestroy(){
-    console.log(  this.scrollControlled )
+    
   },
 
 

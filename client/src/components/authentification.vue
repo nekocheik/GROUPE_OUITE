@@ -49,7 +49,6 @@ export default {
        ,password :"Kone"
         })
     }).then( (data)=> {
-        console.log(data)
 
       });
       e.preventDefault();
