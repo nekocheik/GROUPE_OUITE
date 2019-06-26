@@ -9,8 +9,6 @@
      <img v-if="onplay" @click="stopAudio" src="../../assets/images/button pause.svg"  >
      <img  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back.svg"  >
      </section>
-     <!-- <audio :src="audioUrl()"></audio> -->
-
   </div>
 </template>
 
@@ -68,7 +66,6 @@ export default {
     let elementDetected =  new ViewPort( this.$el.querySelector('#waveform') );
       elementDetected.detectViewport( ( callback , element )=>{
         if (callback) {
-          console.log( elementDetected )
           element.classList.add('active');
         }else{
           element.classList.remove('active');

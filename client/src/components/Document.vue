@@ -1,33 +1,28 @@
 <template>
   <div>
-     <!-- <h1>Facts</h1> -->
-    <!-- CREATE FACT HERE -->
-    <router-link to="/earth" class="back-to-earth">Back to earth</router-link>
+    <router-link to="/earth" class="back-to-earth">
+      <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78">
+        <g id="Groupe_4" data-name="Groupe 4" transform="translate(-1057 -287)">
+          <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1057 287)" fill="none" stroke="#ffbf67" stroke-width="5">
+            <circle class="exterieur" cx="39" cy="39" r="36.5" fill="none"/>
+          </g>
+        </g>
+      </svg>
+      <span>Back to earth</span>
+    </router-link>
+
+
     <p v-if="error">{{error}}</p>
     <div>
-      <!-- <div v-for="(fact, index) in facts" :item="fact" :index="index" :key="fact._id">
-        {{`${fact.createdAt.getDate()}/`}}
-        <p>{{fact.text}}</p>
-      </div> -->
-      <!--  -->
 
-    <svg class="circle" xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 78 78">
-      <g id="Groupe_4" data-name="Groupe 4" transform="translate(-1057 -287)">
-        <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(1057 287)" fill="none" stroke="#ffbf67" stroke-width="5">
-          <!-- <circle cx="39" cy="39" r="39" stroke="none"  fill="none"/> -->
-          <circle class="exterieur" cx="39" cy="39" r="36.5" fill="none"/>
-        </g>
-      </g>
-    </svg>
+   
 
       <div v-if="facts.length" class="container">
-        <!-- binding the attribute name, to get it on child component header -->
         <document-header :parent="facts[id-1]"></document-header>
         <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name" :child="child"></component>
         <document-footer :parent="facts"></document-footer>
       </div>
     </div>
-    <!-- END OF FACTS -->
   </div>
   
 </template>
@@ -88,9 +83,7 @@ export default {
     window.scrollTo(0,0);
 
       // eventBus.visited.push(this.id);
-      // console.log(eventBus.visited);
       // eventBus.toVisit.
-      console.log(this.$route);
       // if (window.localStorage.getItem('readed') !== null) {
       //   this.getStorage = JSON.parse(window.localStorage.getItem('readed'));
       //   this.readed = this.getStorage;
@@ -116,13 +109,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.circle{
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  height: 40px;
-  z-index: 30;
-}
+
+
   .container {
     display: flex;
     flex-direction: row;
@@ -136,6 +124,7 @@ export default {
 
 .back-to-earth {
   position: fixed;
+  height: 40px;
   z-index: 30;
   top: 20px;
   left: 20px;
@@ -143,6 +132,14 @@ export default {
   text-transform: uppercase;
   font-size: 14px;
   text-decoration: none;
+
+  svg {
+    height: 100%;
+
+    &::after {
+      content: '';
+    }
+  }
 }
 
   

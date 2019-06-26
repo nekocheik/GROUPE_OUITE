@@ -26,15 +26,11 @@ export default {
     isInStorage(){
         this.storageTable = JSON.parse(window.localStorage.getItem('readed'))
           if (this.storageTable !== null && this.storageTable.includes(this.childIndex+1)) {
-            console.log('lalalal');
             return true;
           }
           return false;
     },
     current(){
-      console.log(parseInt(this.$route.params.id));
-      console.log(this.childIndex+1);
-
       if (parseInt(this.$route.params.id) == this.childIndex+1) {
         return 'filter : grayscale(0); border-color: yellow';
       }
