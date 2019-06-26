@@ -206,6 +206,7 @@ export default {
         metalness : 0.4
     })
     var earth = new THREE.Mesh( earthGeometry, earthMaterial);
+    earth.rotation.y -= 97;
     scene.add( earth );
     earth.material.needsUpdate = true;
 
@@ -346,6 +347,7 @@ export default {
     }
 
     render();
+    TweenMax.from(camera.position,2.5,{y:10, delay:1, ease: Power4.easeOut});
 
   },
 }
@@ -393,11 +395,6 @@ export default {
 }
 
 .background {
-  /*
-  background: url('../assets/images/space.jpg');
-  background-size: cover;
-  background-position: center;
-  */
   width: 100%;
   height: 100vh;
   color: white;
