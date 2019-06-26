@@ -1,15 +1,14 @@
 <template>
   <div data-animate="true" class="audio-container">
 
+     <section class="buttons">
+     <img v-if="!onplay" @click="playAudio" src="../../assets/images/button play black.svg"  >
+     <img v-if="onplay" @click="stopAudio" src="../../assets/images/button pause black.svg"  >
      <div data-aos="fade-up"
      data-aos-anchor-placement="bottom-center" id="waveform"></div>
-
-     <section class="buttons">
-     <img v-if="!onplay" @click="playAudio" src="../../assets/images/button play.svg"  >
-     <img v-if="onplay" @click="stopAudio" src="../../assets/images/button pause.svg"  >
-     <img  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back.svg"  >
+     <img  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back black.svg"  >
      </section>
-     <!-- <audio :src="audioUrl()"></audio> -->
+
 
   </div>
 </template>
@@ -52,12 +51,13 @@ export default {
     this.wavesurfer = WaveSurfer.create({
     container: '#waveform',
     scrollParent: true,
-    waveColor: 'white',
+    waveColor: 'black',
     backend: "MediaElement",
-    barWidth: 1,
+    barWidth: 0.5 ,
     });
-    TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' , 'height' : '103px' } )
-    // console.log(`../../assets/audio/${this.audioName}.mp3`)
+
+    TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' , 'height' : '50px' } )
+    // ${this.audioName}.mp3
     this.pathAudio = require( `../../assets/audio/Tally marks.mp3` )
     this.wavesurfer.load(  this.pathAudio  );
 
@@ -109,14 +109,16 @@ export default {
 
   #waveform{
     z-index: 100;
-    width: 42vw;
-    height: 100px;
+    width: 37vw;
+    padding: 0px 50px 0px 50px; 
+    height: 50px;
     overflow-x:hidden;
     transform: translateY(100px) scale( 0.8 ) ;
     opacity: 0;
-    transition-duration: 1s;
-    border: 1px solid  white;
-    margin-bottom: 50px;
+    z-index: 2;
+    // transition-duration: 1s;
+    background-color: #F8F8F8;
+    border-radius: 35px;
     &.active{
     transform: translateY(0px) scale( 1.0 );
     opacity: 1;
@@ -135,9 +137,19 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 300px;
+    // width: 300px;
     img{
-      height: 48px;;
+      height: 32px;
+      position: relative;
+      z-index: 3;
+      display: block;
+      margin: auto; 
+      &:nth-child(1){
+      right: -40px;
+      }
+      &:nth-child(3){
+      right: 40px;
+      }
     }
   }
 
