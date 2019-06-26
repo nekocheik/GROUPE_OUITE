@@ -36,7 +36,6 @@ export default {
   methods : {
     audioUrl() {
       // return the image path, whith imgName variable defined on the db 
-        return require (`../../assets/audio/${this.audioName}.mp3`)
     },
     playAudio() {
       this.wavesurfer.play();
@@ -57,12 +56,11 @@ export default {
     backend: "MediaElement",
     barWidth: 1,
     });
-    TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' })
+    TweenMax.to('wave' , 0 , { 'overflow-x' : 'hidden' , 'height' : '103px' } )
+    // console.log(`../../assets/audio/${this.audioName}.mp3`)
+    this.pathAudio = require( `../../assets/audio/Tally marks.mp3` )
+    this.wavesurfer.load(  this.pathAudio  );
 
-    // this.pathAudio = require( `../../assets/audio/${this.audioName}.mp3` )
-    // this.wavesurfer.load(     this.pathAudio  );
-
-    this.wavesurfer.load('https://dev1.duckdiverllc.com/html/blues.mp3');
 
 
     let elementDetected =  new ViewPort( this.$el.querySelector('#waveform') );
@@ -74,6 +72,13 @@ export default {
           element.classList.remove('active');
         }
      });
+  },
+  
+  
+  beforeMount(){
+    // let path =  require(`../../assets/audio/${this.audioName}.mp3`); 
+    // console.log(path)
+    // this.wavesurfer.load(path);
   },
 
   computed : {
@@ -105,11 +110,13 @@ export default {
   #waveform{
     z-index: 100;
     width: 42vw;
-    height: 143px;
+    height: 100px;
     overflow-x:hidden;
     transform: translateY(100px) scale( 0.8 ) ;
     opacity: 0;
     transition-duration: 1s;
+    border: 1px solid  white;
+    margin-bottom: 50px;
     &.active{
     transform: translateY(0px) scale( 1.0 );
     opacity: 1;
