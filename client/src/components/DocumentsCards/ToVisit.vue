@@ -1,9 +1,9 @@
 <template>
-  <div class="visit-container" :class="{shadow : isInStorage()}" :style="current()">
+  <div class="visit-container" :style="current()  ">
     <h2>{{child.name.toUpperCase()}}</h2>
     <router-link class="button" :to="goToDocument()">READ</router-link>
     <img class="visit__img" :src="earthImgSrc()">
-    <pre>{{storageTable}}</pre>
+    <!-- <pre>{{storageTable}}</pre> -->
   </div>
 </template>
 

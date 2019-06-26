@@ -9,6 +9,8 @@
 
 <script>
 
+import { ViewPort } from '../../libs/viewPort' ;
+
 export default {
   data() {
     return {
@@ -31,6 +33,18 @@ export default {
         return "poster-container right"
       }
     }
+  },
+  mounted(){
+
+      let elementDetected =  new ViewPort( this.$el.querySelector('.card') );
+      elementDetected.detectViewport( ( callback , element )=>{
+        if (callback) {
+          element.classList.add('active');
+        }else{
+          element.classList.remove('active');
+        }
+     });
+
   },
 }
 </script>
@@ -67,6 +81,13 @@ export default {
   border-radius: 10px;
   padding: 46px 20px;
   width: 502px;
+  transform: translateY(100px) scale( 0.8 ) ;
+  opacity: 0;
+  transition-duration: 1s;
+  &.active{
+  transform: translateY(0px) scale( 1.0 );
+  opacity: 1;
+  }
 }
 
 .content {

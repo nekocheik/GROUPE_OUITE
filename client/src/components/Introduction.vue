@@ -2,11 +2,11 @@
   <div class="background">
     
     <div class="poster">
-      <video poster="../assets/images/background-intro.jpg" autoplay>
+      <video poster="../assets/images/background-intro.png" autoplay>
         <source src="../assets/videos/intro.mp4" type="video/mp4" />
       </video>
 
-      <router-link class="button above" to="/chapters">Skip</router-link>
+      <router-link class="button--small above" to="/chapters">Skip</router-link>
     </div>
   </div>
 </template>
@@ -112,8 +112,9 @@ video {
 
 .above {
   position: absolute;
+  z-index: 10;
   bottom: 20px;
-  left: 40px;
+  left: 25px;
 }
 
 </style>
