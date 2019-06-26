@@ -63,8 +63,7 @@ export default {
     return {
       facts : [],
       error : '',
-      getStorage : [],
-      readed : [1,2,4],
+      allCardsDone : [],
     }
   },
   // Call facts in db 
@@ -83,22 +82,50 @@ export default {
     };
   },
 
+  methods : {
+
+  },
+
 
   updated() {
     window.scrollTo(0,0);
 
-      // eventBus.visited.push(this.id);
-      // console.log(eventBus.visited);
-      // eventBus.toVisit.
-      console.log(this.$route);
-      // if (window.localStorage.getItem('readed') !== null) {
-      //   this.getStorage = JSON.parse(window.localStorage.getItem('readed'));
-      //   this.readed = this.getStorage;
-      // }
-      // if (!this.readed.includes(this.$route.params.id)) {
-      //   this.readed.push(parseInt(this.id))
-      // }
-      window.localStorage.setItem('readed', JSON.stringify(this.readed));
+    console.log('update');
+    if (localStorage.getItem('readed')) {
+      console.log('existe')
+      var readed = JSON.parse(localStorage.getItem('readed'));
+      console.log(readed)
+      if (!readed.includes(parseInt(this.id))) {
+        readed.push(parseInt(this.id));
+      }
+      localStorage.setItem('readed', JSON.stringify(readed));
+      console.log(readed)
+    }else {
+      var readed = [];
+      readed.push(parseInt(this.id));
+      localStorage.setItem('readed', JSON.stringify(readed))
+      console.log(readed);
+    }
+
+    this.allCards = [];
+    readed.forEach(element => {
+      this.allCards.push(element);
+    });
+    this.allCards.sort();
+    let currentIndex = this.allCards.indexOf(parseInt(this.id));
+    this.allCards.splice(currentIndex, 1);
+    this.allCards.push(parseInt(this.id));
+    console.log(this.allCards);
+    for (let i = 1; i <= this.facts.length; i++) {
+      console.log(i);
+      if (!this.allCards.includes(i)) {
+        this.allCards.push(i);
+        console.log('cest push' + i);
+      } 
+    }
+    console.log(this.allCards);
+
+    localStorage.setItem('cardOrder', JSON.stringify(this.allCards));
   },
 
   computed : {
