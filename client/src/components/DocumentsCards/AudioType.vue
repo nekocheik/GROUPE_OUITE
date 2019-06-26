@@ -71,6 +71,7 @@ export default {
     let elementDetected =  new ViewPort( this.$el.querySelector('#waveform') );
       elementDetected.detectViewport( ( callback , element )=>{
         if (callback) {
+          console.log( elementDetected )
           element.classList.add('active');
         }else{
           element.classList.remove('active');
@@ -139,8 +140,8 @@ export default {
   .mute{
       position: absolute;
       height: 48px;
-      top: 10%;
-      right: 10%;
+      top: 13vh;
+      right: 7vw;
    }
 
 </style>
