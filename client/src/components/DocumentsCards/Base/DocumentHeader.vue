@@ -6,7 +6,7 @@
       <figcaption class="author">{{ parent.quoteAuthor }}</figcaption>
     </figure>
     <p class="description" v-else>{{ parent.introduction }}</p>
-    <span class="scroll">Scroll</span>
+    <span class="scroll" @click="scrollDown()">Scroll</span>
   </div>
 </template>
 
@@ -30,6 +30,10 @@ export default {
     },
     bgImage() {
       return `background-image : url(${this.backgroundUrl()})`
+    },
+    scrollDown() {
+      let pageHeight = window.innerHeight
+      window.scrollBy(0, pageHeight)
     }
   },
 }
@@ -103,6 +107,7 @@ blockquote::after {
   text-transform: uppercase;
   position: absolute;
   bottom: 100px;
+  cursor: pointer;
 
 
   &::after {

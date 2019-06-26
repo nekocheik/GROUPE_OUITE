@@ -33,7 +33,7 @@
       <span v-if="correct == true">Correct</span>
       <span v-if="correct == false">Incorrect</span>
       <p>{{ question.description }}</p>
-      <p @click="toDocument(question)">Learn more ></p>
+      <p @click="toDocument(question)" class="clickable">Learn more ></p>
       <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
       <button v-if="level >= questions.length" @click="showScore()" class="button">See your score</button>
     </div>
@@ -293,6 +293,10 @@ button.button {
   &:hover {
     background: white;
   }
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 

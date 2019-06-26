@@ -2,6 +2,7 @@
   <div>
      <!-- <h1>Facts</h1> -->
     <!-- CREATE FACT HERE -->
+    <router-link to="/earth" class="back-to-earth">Back to earth</router-link>
     <p v-if="error">{{error}}</p>
     <div>
       <!-- <div v-for="(fact, index) in facts" :item="fact" :index="index" :key="fact._id">
@@ -131,6 +132,18 @@ export default {
       box-sizing: border-box;
     }
   }
+
+
+.back-to-earth {
+  position: fixed;
+  z-index: 30;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-decoration: none;
+}
 
   
 </style>

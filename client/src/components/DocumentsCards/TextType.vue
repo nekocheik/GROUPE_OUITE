@@ -27,7 +27,7 @@ export default {
       }
     },
     showHints() {
-      this.hints = "hints"
+      this.hints =  this.hints === "hints hidden" ? "hints" : "hints hidden"
     }
   }
 

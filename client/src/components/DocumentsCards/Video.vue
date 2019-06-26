@@ -75,6 +75,13 @@ h2 {
       margin: auto;
       display: block;
     }
+
+
+    &.small {
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+    }
 }
 
 
