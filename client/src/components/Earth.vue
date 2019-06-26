@@ -89,6 +89,7 @@ export default {
   },
   mounted() {
 
+
     var earthVue = this;
     
     //WEBGL SCENE
@@ -262,6 +263,7 @@ export default {
             pickedObject._callback();
             //Move the earth
             TweenMax.to(camera.position,2,{x: -2, z: 6 , ease: Power4.easeInOut});
+            
         } else {
             mousehold = true;
             startMouseX = event.clientX;
