@@ -2,14 +2,7 @@
   <div class="background">
     <div class="scene3D" id="scene3D" ref="scene3D"></div>
 
-     <router-link class="menu" to="/chapters">
-      <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="12.7344" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
-        <rect x="23.9473" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
-        <rect x="1.52148" y="13.3638" width="8.00911" height="7.38462" rx="0.1" stroke="white"/>
-        <rect x="1.52148" y="1.54834" width="30.4346" height="7.38462" rx="0.1" stroke="white"/>
-      </svg>
-    </router-link>
+     <router-link class="menu button--small" to="/chapters">Back to menu</router-link>
     <div class="title">
       <h1>How we build the world together</h1>
       <h2>Computing - Test your knowledge</h2>
@@ -420,10 +413,6 @@ export default {
 
 <style lang="scss" scoped>
 
-* {
-  overflow: hidden;
-}
-
 .scene3D {
   position: absolute;
   z-index: 1;
@@ -444,8 +433,8 @@ export default {
 .menu {
   position: absolute;
   z-index: 10;
-  top: 30px;
-  left: 50px;
+  top: 20px;
+  left: 25px;
 }
 
 .title {
