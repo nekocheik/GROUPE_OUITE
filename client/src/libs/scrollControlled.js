@@ -8,17 +8,20 @@ const TweenMax = gsap.TweenMax;
 class scrollControlled {
 
   constructor( scrollSpeed , page , delay = 2000 ){
-    this.scrollSpeed = scrollSpeed;
-    this.canWheel = true;
-    this.index = 1;
-    this.element = page;
-    this.pageLength = page.innerHeight ;
-    this.newPosition  = page.innerHeight ;
-    this.maxPageLength = this.getMaxLength();
-    TweenMax.set( window ,{scrollTo: 0});
-    // this.newPosition = null;
-    this.delay = delay;
-    this.view();
+    setTimeout( ()=>{
+      this.scrollSpeed = scrollSpeed;
+      this.canWheel = true;
+      this.index = 1;
+      this.element = page;
+      this.pageLength = page.innerHeight ;
+      this.newPosition  = page.innerHeight ;
+      this.maxPageLength = this.getMaxLength();
+      TweenMax.set( window ,{scrollTo: 0});
+      // this.newPosition = null;
+      this.delay = delay;
+      this.view();
+    } , 100 )
+
   }
   
   view(){
@@ -26,6 +29,7 @@ class scrollControlled {
     window.onresize = (e)=> { 
       this.resize();
      };
+
     window.fullscreenchange = (e)=> { 
       this.resize();
      };
@@ -34,8 +38,8 @@ class scrollControlled {
       e.preventDefault();
       if( this.canWheel ){
         this.canWheel = false;
-        setTimeout( () =>{ this.canWheel = true } , this.delay  );
         this.scroll( Math.sign(e.deltaY) );
+        setTimeout( () =>{ this.canWheel = true } , this.delay  );
       }else{
         return
       }
@@ -68,7 +72,13 @@ class scrollControlled {
 
    getMaxLength(){
      let body = document.querySelector('body')
-     return body.getBoundingClientRect().height   ; 
+     return body.getBoundingClientRect().height 
+   }
+
+   scrollDown(){
+    this.index++;
+    this.newPosition += this.pageLength ;
+    TweenMax.to( window , this.scrollSpeed ,{ scrollTo : this.newPosition , ease: Power3.easeOut });
    }
     
 }

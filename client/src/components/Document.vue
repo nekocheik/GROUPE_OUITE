@@ -22,7 +22,7 @@
 
       <div v-if="facts.length" class="container">
         <!-- binding the attribute name, to get it on child component header -->
-        <document-header :parent="facts[id-1]"></document-header>
+        <document-header :parent="facts[id-1]" :functions="scrollControlled" ></document-header>
         <component v-for="child in facts[id-1].childComponents" :is="child.type" :key="child.id" :childId="child.id" :parentName="facts[id-1].name" :child="child"></component>
         <document-footer :parent="facts"></document-footer>
       </div>
@@ -63,7 +63,9 @@ export default {
     return {
       facts : [],
       error : '',
-      allCardsDone : [],
+      getStorage : [],
+      readed : [1,2,4],
+      scrollControlled : null ,
     }
   },
   // Call facts in db 
@@ -89,6 +91,7 @@ export default {
 
   updated() {
     window.scrollTo(0,0);
+        console.log(  this.scrollControlled )
 
     console.log('update');
     if (localStorage.getItem('readed')) {
@@ -127,6 +130,17 @@ export default {
 
     localStorage.setItem('cardOrder', JSON.stringify(this.allCards));
   },
+
+  beforeUpdate(){
+
+       this.scrollControlled = new scrollControlled( 0.2 , window , 900 );
+
+  },
+
+  beforeDestroy(){
+    console.log(  this.scrollControlled )
+  },
+
 
   computed : {
     // Get the route parameters (in this case, the id)

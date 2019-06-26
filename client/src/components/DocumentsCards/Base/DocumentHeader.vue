@@ -6,7 +6,7 @@
       <figcaption class="author">{{ parent.quoteAuthor }}</figcaption>
     </figure>
     <p class="description" v-else>{{ parent.introduction }}</p>
-    <span class="scroll" @click="scrollDown()">Scroll</span>
+    <span class="scroll" @click="  scrollDown() ">Scroll</span>
   </div>
 </template>
 
@@ -22,7 +22,10 @@ export default {
   },
   props : {
     parent : {
-    }
+    },
+    functions :{
+
+    },
   },
 
   methods: {
@@ -35,8 +38,7 @@ export default {
       return `background-image : url(${this.backgroundUrl()})`
     },
     scrollDown() {
-      let pageHeight = window.innerHeight
-      window.scrollBy(0, pageHeight)
+      this.functions.scrollDown()
     }
   },
 }
