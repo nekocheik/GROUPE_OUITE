@@ -68,7 +68,7 @@ export default {
     let elementDetected =  new ViewPort( this.$el.querySelector('#waveform') );
       elementDetected.detectViewport( ( callback , element )=>{
         if (callback) {
-          console.log( elementDetected )
+          // console.log( elementDetected )
           element.classList.add('active');
         }else{
           element.classList.remove('active');

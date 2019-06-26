@@ -1,5 +1,5 @@
 <template>
-  <div class="visit-container" >
+  <div class="visit-container" :style="current()  ">
     <h2>{{child.name.toUpperCase()}}</h2>
     <router-link class="button" :to="goToDocument()">READ</router-link>
     <img class="visit__img" :src="earthImgSrc()">
