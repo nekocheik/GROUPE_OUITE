@@ -12,6 +12,9 @@
 
 <script>
 
+const gsap = require('gsap');
+const TweenMax = gsap.TweenMax;
+
 export default {
   data() {
     return {

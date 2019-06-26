@@ -1,15 +1,12 @@
 <template>
   <div data-animate="true" class="audio-container">
-    <!-- <h2>Ceci est le component Audio</h2> -->
-     <img  v-if="hasVolume" @click="wavesurfer.toggleMute(),  hasVolume = false " class="mute" src="../../assets/images/sound-on.svg"  >
-     <img  v-if="!hasVolume" @click="wavesurfer.toggleMute(),  hasVolume = true " class="mute" src="../../assets/images/sound-off.svg"  >
 
      <div data-aos="fade-up"
      data-aos-anchor-placement="bottom-center" id="waveform"></div>
 
      <section class="buttons">
-     <img v-if="!onplay" @click="playAudio" src="../../assets/images/button pause.svg"  >
-     <img v-if="onplay" @click="stopAudio" src="../../assets/images/button play.svg"  >
+     <img v-if="!onplay" @click="playAudio" src="../../assets/images/button play.svg"  >
+     <img v-if="onplay" @click="stopAudio" src="../../assets/images/button pause.svg"  >
      <img  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back.svg"  >
      </section>
      <!-- <audio :src="audioUrl()"></audio> -->

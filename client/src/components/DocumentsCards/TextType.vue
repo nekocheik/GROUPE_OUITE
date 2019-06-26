@@ -53,7 +53,6 @@ export default {
 
     &.right {
       align-items: flex-end;
-      justify-content: flex-start;
       text-align: right;
     }
   } 
