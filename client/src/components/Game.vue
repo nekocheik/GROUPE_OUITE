@@ -14,14 +14,15 @@
       <h1>How we build the world together</h1>
       <h2>Computing - Test your knowledge</h2>
     </div>
-    
-    <div class="quizz" v-if="findType() === 'list'">
+
+    <div class="quizz" v-if="findType() === 'list' && showScore === false">
       <p>{{ question.question }}</p>
       <ul>
         <li v-for="answer in findAnswers()" :key="answer" :class="choicecss" @click="choice(answer)"> {{ answer }}</li>
       </ul>
     </div>
-    <div class="quizz" v-if="findType() === 'map'">
+
+    <div class="quizz" v-if="findType() === 'map' && showScore === false">
       <p>{{ question.question }}</p>
       <svg width="28" height="30" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M25.3346 10.3748H25.2888C24.6549 10.3771 24.0457 10.6209 23.5852 11.0562C23.2258 10.0061 22.2724 9.25384 21.1524 9.25384C20.4587 9.26289 19.7994 9.55722 19.3301 10.068C18.9061 9.17316 18.0304 8.57319 17.021 8.57319H16.9723C16.3914 8.57319 15.8259 8.74612 15.4398 9.08996V2.72762C15.4398 1.22356 14.2735 0 12.8502 0C11.4283 0 10.2666 1.22255 10.2656 2.72561L10.2545 15.3085L9.49117 14.3806C8.87688 13.6157 7.97228 13.1407 6.99403 13.0688C6.0354 13.0032 5.09234 13.337 4.38832 13.991L3.77327 14.5012C3.58652 14.656 3.53324 14.9202 3.64509 15.1351L9.62639 26.6186C10.7145 28.7091 12.7843 30 15.0281 30H21.7368C25.1388 30 27.9094 27.0595 27.9129 23.4353C27.9144 21.8162 27.9162 20.6117 27.9172 19.6307C27.9207 16.9893 27.9219 16.0018 27.9151 13.0942C27.9116 11.5941 26.7542 10.3748 25.3346 10.3748ZM26.8876 19.6332C26.8866 20.6142 26.8849 21.8152 26.8834 23.4343C26.8804 26.4912 24.5717 28.9705 21.7368 28.9705H15.0281C13.1694 28.9705 11.4494 27.892 10.5393 26.1436L4.74976 15.0248L5.05489 14.7739C5.06143 14.7684 5.06821 14.7636 5.0745 14.7576C5.57141 14.2901 6.2405 14.05 6.9214 14.0955C7.61687 14.1488 8.25932 14.4889 8.6944 15.0343L10.3681 17.072C10.5061 17.2399 10.7346 17.303 10.9392 17.2298C11.1438 17.1567 11.2805 16.9629 11.2808 16.7455L11.2906 2.72661C11.2911 1.7911 11.9956 1.02977 12.8507 1.02977C13.7055 1.02977 14.4103 1.79135 14.4103 2.72762V11.1814C14.4103 11.2106 14.409 11.2397 14.409 11.2691C14.409 11.282 14.4103 11.294 14.4103 11.3063V14.9215C14.4103 15.2057 14.6408 15.4362 14.925 15.4362C15.2093 15.4362 15.4398 15.2057 15.4398 14.9215V11.1988C15.4398 10.2954 16.1388 9.60271 16.9723 9.60271H17.021C17.8761 9.60271 18.5927 10.3334 18.5927 11.2699V14.5766C18.5927 14.8609 18.8232 15.0914 19.1075 15.0914C19.3917 15.0914 19.6222 14.8609 19.6222 14.5766V11.982C19.6222 11.0457 20.3089 10.2839 21.169 10.2839C22.0243 10.2839 22.7108 11.0457 22.7108 11.982V14.4298C22.7108 14.7141 22.9412 14.9446 23.2255 14.9446C23.5098 14.9446 23.7403 14.7141 23.7403 14.4298V13.1045C23.7403 12.168 24.4335 11.4044 25.2888 11.4044H25.3346C26.1876 11.4044 26.8836 12.1649 26.8856 13.0984C26.8924 16.0043 26.8912 16.9931 26.8876 19.6332Z" fill="white"/>
@@ -30,13 +31,23 @@
       </svg>
       <p>Drag to move around</p>
     </div>
+
+    <div class="quizz" v-if="showScore">
+      <h3>Your score</h3>
+      <span>{{ score }}</span>
+      <p> {{ endMessage() }}</p>
+      <router-link class="button" to="/earth">Back to earth</router-link>
+    </div>
+
+
+
     <div class="answer" v-if="showAnswer" >
       <span v-if="correct == true">Correct</span>
       <span v-if="correct == false">Incorrect</span>
       <p>{{ question.description }}</p>
-      <p @click="toDocument(question)">Learn more ></p>
+      <p @click="toDocument(question)" class="clickable">Learn more ></p>
       <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
-      <button v-if="level >= questions.length" @click="showScore()" class="button">See your score</button>
+      <button v-if="level >= questions.length" @click="displayScore()" class="button">See your score</button>
     </div>
     <router-link  class="game" to="/earth">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +95,8 @@ export default {
       showAnswer: false,
       image: this.findImage(level),
       correct: undefined,
-      choicecss: "button"
+      choicecss: "button",
+      showScore : false
     }
   },
   methods: {
@@ -127,26 +139,21 @@ export default {
       this.correct = undefined
 
     },
-    showScore() {
+    displayScore() {
+      this.showScore = true
       this.showAnswer = false
-      const quizz = document.querySelector('.quizz')
-      quizz.innerHTML = ''
+    },
+    endMessage() {
 
-      const score = document.createElement('h3')
-      score.textContent = `Your score : ${this.score}`
-
-      const message = document.createElement('p')
-
-      if(score < 1) {
-        message.textContent = 'text depending on your score (to define)'
+      if(this.score > 7) {
+        return 'Congratulation for this excellent score ! If you want to learn more and discover suprising facts about computing history, make sure to read our documents.'
+      } else if (this.score > 4) {
+        return 'Congratulation for this pretty good score. You already have some knowledge about computing history, but you still have some infos to learn and suprising facts to discover, so make sure to read our documents.'
+      } else if (this.score > 2) {
+        return 'Congratulation for this decent score. If you want to gain more knowledge about computing history and discover surprising facts, make sure to read our documents.'
       } else {
-        message.textContent = 'text depending on your score (to define)'
+        return 'You are still getting familiar with computing history. If you want to gain more knowledge about computing history and discover surprising facts, make sure to read our documents.'
       }
-
-      quizz.appendChild(score)
-      quizz.appendChild(message)
-      quizz.innerHTML += `<a href="/earth" class="button">Back to earth</a>
-      `
     }
   },
   mounted() {
@@ -568,6 +575,10 @@ button.button {
   &:hover {
     background: white;
   }
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 
