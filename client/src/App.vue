@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!--<transition name="fade" class="pane"></transition>-->
+      <router-view></router-view>
+    
     <footer> 
       <ul class="links">
         <!-- <li>
@@ -93,17 +95,22 @@ export default {
     });
     
     //restore sounds settings
+  
     if (this.isAsound) {
       this.soundIcon = soundService.restoreAudioSettings(this.$refs.audio, this.soundIcon);
     }
 
   },
 
-  watch: {
-    "$route.params"(to, from) {
-      this.isAsound = this.availableAudio()
-    }
+  updated() {
+    this.isAsound = this.availableAudio();
   }
+
+  // watch: {
+  //   "$route.params"(to, from) {
+  //     this.isAsound = this.availableAudio()
+  //   }
+  // }
 
 }
 </script>

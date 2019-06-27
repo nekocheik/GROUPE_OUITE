@@ -1,12 +1,12 @@
 <template>
   <div class="header" :style="bgImage()">
-    <h1 class="title">{{ parent.name }}</h1>
-    <figure v-if="parent.quote">
+    <h1 class="title" id="title">{{ parent.name }}</h1>
+    <figure id="figure" v-if="parent.quote">
       <blockquote>{{ parent.quote }}</blockquote>
       <figcaption class="author">{{ parent.quoteAuthor }}</figcaption>
     </figure>
     <p class="description" v-else>{{ parent.introduction }}</p>
-    <span class="scroll" @click="  scrollDown() ">Scroll</span>
+    <span class="scroll" id="scrollDown">Scroll</span>
   </div>
 </template>
 
@@ -14,6 +14,7 @@
 
 const gsap = require('gsap');
 const TweenMax = gsap.TweenMax;
+const scrollTo = require('../../../libs/scrollToPluging');
 
 export default {
   data() {
@@ -41,16 +42,35 @@ export default {
       this.functions.scrollDown()
     }
   },
+
+  mounted() {
+    setTimeout( () => {
+      document.querySelector('#title').classList.add('appeared');
+      document.querySelector('#figure').classList.add('appeared');
+    }, 1000);
+
+    document.getElementById('scrollDown').addEventListener('click', () => {
+      TweenMax.to(window, 0.8, {scrollTo: window.innerHeight});
+    })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 
 .title {
-  font-size: 80px;
+  font-size: 50px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: calc(80px * 10 / 100);
+  letter-spacing: 0em;
   margin-bottom: 60px;
+  opacity: 0;
+  transition: opacity 0.5s, letter-spacing 2s;
+
+  &.appeared {
+    opacity: 1;
+    letter-spacing: 0.1em;
+  }
 }
 
 .header {
@@ -65,7 +85,16 @@ export default {
   color: white;
   width: 100%;
   height: 100vh;
-} 
+}
+
+figure {
+  opacity: 0;
+  transition: opacity 0.5s;
+
+  &.appeared {
+    opacity: 1;
+  }
+}
 
 blockquote {
   position: relative;
@@ -101,10 +130,10 @@ blockquote::after {
 
 .description {
   width: 650px;
-  line-height: 130%;
+  margin-bottom: 20px;
+  line-height: 120%;
   text-align: center;
   font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .scroll {
@@ -120,7 +149,12 @@ blockquote::after {
     position: absolute;
     bottom: -50px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0%);
+    transition: all 0.5s;
+  }
+
+  &:hover::after {
+    transform: translate(-50%, 50%);
   }
 }
 

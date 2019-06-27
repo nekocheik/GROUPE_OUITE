@@ -2,11 +2,11 @@
   <div data-animate="true" class="audio-container">
 
      <section class="buttons">
-     <img v-if="!onplay" @click="playAudio" src="../../assets/images/button play black.svg"  >
-     <img v-if="onplay" @click="stopAudio" src="../../assets/images/button pause black.svg"  >
+     <img class="playBtn" v-if="!onplay" @click="playAudio" src="../../assets/images/button play black.svg"  >
+     <img class="pauseBtn" v-if="onplay" @click="stopAudio" src="../../assets/images/button pause black.svg"  >
      <div data-aos="fade-up"
      data-aos-anchor-placement="bottom-center" id="waveform"></div>
-     <img  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back black.svg"  >
+     <img class="reloadBtn"  @click="wavesurfer.stop() ,  onplay = false " src="../../assets/images/Icon - Back black.svg"  >
      </section>
 
 
@@ -99,31 +99,23 @@ export default {
     left: 0px;
     right: 0px;
     top: 0px;
-    bottom: 0px;
+    bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
-    padding-bottom: 100px;
   } 
 
   #waveform{
     z-index: 100;
-    width: 37vw;
+    width: 35vw;
     padding: 0px 50px 0px 50px; 
     height: 50px;
     overflow-x:hidden;
-    transform: translateY(100px) scale( 0.8 ) ;
-    opacity: 0;
     z-index: 2;
-    // transition-duration: 1s;
     background-color: #F8F8F8;
     border-radius: 35px;
-    &.active{
-    transform: translateY(0px) scale( 1.0 );
-    opacity: 1;
-    }
-
+    
     *{
      overflow-x:hidden;
     }
@@ -138,12 +130,18 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     // width: 300px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
     img{
-      height: 32px;
+      height: 28px;
       position: relative;
       z-index: 3;
       display: block;
       margin: auto; 
+      transform: translateY(-2px);
       &:nth-child(1){
       right: -40px;
       }
@@ -152,7 +150,6 @@ export default {
       }
     }
   }
-
   .mute{
       position: absolute;
       height: 48px;

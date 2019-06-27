@@ -1,25 +1,22 @@
 <template>
   <div class="background">
-    <div class="scene3D" id="scene3D" ref="scene3D"></div>
+    <div v-if="isEarthRoute()" class="scene3D" id="scene3D" ref="scene3D"></div>
 
-     <router-link class="menu" to="/chapters">
-      <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="12.7344" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
-        <rect x="23.9473" y="13.3638" width="8.00911" height="7.38461" rx="0.1" stroke="white"/>
-        <rect x="1.52148" y="13.3638" width="8.00911" height="7.38462" rx="0.1" stroke="white"/>
-        <rect x="1.52148" y="1.54834" width="30.4346" height="7.38462" rx="0.1" stroke="white"/>
-      </svg>
-    </router-link>
+     <router-link class="menu button--small" to="/chapters">Back to menu</router-link>
     <div class="title">
       <h1>How we build the world together</h1>
       <h2>Computing - Test your knowledge</h2>
     </div>
 
     <div class="quizz" v-if="findType() === 'list' && showScore === false">
-      <p>{{ question.question }}</p>
-      <ul>
-        <li v-for="answer in findAnswers()" :key="answer" :class="choicecss" @click="choice(answer)"> {{ answer }}</li>
-      </ul>
+      <!-- MERCI DE GARDER LES LIGNES COMMENTÉES  -->
+      <!-- <transition-group name="answers" @before-enter="beforeEnter"> -->
+
+        <p :key="animKey">{{ question.question }}</p>
+        <ul :key="animKey+1">
+          <li v-for="answer in findAnswers()" :key="answer" :class="choicecss" @click="choice(answer)"> {{ answer }}</li>
+        </ul>
+      <!-- </transition-group> -->
     </div>
 
     <div class="quizz" v-if="findType() === 'map' && showScore === false">
@@ -34,21 +31,22 @@
 
     <div class="quizz" v-if="showScore">
       <h3>Your score</h3>
-      <span>{{ score }}</span>
-      <p> {{ endMessage() }}</p>
+      <span class="score">{{ score }} / 10</span>
+      <p class="endMessage"> {{ endMessage() }}</p>
       <router-link class="button" to="/earth">Back to earth</router-link>
     </div>
 
 
-
-    <div class="answer" v-if="showAnswer" >
-      <span v-if="correct == true">Correct</span>
-      <span v-if="correct == false">Incorrect</span>
-      <p>{{ question.description }}</p>
-      <p @click="toDocument(question)" class="clickable">Learn more ></p>
-      <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
-      <button v-if="level >= questions.length" @click="displayScore()" class="button">See your score</button>
-    </div>
+    <transition>
+      <div class="answer" v-if="showAnswer" >
+        <span v-if="correct == true">Correct</span>
+        <span v-if="correct == false">Incorrect</span>
+        <p>{{ question.description }}</p>
+        <p @click="toDocument(question)" class="moreBtn clickable">Learn more ></p>
+        <button v-if="level < questions.length" @click="nextQuestion()" class="button">Next question</button>
+        <button v-if="level >= questions.length" @click="displayScore()" class="button">See your score</button>
+      </div>
+    </transition>
     <router-link  class="game" to="/earth">
       <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="15" cy="15" r="14.25" stroke="white" stroke-width="1.5"/>
@@ -96,7 +94,8 @@ export default {
       image: this.findImage(level),
       correct: undefined,
       choicecss: "button",
-      showScore : false
+      showScore : false,
+      animKey : 1,
     }
   },
   methods: {
@@ -137,6 +136,7 @@ export default {
       this.question = this.findQuestion(level)
       this.image = this.findImage(level)
       this.correct = undefined
+      this.animKey++
 
     },
     displayScore() {
@@ -154,6 +154,19 @@ export default {
       } else {
         return 'You are still getting familiar with computing history. If you want to gain more knowledge about computing history and discover surprising facts, make sure to read our documents.'
       }
+    },
+    isEarthRoute(){
+      if (this.$route.name == "earth" || this.$route.name == "game") {
+        console.log('is earth');
+        return true;
+      }
+    },
+    beforeEnter(el) {
+      // el.style.display = 'none';
+      // el.style.display = 'initial';
+      // setTimeout(() => {
+      //   el.style.display = 'block';
+      // }, 4000);
     }
   },
   mounted() {
@@ -165,7 +178,6 @@ export default {
     // console.log(level)
 
     //WEBGL SCENE
-    var gameVue = this;
     
     //Latitude Longitude calcul
     function calcPosFromLatLonRad(lat,lon,radius){
@@ -304,19 +316,19 @@ export default {
     }
     //Creating the points + Action on click (APPEL VUE.JS)
     var mathematicsEgyptPoint = placePoint( 'mathematicsEgyptPoint', 30.044420, 31.235712 , () => {
-        console.log("1");
+        //action click point 1
     });
     var binaryChinaPoint = placePoint( 'binaryChinaPoint', 35.861660, 104.195397 , () =>{
-        console.log("2");
+        //action click point 2
     });
     var computersEnglandPoint = placePoint( 'computersEnglandPoint', 51.5073509, -0.1277583 , ()=>{
-        console.log("3");
+        //action click point 3
     });
     var programmingItalyPoint = placePoint( 'programmingItalyPoint', 41.86009225771948, 12.508575535957334 , ()=>{
-        console.log("4");
+        //action click point 4
     });
     var internetAmericaPoint = placePoint( 'internetAmericaPoint', 37.090240, -95.712891 , ()=>{
-        console.log("5");
+        //action click point 5
     });
 
     //RAYCASTER + DRAG MOUSEMOVE
@@ -391,7 +403,7 @@ export default {
             pickedObject = intersectObj == earth ? null : intersectObj;
             //Change color on hover
             if( pickedObject ){
-                console.log( pickedObject._name );
+              
                 pickedObject.material.color.setHex(0xffc57f);
             }
         }
@@ -427,10 +439,6 @@ export default {
 
 <style lang="scss" scoped>
 
-* {
-  overflow: hidden;
-}
-
 .scene3D {
   position: absolute;
   z-index: 1;
@@ -451,8 +459,8 @@ export default {
 .menu {
   position: absolute;
   z-index: 10;
-  top: 30px;
-  left: 50px;
+  top: 20px;
+  left: 25px;
 }
 
 .title {
@@ -496,8 +504,12 @@ h2 {
   flex-direction: column;
   position: absolute;
   z-index: 10;
-  bottom: 20px;
+  bottom: 25px;
   text-align: center;
+
+  span:nth-child(1) {
+    margin-bottom: 5px;
+  }
 }
 
 .quizz {
@@ -507,29 +519,40 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 31px 10px;
+  padding: 30px 20px;
   left: 3vw;
-  width: 300px;
-  height: 475px;
+  width: 350px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
+  transition : all 0.5 s ease-in-out;
 
   p {
-    line-height: 150%;
     font-size: 20px;
-  }
-
-  li {
-    width: 250px;
+    margin-bottom: 40px;
+    line-height: 25px;
   }
 
   li:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .selected {
     background: white;
+  }
+
+  h3, .score {
+    font-size: 20px;
+    line-height: 25px;
+  }
+
+  .score {
+    margin-bottom: 20px;
+  }
+
+  .endMessage {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 20px;
   }
 }
 
@@ -537,14 +560,11 @@ h2 {
   position: absolute;
   z-index: 10;
   right: 3vw;
-  width: 300px;
-  height: 400px;
-  padding: 35px 30px;
-  background: red;
+  width: 350px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
 
@@ -559,8 +579,9 @@ h2 {
   }
 
   p {
-    font-size: 14px;
-    line-height: 130%;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 20px;
   }
 
   img {
@@ -571,18 +592,59 @@ h2 {
 button.button {
   background: transparent;
   font-size: 17px;
-
-  &:hover {
-    background: white;
-  }
 }
 
 .clickable {
   cursor: pointer;
 }
 
+.moreBtn {
+  text-decoration: none;
+  transition: all 0.8s;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.v-enter {
+  opacity: 0;
+  transform : translateY(20px);
+}
 
 
+.v-enter-active {
+  transition: all 0.5s ease-in-out;
+}
+
+
+.v-leave-to {
+  opacity: 0;
+  transform : translateX(20px);
+}
+
+.v-leave-active {
+  transition : all 0.5s ease-in-out;
+}
+
+// .answers-leave-to {
+//   opacity : 0;
+//   transform: translateX(-20px);
+// }
+// .answers-leave-active {
+//   transition : all 0.5s ease-in-out;
+// }
+
+// .answers-enter {
+//   position: absolute;
+//   transition-delay: 0.5s;
+//   opacity : 0;
+//   transform: translateX(-20px);
+// }
+
+// .answers-enter-active {
+//   transition: all 0.5s ease-in-out 0.4s;
+// }
 
 </style>
 
