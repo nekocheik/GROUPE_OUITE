@@ -18,12 +18,20 @@ export default {
   mounted: function() {
     if (localStorage.getItem('cardOrder')) {
       console.log('abc');
-      
       const order = JSON.parse(localStorage.getItem('cardOrder'));
       const position = order.indexOf(this.childIndex +1);
-      this.$el.style.position = position;
+      this.$el.style.order = position;
     }
     
+  },
+  updated() {
+     if (localStorage.getItem('cardOrder')) {
+      console.log('abc');
+      const order = JSON.parse(localStorage.getItem('cardOrder'));
+      const position = order.indexOf(this.childIndex +1);
+      this.$el.style.order = position;
+      window.location.reload();
+    }
   },
   methods : {
     goToDocument(){
