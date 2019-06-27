@@ -27,7 +27,7 @@ export default {
     return {
       textstyle : 'd-none',
       form : {
-        text : this.child.text,
+        text : '' ,
         title : this.child.title
       }
     }
@@ -43,8 +43,18 @@ export default {
       this.textstyle = "d-block";
       setTimeout(() => {
         this.textstyle = "d-none";
-        }, 4000);
+      }, 4000);
     }
+  },
+
+  mounted() {
+
+    for (const i in this.child.texts ) {
+      this.form.text += this.child.texts[i];
+    }
+  },
+  updated(){
+
   }
 }
 
