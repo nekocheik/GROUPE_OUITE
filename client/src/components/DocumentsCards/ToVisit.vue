@@ -16,9 +16,13 @@ export default {
   },
   props : ['parent', 'child', 'childIndex'],
   mounted: function() {
-    const order = JSON.parse(localStorage.getItem('cardOrder'));
-    
-    const position = order.indexOf(this.childIndex +1);
+    if (localStorage.getItem('cardOrder')) {
+      console.log('abc');
+      
+      const order = JSON.parse(localStorage.getItem('cardOrder'));
+      const position = order.indexOf(this.childIndex +1);
+      this.$el.style.position = position;
+    }
     
   },
   methods : {
