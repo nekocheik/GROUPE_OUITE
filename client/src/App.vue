@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <transition name="fade" class="pane">
+      <router-view></router-view>
+    </transition>
     <footer> 
       <ul class="links">
         <!-- <li>

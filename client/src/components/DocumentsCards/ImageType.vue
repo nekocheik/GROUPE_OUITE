@@ -23,7 +23,7 @@ export default {
   props : ['childId', 'parentName', 'child'],
   data() {
     return {
-      imagee : require (`../../assets/images/${this.child.image}.jpg`)
+      
     }
   },
 
