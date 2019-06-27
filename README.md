@@ -6,7 +6,7 @@
 - Emilie Tombuyses
 - Cheik Kone 
 
-link : https://how-we-build-the-world-together.netlify.com/document/1
+link :https://how-we-build-the-world-together.netlify.com/
 
 ## Project setup
 Run this command in `root` directory and also in `client/` directory
