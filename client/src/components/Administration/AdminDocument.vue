@@ -9,6 +9,9 @@
         <p>{{fact.text}}</p>
       </div> -->
       <!--  -->
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+      <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+      <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
       <div v-if="facts.length" class="container">
         <h1 style="font-size: 30px; font-weight : bold;">{{facts[id-1].name}}</h1>
         <!-- binding the attribute name, to get it on child component header -->
@@ -73,8 +76,14 @@ export default {
 <style lang="scss" scoped>
   .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    *{
+      margin-top: 10%;
+    }
+  } button{
+    background-color: gray;
+    border: gray solid 1px ;
   }
 </style>

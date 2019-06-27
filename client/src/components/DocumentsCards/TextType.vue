@@ -82,7 +82,10 @@ export default {
       text-align: right;
     }
   } 
-
+    button{
+    background-color: gray;
+    border: gray solid 1px ;
+  }
   .title {
     font-size: 50px;
     text-transform: uppercase;
