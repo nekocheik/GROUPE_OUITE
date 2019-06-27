@@ -65,12 +65,12 @@ h2 {
     height: 100vh;
     display: flex;
     align-items: center;
-    background-color: black;
+    background-color: #000112;
     video {
       width: 100%;
       min-height: 50vh;
       max-height: 100vh;
-      background : black;
+      background : #000112;
       margin: auto;
       display: block;
     }
@@ -91,7 +91,7 @@ h2 {
     width: 100%;
     min-height: 50vh;
     max-height: 100vh;
-    background : black;
+    background : #000112;
     margin: auto;
     display: block;
   }

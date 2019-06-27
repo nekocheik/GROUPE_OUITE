@@ -12,6 +12,7 @@
        <input v-model="form.title" type="text" placeholder="Title">
        <label>Text</label>
        <textarea v-model="form.text" name="" id="" cols="30" rows="10"></textarea>
+       {{child.text}}
        <button type="submit">SUBMIT</button>
        <p :class="textstyle">Le texte à été modifié avec succes</p>
      </form>
@@ -46,6 +47,12 @@ export default {
         }, 4000);
     }
   }
+  ,
+  mounted(){
+    for (const i in this.child.texts ) {
+      this.form.text += this.child.texts[i];
+    }
+  }
 }
 </script>
 
@@ -55,10 +62,17 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(195, 158, 236);
-    width: 100%;
-    height: 400px;
+    width: 90%;
+    height: 90vh;
+    color: black;
+    margin: auto;
+    border: black solid 10px ;
+    border-radius: 20px;
   } 
+    button{
+    background-color: gray;
+    border: gray solid 1px ;
+  }
   .form {
     display: flex;
     flex-direction: column;

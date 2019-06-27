@@ -1,6 +1,6 @@
 <template>
   <div class="text-container">
-     <h2>Ceci est le component Texte</h2>
+     <h2>component Texte</h2>
       <hr>
      <h3>C'est le child n°{{child.id}} de {{parentName}}</h3>
      <hr>
@@ -27,7 +27,7 @@ export default {
     return {
       textstyle : 'd-none',
       form : {
-        text : this.child.text,
+        text : '' ,
         title : this.child.title
       }
     }
@@ -43,10 +43,23 @@ export default {
       this.textstyle = "d-block";
       setTimeout(() => {
         this.textstyle = "d-none";
-        }, 4000);
+      }, 4000);
     }
+  },
+
+  mounted() {
+
+    for (const i in this.child.texts ) {
+      this.form.text += this.child.texts[i];
+    }
+  },
+  updated(){
+
   }
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -55,10 +68,17 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(237, 255, 133);
-    width: 50%;
-    height: 400px;
+    width: 90%;
+    height: 90vh;
+    color: black;
+    margin: auto;
+    border: black solid 10px ;
+    border-radius: 20px;
   } 
+    button{
+    background-color: gray;
+    border: gray solid 1px ;
+  }
     .form {
     display: flex;
     flex-direction: column;
