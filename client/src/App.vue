@@ -42,7 +42,6 @@
 
 <script>
 
-import factService from '../../factService';
 import screenService from './screenService'
 import soundService from './soundService'
 
