@@ -56,7 +56,7 @@ export default {
     }
   },
   created(){
-    factService.getFacts();
+    fetch('https://webdocsgroup.herokuapp.com/api/facts/')
   },
   methods: {
     
