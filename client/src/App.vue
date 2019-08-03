@@ -44,6 +44,7 @@
 
 import screenService from './screenService'
 import soundService from './soundService'
+import factService from '../factService' 
 
 export default {
   data() {
@@ -53,6 +54,9 @@ export default {
       soundIcon: "sound-icon",
       isAsound : this.availableAudio()
     }
+  },
+  created(){
+    this.facts = await factService.getFacts();
   },
   methods: {
     
