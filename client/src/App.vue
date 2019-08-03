@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <!--<transition name="fade" class="pane"></transition>-->
-      <router-view></router-view>
-    
+    <router-view></router-view>
     <footer> 
       <ul class="links">
         <!-- <li>
@@ -44,7 +42,6 @@
 
 <script>
 
-import factService from '../../factService';
 import screenService from './screenService'
 import soundService from './soundService'
 
@@ -61,6 +58,7 @@ export default {
       fetch('https://webdocsgroup.herokuapp.com/api/facts/')
   },
   methods: {
+    
     fullScreen() {
       if (this.isFullScreen) {
         screenService.toWindowedScreen()
@@ -89,8 +87,6 @@ export default {
   },
 
   mounted() {
-    await factService.getFacts( parentName, childId );
-
     document.addEventListener("fullscreenchange", () => {
       if (document.fullscreenElement) {
         this.isFullScreen = true
@@ -100,22 +96,17 @@ export default {
     });
     
     //restore sounds settings
-  
     if (this.isAsound) {
       this.soundIcon = soundService.restoreAudioSettings(this.$refs.audio, this.soundIcon);
     }
 
   },
 
-  updated() {
-    this.isAsound = this.availableAudio();
+  watch: {
+    "$route.params"(to, from) {
+      this.isAsound = this.availableAudio()
+    }
   }
-
-  // watch: {
-  //   "$route.params"(to, from) {
-  //     this.isAsound = this.availableAudio()
-  //   }
-  // }
 
 }
 </script>
