@@ -44,7 +44,6 @@
 
 import screenService from './screenService'
 import soundService from './soundService'
-import factService from '../factService' 
 
 export default {
   data() {
@@ -54,9 +53,6 @@ export default {
       soundIcon: "sound-icon",
       isAsound : this.availableAudio()
     }
-  },
-  created(){
-    fetch('https://webdocsgroup.herokuapp.com/api/facts/')
   },
   methods: {
     
