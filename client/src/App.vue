@@ -56,7 +56,7 @@ export default {
     }
   },
   created(){
-    this.facts = factService.getFacts();
+    factService.getFacts();
   },
   methods: {
     
