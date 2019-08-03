@@ -56,7 +56,7 @@ export default {
     }
   },
   created(){
-    this.facts = await factService.getFacts();
+    this.facts = factService.getFacts();
   },
   methods: {
     
