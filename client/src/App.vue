@@ -55,9 +55,7 @@ export default {
       isAsound : this.availableAudio()
     }
   },
-  created(){
-    fetch('https://webdocsgroup.herokuapp.com/api/facts/')
-  },
+
   methods: {
     
     fullScreen() {
@@ -88,7 +86,7 @@ export default {
   },
 
   mounted() {
-    await factService.getFacts( parentName, childId );
+
 
     document.addEventListener("fullscreenchange", () => {
       if (document.fullscreenElement) {
