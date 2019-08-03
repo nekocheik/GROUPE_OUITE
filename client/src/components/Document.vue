@@ -79,10 +79,6 @@ export default {
 
   mounted(){
     window.onload = function() {
-<<<<<<< HEAD
-           draw( document.querySelector('body') );
-=======
->>>>>>> a26c538e56c16ad3da4b1507137455d14ddfb79b
            new scrollControlled( 1 , window , 1500 );
     };
   },
@@ -94,11 +90,7 @@ export default {
 
   updated() {
     window.scrollTo(0,0);
-<<<<<<< HEAD
-        console.log(  this.scrollControlled )
-=======
     draw( document.querySelector('body') );
->>>>>>> a26c538e56c16ad3da4b1507137455d14ddfb79b
 
     console.log('update');
     if (localStorage.getItem('readed')) {
