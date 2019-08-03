@@ -56,7 +56,10 @@ export default {
       text-align: right;
     }
   } 
-
+    button{
+    background-color: gray;
+    border: gray solid 1px ;
+  }
   .title {
     font-size: 50px;
     letter-spacing: calc(50px * 10 / 100);
