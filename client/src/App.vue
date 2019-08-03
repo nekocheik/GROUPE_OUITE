@@ -87,8 +87,6 @@ export default {
   },
 
   mounted() {
-    await factService.getFacts( parentName, childId );
-
     document.addEventListener("fullscreenchange", () => {
       if (document.fullscreenElement) {
         this.isFullScreen = true
