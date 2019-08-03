@@ -54,6 +54,9 @@ export default {
       isAsound : this.availableAudio()
     }
   },
+  created(){
+    fetch('https://webdocsgroup.herokuapp.com/api/facts/')
+  },
   methods: {
     
     fullScreen() {
